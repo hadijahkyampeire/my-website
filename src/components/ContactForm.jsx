@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { TextField, Button, Grid, Typography, Paper } from '@mui/material';
+import { TextField, Button, Grid, Paper } from '@mui/material';
 
 function ContactForm() {
     const [name, setName] = useState("");
@@ -8,7 +8,7 @@ function ContactForm() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const response = await fetch("https://your-api-url/messages", {
+        const response = await fetch("https://hstmrzdn72.execute-api.us-east-2.amazonaws.com/dev/messages", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ name, email, message }),
@@ -27,7 +27,7 @@ function ContactForm() {
     return (
       <Paper sx={{ p: 4, boxShadow: 3, borderRadius: 2 }}>
         <form onSubmit={handleSubmit}>
-          <Grid container spacing={2}>
+          <Grid container spacing={3} direction="column" alignItems="stretch">
             <Grid item xs={12}>
               <TextField
                 label="Name"

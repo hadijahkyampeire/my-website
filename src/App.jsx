@@ -16,11 +16,11 @@ function App() {
   return (
     <ThemeProvider theme={theme[currentTheme]}>
       <CssBaseline />
-      <Navbar toggleTheme={toggleTheme} isDark={currentTheme === 'dark'} />
       <Router>
+        <Navbar toggleTheme={toggleTheme} isDark={currentTheme === 'dark'} />
         <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/admin" element={<AdminDashboard />} />
+            <Route path="/messages" element={<AdminDashboard />} />
         </Routes>
       </Router>
     </ThemeProvider>
