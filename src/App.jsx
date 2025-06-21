@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { ThemeProvider, CssBaseline } from '@mui/material';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import Home from './pages/Home'
-import AdminDashboard from './pages/AdminDashboard'
 import theme from './theme'
 import Navbar from './components/Navbar'
 
@@ -20,7 +19,6 @@ function App() {
         <Navbar toggleTheme={toggleTheme} isDark={currentTheme === 'dark'} />
         <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/messages" element={<AdminDashboard />} />
         </Routes>
       </Router>
     </ThemeProvider>
