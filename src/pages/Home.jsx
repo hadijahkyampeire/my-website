@@ -23,10 +23,12 @@ import {
   Code as CodeIcon,
   Launch as LaunchIcon,
   Download as DownloadIcon,
-  Visibility as VisibilityIcon
+  Visibility as VisibilityIcon,
+  EmojiEvents as EmojiEventsIcon,
 } from '@mui/icons-material';
 import myPhoto from '../assets/omega.jpg';
 import hackerRankCertificate from '../assets/hackerrank-certificate.png';
+import basicReactCertificate from '../assets/basic-react-hackerrank.png';
 
 // E-Learning Platform Images
 import elearningImg1 from '../assets/e-learning-platform/courses-page.png';
@@ -158,6 +160,13 @@ function Home() {
       year: "2025",
       link: "https://www.hackerrank.com/certificates/9c2149175e41",
       image: hackerRankCertificate
+    },
+    {
+      name: "React (Basic)",
+      issuer: "HackerRank",
+      year: "2025",
+      link: "https://www.hackerrank.com/certificates/eb8d169fcfb7",
+      image: basicReactCertificate
     }
   ];
 
@@ -491,6 +500,41 @@ function Home() {
               </Grid>
             ))}
           </Grid>
+        </Container>
+      </Box>
+
+      {/* HackerRank Section */}
+      <Box id="hackerrank" sx={{ py: 8 }}>
+        <Container maxWidth="lg">
+          <Typography variant="h3" component="h2" gutterBottom textAlign="center" sx={{ mb: 6 }}>
+            HackerRank Achievements
+          </Typography>
+          <Card sx={{ p: 3 }}>
+            <Grid container spacing={4} alignItems="flex-start">
+              <Grid item xs={12} md={6}>
+                <Typography variant="h5" gutterBottom><EmojiEventsIcon sx={{ verticalAlign: 'middle', mr: 1 }} />Badges</Typography>
+                <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
+                  {["Problem Solving", "30 Days of Code", "10 Days of JS", "React"].map(badge => <Chip key={badge} label={badge} color="primary" />)}
+                </Box>
+              </Grid>
+              <Grid item xs={12} md={6}>
+                <Typography variant="h5" gutterBottom><CodeIcon sx={{ verticalAlign: 'middle', mr: 1 }} />Top Skills</Typography>
+                <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
+                  {["React", "Javascript (Intermediate)", "CSS", "TypeScript", "Java"].map(skill => <Chip key={skill} label={skill} variant="outlined" />)}
+                </Box>
+              </Grid>
+            </Grid>
+            <Box sx={{ mt: 4, textAlign: 'center' }}>
+              <Button
+                variant="contained"
+                href="https://www.hackerrank.com/profile/hadijah315"
+                target="_blank"
+                endIcon={<LaunchIcon />}
+              >
+                View Full HackerRank Profile
+              </Button>
+            </Box>
+          </Card>
         </Container>
       </Box>
 

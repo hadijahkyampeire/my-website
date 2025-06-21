@@ -24,7 +24,8 @@ import {
   Work as WorkIcon,
   School as SchoolIcon,
   ContactMail as ContactIcon,
-  WorkspacePremium as CertificateIcon
+  WorkspacePremium as CertificateIcon,
+  EmojiEvents as AchievementsIcon
 } from '@mui/icons-material';
 
 const Navbar = ({ toggleTheme, isDark }) => {
@@ -40,6 +41,7 @@ const Navbar = ({ toggleTheme, isDark }) => {
     { label: 'Projects', id: 'projects', icon: <CodeIcon /> },
     { label: 'Education', id: 'education', icon: <SchoolIcon /> },
     { label: 'Certifications', id: 'certifications', icon: <CertificateIcon /> },
+    { label: 'HackerRank', id: 'hackerrank', icon: <AchievementsIcon /> },
     { label: 'Contact', id: 'contact', icon: <ContactIcon /> }
   ];
 
