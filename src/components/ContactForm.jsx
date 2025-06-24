@@ -1,80 +1,80 @@
-import React, { useState } from "react";
-import { TextField, Button, Grid, Paper } from '@mui/material';
+import React, { useState } from 'react';
+import { Box, TextField, Button, Alert, CircularProgress } from '@mui/material';
 
-function ContactForm() {
-    const [name, setName] = useState("");
-    const [email, setEmail] = useState("");
-    const [message, setMessage] = useState("");
+const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xwpbrwjk'; // Replace with your Formspree endpoint
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        const response = await fetch("https://hstmrzdn72.execute-api.us-east-2.amazonaws.com/dev/messages", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ name, email, message }),
-        });
+export default function ContactForm() {
+  const [form, setForm] = useState({ email: '', subject: '', message: '' });
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState('');
 
-        if (response.ok) {
-            alert("Message sent!");
-            setName("");
-            setEmail("");
-            setMessage("");
-        } else {
-            alert("Error sending message.");
-        }
-    };
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
 
-    return (
-      <Paper sx={{ p: 4, boxShadow: 3, borderRadius: 2 }}>
-        <form onSubmit={handleSubmit}>
-          <Grid container spacing={3} direction="column" alignItems="stretch">
-            <Grid item xs={12}>
-              <TextField
-                label="Name"
-                variant="outlined"
-                fullWidth
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                required
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                label="Email"
-                type="email"
-                variant="outlined"
-                fullWidth
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                label="Message"
-                variant="outlined"
-                fullWidth
-                multiline
-                rows={4}
-                value={message}
-                onChange={(e) => setMessage(e.target.value)}
-                required
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <Button
-                type="submit"
-                variant="contained"
-                color="primary"
-                fullWidth
-              >
-                Send
-              </Button>
-            </Grid>
-          </Grid>
-        </form>
-      </Paper>
-    );
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setError('');
+    setSuccess(false);
+    try {
+      const res = await fetch(FORMSPREE_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email: form.email,
+          subject: form.subject,
+          message: form.message,
+        }),
+      });
+      if (res.ok) {
+        setSuccess(true);
+        setForm({ email: '', subject: '', message: '' });
+      } else {
+        setError('Something went wrong. Please try again.');
+      }
+    } catch {
+      setError('Network error. Please try again.');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <Box component="form" onSubmit={handleSubmit} sx={{ mt: 2, display: 'flex', flexDirection: 'column', gap: 2 }}>
+      {success && <Alert severity="success">Message sent! Thank you for reaching out.</Alert>}
+      {error && <Alert severity="error">{error}</Alert>}
+      <TextField
+        label="Your Email"
+        name="email"
+        type="email"
+        value={form.email}
+        onChange={handleChange}
+        required
+        fullWidth
+      />
+      <TextField
+        label="Subject"
+        name="subject"
+        value={form.subject}
+        onChange={handleChange}
+        required
+        fullWidth
+      />
+      <TextField
+        label="Message"
+        name="message"
+        value={form.message}
+        onChange={handleChange}
+        required
+        fullWidth
+        multiline
+        minRows={4}
+      />
+      <Button type="submit" variant="contained" color="primary" disabled={loading}>
+        {loading ? <CircularProgress size={24} /> : 'Send Message'}
+      </Button>
+    </Box>
+  );
 }
-
-export default ContactForm;

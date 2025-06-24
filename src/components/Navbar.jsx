@@ -12,8 +12,6 @@ import {
   List,
   ListItem,
   ListItemText,
-  Menu,
-  MenuItem
 } from '@mui/material';
 import { 
   Brightness4, 
@@ -21,49 +19,30 @@ import {
   Menu as MenuIcon,
   Person as PersonIcon,
   Code as CodeIcon,
-  Work as WorkIcon,
-  School as SchoolIcon,
   ContactMail as ContactIcon,
-  WorkspacePremium as CertificateIcon,
-  EmojiEvents as AchievementsIcon
 } from '@mui/icons-material';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 const Navbar = ({ toggleTheme, isDark }) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [anchorEl, setAnchorEl] = useState(null);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const navItems = [
-    { label: 'About', id: 'about', icon: <PersonIcon /> },
-    { label: 'Skills', id: 'skills', icon: <CodeIcon /> },
-    { label: 'Experience', id: 'experience', icon: <WorkIcon /> },
-    { label: 'Projects', id: 'projects', icon: <CodeIcon /> },
-    { label: 'Education', id: 'education', icon: <SchoolIcon /> },
-    { label: 'Certifications', id: 'certifications', icon: <CertificateIcon /> },
-    { label: 'HackerRank', id: 'hackerrank', icon: <AchievementsIcon /> },
-    { label: 'Contact', id: 'contact', icon: <ContactIcon /> }
+    { label: 'About', path: '/about', icon: <PersonIcon /> },
+    { label: 'Projects', path: '/projects', icon: <CodeIcon /> },
+    { label: 'Contact', path: '/contact', icon: <ContactIcon /> }
   ];
 
-  const scrollToSection = (sectionId) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+  const handleNavigation = (path) => {
+    navigate(path);
     setMobileOpen(false);
-    setAnchorEl(null);
   };
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
-  };
-
-  const handleMenuClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleMenuClose = () => {
-    setAnchorEl(null);
   };
 
   const drawer = (
@@ -72,8 +51,11 @@ const Navbar = ({ toggleTheme, isDark }) => {
         Hadijah Kyampeire
       </Typography>
       <List>
+        <ListItem onClick={() => handleNavigation('/')}>
+          <ListItemText primary="Home" />
+        </ListItem>
         {navItems.map((item) => (
-          <ListItem key={item.id} onClick={() => scrollToSection(item.id)}>
+          <ListItem key={item.path} onClick={() => handleNavigation(item.path)}>
             <ListItemText primary={item.label} />
           </ListItem>
         ))}
@@ -92,7 +74,7 @@ const Navbar = ({ toggleTheme, isDark }) => {
               fontWeight: 'bold',
               '&:hover': { opacity: 0.8 }
             }}
-            onClick={() => scrollToSection('home')}
+            onClick={() => handleNavigation('/')}
           >
             Hadijah Kyampeire
           </Typography>
@@ -117,15 +99,27 @@ const Navbar = ({ toggleTheme, isDark }) => {
             </Box>
           ) : (
             <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+              <Button
+                color="inherit"
+                onClick={() => handleNavigation('/')}
+                sx={{ 
+                  '&:hover': { 
+                    backgroundColor: 'rgba(255, 255, 255, 0.1)' 
+                  } 
+                }}
+              >
+                Home
+              </Button>
               {navItems.map((item) => (
                 <Button
-                  key={item.id}
+                  key={item.path}
                   color="inherit"
-                  onClick={() => scrollToSection(item.id)}
+                  onClick={() => handleNavigation(item.path)}
                   sx={{ 
                     '&:hover': { 
                       backgroundColor: 'rgba(255, 255, 255, 0.1)' 
-                    } 
+                    },
+                    backgroundColor: location.pathname === item.path ? 'rgba(255, 255, 255, 0.1)' : 'transparent'
                   }}
                 >
                   {item.label}

@@ -29,6 +29,7 @@ import {
 import myPhoto from '../assets/omega.jpg';
 import hackerRankCertificate from '../assets/hackerrank-certificate.png';
 import basicReactCertificate from '../assets/basic-react-hackerrank.png';
+import ContactForm from '../components/ContactForm';
 
 // E-Learning Platform Images
 import elearningImg1 from '../assets/e-learning-platform/courses-page.png';
@@ -560,7 +561,7 @@ function Home() {
                 </Box>
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
                   <PhoneIcon color="primary" />
-                  <Typography>+1 (555) 123-4567 (Placeholder)</Typography>
+                  <Typography>+1 (737) 363-8389</Typography>
                 </Box>
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
                   <LocationIcon color="primary" />
@@ -597,6 +598,12 @@ function Home() {
                   Email
                 </Button>
               </Box>
+            </Grid>
+            <Grid item xs={12} md={6}>
+              <Typography variant="h6" gutterBottom>
+                Send Me a Message
+              </Typography>
+              <ContactForm />
             </Grid>
           </Grid>
         </Container>
