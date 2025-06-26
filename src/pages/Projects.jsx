@@ -37,48 +37,80 @@ import sigmaImg1 from '../assets/sigma-app/dashboard.png';
 import sigmaImg2 from '../assets/sigma-app/networkGraph.png';
 import sigmaImg3 from '../assets/sigma-app/searchResults.png';
 import sigmaImg4 from '../assets/sigma-app/dashboardReport.png';
+import sigmaImg5 from '../assets/sigma-app/searchInitial.png';
+import sigmaImg6 from '../assets/sigma-app/googleMap.png';
 
 function Projects() {
   const projects = [
     {
       title: "OpenMRS Clinical Views & Form Builder (METS Program)",
-      description: "Architected a reusable JSON schema-based UI workflow framework for OpenMRS HIV Reference Implementation. This included creating dynamic clinical views and a drag-and-drop form builder to empower clinicians, significantly reducing code duplication and form creation time.",
+      description: "Built a dynamic UI workflow and drag-and-drop form builder for OpenMRS, enabling clinicians to create and manage clinical forms with ease.",
       technologies: ["ReactJs", "Typescript", "Formik", "Micro-Frontends", "Carbon design", "SWR"],
       github: "",
       live: "",
-      images: [metsImg1, metsImg2, metsImg3]
+      images: [metsImg1, metsImg2, metsImg3],
+      features: [
+        'Dynamic clinical views',
+        'Drag-and-drop form builder',
+        'Reusable JSON schema workflows',
+        'Reduced code duplication'
+      ]
     },
     {
       title: "Risk & Compliance Platform (Sigma360)",
-      description: "Led frontend development for a sophisticated financial risk and compliance platform. Engineered an analytics dashboard, a graph-driven risk network visualization, and an advanced search feature. These innovations boosted product competitiveness and enhanced client acquisition for financial services firms.",
-      technologies: ["ReactJS", "SASS", "AntDesign", "ChartJS", "Cytoscape", "Neo4j"],
+      description: "Developed a financial risk and compliance platform with advanced search, network graph analytics, geolocation, and interactive dashboards for global financial clients.",
+      technologies: ["ReactJS", "SASS", "AntDesign", "ChartJS", "Cytoscape", "Neo4j", "react-google-maps"],
       github: "",
       live: "",
-      images: [sigmaImg1, sigmaImg2, sigmaImg3, sigmaImg4]
+      images: [sigmaImg1, sigmaImg2, sigmaImg3, sigmaImg4, sigmaImg5, sigmaImg6],
+      features: [
+        'Open search',
+        'Risk network graph',
+        'Geolocation map (react-google-maps)',
+        'Analytics visual dashboard'
+      ]
     },
     {
       title: "E-learning Platform – React Frontend (2025)",
-      description: "A responsive and modular React frontend for a full-stack E-Learning platform. Designed key user interfaces for course management, content access, assignment submissions, and grading workflows. The project reflects my mentoring experience and aims to support interactive learning with a professional, production-ready interface.",
+      description: "Designed a modular React frontend for an E-Learning platform, supporting course management, student enrollment, assignments, and grading.",
       technologies: ["TypeScript", "Vite", "React", "Material UI"],
       github: "https://github.com/hadijahkyampeire/MH-E-Learning-Platform-FE",
       live: "",
-      images: [elearningImg1, elearningImg2, elearningImg3, elearningImg4]
+      images: [elearningImg1, elearningImg2, elearningImg3, elearningImg4],
+      features: [
+        'Course management',
+        'Student enrollment',
+        'Assignment submission',
+        'Grading workflows'
+      ]
     },
     {
       title: "Serverless Web Game (Tic Tac Toe)",
-      description: "Developed a fully serverless, web-based game using ReactJS with user authentication via Amazon Cognito. Player scores are stored in DynamoDB and managed through a Node.js backend with AWS Lambda and API Gateway. Implemented full infrastructure provisioning and CI/CD pipelines using AWS CloudFormation, CodePipeline, and CodeBuild.",
+      description: "Created a serverless Tic Tac Toe game with real-time play, user authentication, and AWS-powered backend.",
       technologies: ["ReactJS", "AWS Cognito", "DynamoDB", "AWS Lambda", "API Gateway", "CloudFormation", "CodePipeline"],
       github: "https://github.com/hadijahkyampeire/tic-tac-toe-full-stack-aws",
       live: "https://main.d357es8u6sf7j.amplifyapp.com/",
-      images: [tictactoeImg1, tictactoeImg2, tictactoeImg3, tictactoeImg4]
+      images: [tictactoeImg1, tictactoeImg2, tictactoeImg3, tictactoeImg4],
+      features: [
+        'Serverless architecture',
+        'User authentication',
+        'Real-time gameplay',
+        'Score tracking'
+      ]
     },
     {
       title: "Property Management System",
-      description: "A system for property owners to list properties for sale or rent, and for customers to find properties to rent or buy. Built with a Spring Boot backend, MySQL database, RESTful APIs, and JWT authentication. The frontend is built with React and Material UI.",
+      description: "A platform for listing, searching, and managing rental or sale properties with secure authentication and RESTful APIs.",
       technologies: ["React", "Material UI", "Spring Boot", "MySQL", "JWT"],
       github: "https://github.com/hadijahkyampeire/WAA-Group-One-Realtor-Frontend",
       live: "",
-      images: [propertyImg1, propertyImg2]
+      images: [propertyImg1, propertyImg2],
+      features: [
+        'Property listing',
+        'Search and filter',
+        'User authentication',
+        'RESTful API integration'
+      ]
     }
   ];
 
@@ -100,27 +132,53 @@ function Projects() {
       : 'https://via.placeholder.com/400x240';
 
     return (
-      <Card sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' } }}>
+      <Card sx={{ 
+        display: 'flex', 
+        flexDirection: { xs: 'column', md: 'row' },
+        height: { xs: 'auto', md: 400 }, // Fixed height for consistency
+        width: '100%', // Ensure full width
+        maxWidth: '100%', // Prevent overflow
+        boxSizing: 'border-box', // Include padding in width calculation
+      }}>
         <Box
           sx={{
-            width: { xs: '100%', md: '45%' },
-            minHeight: { xs: 300, md: 'auto' },
+            width: { xs: '100%', md: '40%' }, // Fixed width percentage
+            height: { xs: 300, md: '100%' }, // Fixed height
             backgroundImage: `url(${projectImage})`,
             backgroundSize: 'contain',
             backgroundPosition: 'center',
             backgroundRepeat: 'no-repeat',
             transition: 'background-image 0.5s ease-in-out',
             backgroundColor: 'rgba(0, 0, 0, 0.04)',
+            flexShrink: 0, // Prevent image from shrinking
           }}
         />
-        <Box sx={{ flex: 1, p: 2, display: 'flex', flexDirection: 'column' }}>
-          <CardContent sx={{ flexGrow: 1 }}>
-            <Typography variant="h6" gutterBottom>
+        <Box sx={{ 
+          flex: 1, 
+          p: 2, 
+          display: 'flex', 
+          flexDirection: 'column',
+          minWidth: 0, // Allow content to shrink if needed
+        }}>
+          <CardContent sx={{ flexGrow: 1, p: '16px 0' }}>
+            <Typography variant="h6" gutterBottom sx={{ fontSize: '1.1rem', lineHeight: 1.3 }}>
               {project.title}
             </Typography>
-            <Typography variant="body2" color="text.secondary" paragraph>
+            <Typography variant="body2" color="text.secondary" paragraph sx={{ mb: 2 }}>
               {project.description}
             </Typography>
+            {project.features && (
+              <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1, mb: 2 }}>
+                {project.features.map((feature) => (
+                  <Chip
+                    key={feature}
+                    label={feature}
+                    size="small"
+                    color="secondary"
+                  />
+                ))}
+              </Box>
+            )}
             <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1, mb: 2 }}>
               {project.technologies.map((tech) => (
                 <Chip
@@ -133,7 +191,7 @@ function Projects() {
               ))}
             </Box>
           </CardContent>
-          <CardActions>
+          <CardActions sx={{ p: 0, mt: 'auto' }}>
             <IconButton href={project.github} target="_blank" size="small" color="primary">
               <GitHubIcon />
             </IconButton>
@@ -150,13 +208,23 @@ function Projects() {
 
   return (
     <Box sx={{ minHeight: '100vh', pt: 8 }}>
-      <Container maxWidth="lg">
+      <Container maxWidth="lg" sx={{ width: '100%' }}>
         <Typography variant="h3" component="h1" gutterBottom textAlign="center" sx={{ mb: 6 }}>
           Featured Projects
         </Typography>
-        <Grid container spacing={4} justifyContent="center">
+        <Grid 
+          container 
+          spacing={4} 
+          justifyContent="center"
+          sx={{ width: '100%' }}
+        >
           {projects.map((project, index) => (
-            <Grid item xs={12} key={index}>
+            <Grid 
+              item 
+              xs={12} 
+              key={index}
+              sx={{ width: '100%', mb: 3 }}
+            >
               <ProjectCard project={project} />
             </Grid>
           ))}

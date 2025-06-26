@@ -423,14 +423,32 @@ function Home() {
 
       {/* Education Section */}
       <Box id="education" sx={{ py: 8, bgcolor: 'background.paper' }}>
-        <Container maxWidth="lg">
+        <Container maxWidth="lg" sx={{ width: '100%' }}>
           <Typography variant="h3" component="h2" gutterBottom textAlign="center" sx={{ mb: 6 }}>
             Education
           </Typography>
-          <Grid container spacing={4} justifyContent="center" alignItems="stretch">
+          <Grid 
+            container 
+            spacing={4} 
+            justifyContent="center" 
+            alignItems="stretch"
+            sx={{ width: '100%' }}
+          >
             {education.map((edu, index) => (
-              <Grid item xs={12} md={6} key={index}>
-                <Card sx={{ p: 2, height: '100%' }}>
+              <Grid 
+                item 
+                xs={12} 
+                md={6} 
+                key={index}
+                sx={{ width: '100%' }}
+              >
+                <Card sx={{ 
+                  p: 2, 
+                  height: '100%',
+                  width: '100%',
+                  maxWidth: '100%',
+                  boxSizing: 'border-box'
+                }}>
                   <Typography variant="h6">{edu.degree}</Typography>
                   <Typography variant="subtitle1" color="text.secondary">
                     {edu.school}
@@ -448,16 +466,43 @@ function Home() {
         </Container>
       </Box>
 
-      {/* Certifications Section */}
+      {/* Certifications & HackerRank Section */}
       <Box id="certifications" sx={{ py: 8 }}>
-        <Container maxWidth="lg">
+        <Container maxWidth="lg" sx={{ width: '100%' }}>
           <Typography variant="h3" component="h2" gutterBottom textAlign="center" sx={{ mb: 6 }}>
-            Certifications
+            Certifications & Achievements
           </Typography>
-          <Grid container spacing={4} justifyContent="center">
-            {certifications.map((cert, index) => (
-              <Grid item xs={12} md={6} key={index}>
-                <Card sx={{ p: 2, height: '100%' }}>
+          <Box 
+            sx={{ 
+              display: 'flex', 
+              flexDirection: { xs: 'column', lg: 'row' },
+              gap: 4,
+              justifyContent: 'center',
+              alignItems: 'stretch',
+              width: '100%'
+            }}
+          >
+            {/* Certificates */}
+            <Box 
+              sx={{ 
+                display: 'flex', 
+                flexDirection: { xs: 'column', md: 'row' },
+                gap: 3,
+                flex: 1,
+                maxWidth: { lg: '60%' }
+              }}
+            >
+              {certifications.map((cert, index) => (
+                <Card 
+                  key={index}
+                  sx={{ 
+                    p: 2, 
+                    height: '100%',
+                    width: { xs: '100%', md: '50%' },
+                    maxWidth: { xs: '100%', md: '300px' },
+                    boxSizing: 'border-box'
+                  }}
+                >
                   {cert.image && (
                     <Box
                       component="img"
@@ -465,7 +510,7 @@ function Home() {
                       alt={`${cert.name} Certificate`}
                       sx={{
                         maxWidth: '100%',
-                        maxHeight: '300px',
+                        maxHeight: '200px',
                         objectFit: 'contain',
                         display: 'block',
                         mx: 'auto',
@@ -476,8 +521,8 @@ function Home() {
                       }}
                     />
                   )}
-                  <Typography variant="h6">{cert.name}</Typography>
-                  <Typography variant="subtitle1" color="text.secondary">
+                  <Typography variant="h6" sx={{ fontSize: '1rem' }}>{cert.name}</Typography>
+                  <Typography variant="subtitle2" color="text.secondary">
                     {cert.issuer}
                   </Typography>
                   {cert.year && (
@@ -492,50 +537,67 @@ function Home() {
                       target="_blank"
                       rel="noopener noreferrer"
                       endIcon={<LaunchIcon />}
+                      size="small"
                       sx={{mt: 1}}
                     >
                       View Certificate
                     </Button>
                   )}
                 </Card>
-              </Grid>
-            ))}
-          </Grid>
-        </Container>
-      </Box>
-
-      {/* HackerRank Section */}
-      <Box id="hackerrank" sx={{ py: 8 }}>
-        <Container maxWidth="lg">
-          <Typography variant="h3" component="h2" gutterBottom textAlign="center" sx={{ mb: 6 }}>
-            HackerRank Achievements
-          </Typography>
-          <Card sx={{ p: 3 }}>
-            <Grid container spacing={4} alignItems="flex-start">
-              <Grid item xs={12} md={6}>
-                <Typography variant="h5" gutterBottom><EmojiEventsIcon sx={{ verticalAlign: 'middle', mr: 1 }} />Badges</Typography>
-                <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
-                  {["Problem Solving", "30 Days of Code", "10 Days of JS", "React"].map(badge => <Chip key={badge} label={badge} color="primary" />)}
-                </Box>
-              </Grid>
-              <Grid item xs={12} md={6}>
-                <Typography variant="h5" gutterBottom><CodeIcon sx={{ verticalAlign: 'middle', mr: 1 }} />Top Skills</Typography>
-                <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
-                  {["React", "Javascript (Intermediate)", "CSS", "TypeScript", "Java"].map(skill => <Chip key={skill} label={skill} variant="outlined" />)}
-                </Box>
-              </Grid>
-            </Grid>
-            <Box sx={{ mt: 4, textAlign: 'center' }}>
-              <Button
-                variant="contained"
-                href="https://www.hackerrank.com/profile/hadijah315"
-                target="_blank"
-                endIcon={<LaunchIcon />}
-              >
-                View Full HackerRank Profile
-              </Button>
+              ))}
             </Box>
-          </Card>
+
+            {/* HackerRank Achievements */}
+            <Card 
+              sx={{ 
+                p: 3, 
+                flex: 1,
+                maxWidth: { lg: '40%' },
+                height: '100%',
+                display: 'flex',
+                flexDirection: 'column'
+              }}
+            >
+              <Typography variant="h5" gutterBottom textAlign="center">
+                HackerRank Achievements
+              </Typography>
+              <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3, flexGrow: 1, justifyContent: 'space-between' }}>
+                <Box>
+                  <Typography variant="h6" gutterBottom>
+                    <EmojiEventsIcon sx={{ verticalAlign: 'middle', mr: 1 }} />
+                    Badges
+                  </Typography>
+                  <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
+                    {["Problem Solving", "30 Days of Code", "10 Days of JS", "React"].map(badge => 
+                      <Chip key={badge} label={badge} color="primary" size="small" />
+                    )}
+                  </Box>
+                </Box>
+                <Box>
+                  <Typography variant="h6" gutterBottom>
+                    <CodeIcon sx={{ verticalAlign: 'middle', mr: 1 }} />
+                    Top Skills
+                  </Typography>
+                  <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
+                    {["React", "Javascript (Intermediate)", "CSS", "TypeScript", "Java"].map(skill => 
+                      <Chip key={skill} label={skill} variant="outlined" size="small" />
+                    )}
+                  </Box>
+                </Box>
+                <Box sx={{ textAlign: 'center', mt: 'auto' }}>
+                  <Button
+                    variant="contained"
+                    href="https://www.hackerrank.com/profile/hadijah315"
+                    target="_blank"
+                    endIcon={<LaunchIcon />}
+                    size="small"
+                  >
+                    View Full Profile
+                  </Button>
+                </Box>
+              </Box>
+            </Card>
+          </Box>
         </Container>
       </Box>
 

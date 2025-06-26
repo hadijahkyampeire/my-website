@@ -7,6 +7,7 @@ import Projects from './pages/Projects'
 import Contact from './pages/Contact'
 import theme from './theme'
 import Navbar from './components/Navbar'
+import AIChatbot from './components/AIChatbot'
 
 function App() {
   const [currentTheme, setCurrentTheme] = useState('light');
@@ -26,6 +27,7 @@ function App() {
             <Route path="/projects" element={<Projects />} />
             <Route path="/contact" element={<Contact />} />
         </Routes>
+        <AIChatbot />
       </Router>
     </ThemeProvider>
   )
