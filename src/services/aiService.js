@@ -7,7 +7,7 @@ const AI_SERVICE_CONFIG = {
   
   // API configuration
   apiEndpoint: 'https://api.openai.com/v1/chat/completions',
-  apiKey: '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',
+  apiKey: import.meta.env.VITE_OPENAI_API_KEY || '',
   
   // Fallback configuration
   fallbackEnabled: true,
