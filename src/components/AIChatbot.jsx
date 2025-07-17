@@ -111,7 +111,7 @@ const AIChatbot = () => {
     <>
       {/* Floating Action Button */}
       <Fab
-        color="primary"
+        color="secondary"
         aria-label="chat"
         onClick={() => setIsOpen(true)}
         className="chatbot-fab"
@@ -232,7 +232,7 @@ const AIChatbot = () => {
             )}
 
             {/* Suggested Questions */}
-            {messages.length === 1 && !isLoading && (
+            {!isLoading && (
               <Box sx={{ mt: 2 }}>
                 <Typography variant="body2" sx={{ mb: 1, color: 'text.secondary' }}>
                   Try asking about:

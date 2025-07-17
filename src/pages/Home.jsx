@@ -333,6 +333,8 @@ function Home() {
           color: 'white',
           position: 'relative',
           overflow: 'hidden',
+          marginTop: '-64px', // Compensate for the Toolbar spacer
+          paddingTop: '64px', // Add padding to account for fixed navbar
         }}
       >
         <Container maxWidth="lg">
@@ -364,7 +366,7 @@ function Home() {
                   color: theme.palette.secondary.light,
                 }}
               >
-                Senior Frontend Software Engineer
+                Senior Frontend Software Engineer (ReactJS & TypeScript)
               </Typography>
               <Typography 
                 variant="h6" 
@@ -1054,7 +1056,7 @@ function Home() {
                 </Box>
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
                   <LocationIcon sx={{ color: theme.palette.secondary.main }} />
-                  <Typography>Remote</Typography>
+                  <Typography>Fairfield, Iowa</Typography>
                 </Box>
               </Box>
             </Grid>

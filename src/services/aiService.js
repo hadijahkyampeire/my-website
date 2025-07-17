@@ -41,16 +41,16 @@ Be helpful, professional, and concise. Answer questions about her skills, experi
 
 // Suggested prompt questions for users
 export const SUGGESTED_QUESTIONS = [
-  "What are your core skills?",
-  "Tell me about your work experience",
-  "What projects have you worked on?",
-  "Are you currently available for work?",
-  "What's your educational background?",
-  "How can I contact you?",
-  "What technologies do you use?",
-  "Tell me about your recent role at METS",
-  "What are your career goals?",
-  "Do you work remotely?"
+  "What are her core skills?",
+  "Tell me about her work experience",
+  "What projects has she worked on?",
+  "Is she currently available for work?",
+  "Whats her educational background?",
+  "How can I contact her?",
+  "What technologies does she use?",
+  "Tell me about her recent role at METS",
+  "What are her career goals?",
+  "Does she work remotely?"
 ];
 
 // Real AI API integration
