@@ -11,6 +11,7 @@ import {
   Chip,
   Avatar,
   IconButton,
+  useTheme,
 } from '@mui/material';
 import {
   LinkedIn as LinkedInIcon,
@@ -63,6 +64,7 @@ import sigmaImg3 from '../assets/sigma-app/searchResults.png';
 import sigmaImg4 from '../assets/sigma-app/dashboardReport.png';
 
 function Home() {
+  const theme = useTheme();
   const skills = {
     "Core Strengths": ["Frontend Development", "UI/UX", "Micro-frontend Architecture", "State Management", "Object-Oriented Programming", "Testing & Debugging", "Agile", "Team Leadership & Mentorship", "Cross-functional Collaboration", "Version Control (Git)", "API Integration", "AWS cloud computing"],
     "Languages & Web Tech": ["JavaScript", "TypeScript", "ReactJS", "HTML", "CSS", "Sass", "TailwindCSS", "NodeJS", "REST"],
@@ -196,7 +198,33 @@ function Home() {
       : 'https://via.placeholder.com/400x240';
 
     return (
-      <Card sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' } }}>
+      <Card 
+        sx={{ 
+          display: 'flex', 
+          flexDirection: { xs: 'column', md: 'row' },
+          transition: 'all 0.3s ease',
+          '&:hover': {
+            transform: 'translateY(-8px)',
+            boxShadow: '0 12px 40px rgba(30, 58, 138, 0.15)',
+          },
+          position: 'relative',
+          overflow: 'hidden',
+          '&::before': {
+            content: '""',
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            height: 4,
+            background: `linear-gradient(90deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
+            transform: 'scaleX(0)',
+            transition: 'transform 0.3s ease',
+          },
+          '&:hover::before': {
+            transform: 'scaleX(1)',
+          }
+        }}
+      >
         <Box
           sx={{
             width: { xs: '100%', md: '45%' },
@@ -207,14 +235,31 @@ function Home() {
             backgroundRepeat: 'no-repeat',
             transition: 'background-image 0.5s ease-in-out',
             backgroundColor: 'rgba(0, 0, 0, 0.04)',
+            borderRight: { md: `1px solid ${theme.palette.divider}` },
           }}
         />
-        <Box sx={{ flex: 1, p: 2, display: 'flex', flexDirection: 'column' }}>
-          <CardContent sx={{ flexGrow: 1 }}>
-            <Typography variant="h6" gutterBottom>
+        <Box sx={{ flex: 1, p: 3, display: 'flex', flexDirection: 'column' }}>
+          <CardContent sx={{ flexGrow: 1, p: 0, pb: 2 }}>
+            <Typography 
+              variant="h6" 
+              gutterBottom
+              sx={{
+                color: theme.palette.primary.main,
+                fontWeight: 600,
+                mb: 2,
+              }}
+            >
               {project.title}
             </Typography>
-            <Typography variant="body2" color="text.secondary" paragraph>
+            <Typography 
+              variant="body2" 
+              paragraph
+              sx={{
+                color: theme.palette.text.secondary,
+                lineHeight: 1.6,
+                mb: 2,
+              }}
+            >
               {project.description}
             </Typography>
             <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1, mb: 2 }}>
@@ -224,17 +269,48 @@ function Home() {
                   label={tech}
                   size="small"
                   variant="outlined"
-                  color="primary"
+                  sx={{
+                    borderColor: theme.palette.secondary.main,
+                    color: theme.palette.secondary.main,
+                    '&:hover': {
+                      backgroundColor: theme.palette.secondary.main,
+                      color: 'white',
+                    }
+                  }}
                 />
               ))}
             </Box>
           </CardContent>
-          <CardActions>
-            <IconButton href={project.github} target="_blank" size="small" color="primary">
+          <CardActions sx={{ p: 0 }}>
+            <IconButton 
+              href={project.github} 
+              target="_blank" 
+              size="small" 
+              sx={{
+                color: theme.palette.primary.main,
+                transition: 'all 0.3s ease',
+                '&:hover': {
+                  color: theme.palette.secondary.main,
+                  transform: 'scale(1.1)',
+                }
+              }}
+            >
               <GitHubIcon />
             </IconButton>
             {project.live && (
-              <IconButton href={project.live} target="_blank" size="small" color="primary">
+              <IconButton 
+                href={project.live} 
+                target="_blank" 
+                size="small"
+                sx={{
+                  color: theme.palette.primary.main,
+                  transition: 'all 0.3s ease',
+                  '&:hover': {
+                    color: theme.palette.secondary.main,
+                    transform: 'scale(1.1)',
+                  }
+                }}
+              >
                 <LaunchIcon />
               </IconButton>
             )}
@@ -253,32 +329,80 @@ function Home() {
           minHeight: '100vh',
           display: 'flex',
           alignItems: 'center',
-          background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+          background: theme.palette.primary.main,
           color: 'white',
-          position: 'relative'
+          position: 'relative',
+          overflow: 'hidden',
         }}
       >
         <Container maxWidth="lg">
           <Grid container spacing={4} alignItems="center">
             <Grid item xs={12} md={6}>
-              <Typography variant="h2" component="h1" gutterBottom sx={{ fontWeight: 'bold' }}>
+              <Typography 
+                variant="h2" 
+                component="h1" 
+                gutterBottom 
+                sx={{ 
+                  fontWeight: 'bold',
+                  animation: 'slideUp 0.8s ease-out',
+                  textShadow: '0 2px 4px rgba(0,0,0,0.3)',
+                  background: 'linear-gradient(135deg, #ffffff, #f0f0f0)',
+                  backgroundClip: 'text',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                }}
+              >
                 Hi, I'm Hadijah Kyampeire
               </Typography>
-              <Typography variant="h4" gutterBottom sx={{ mb: 3, opacity: 0.9 }}>
-                Frontend Javascript Software Engineer
+              <Typography 
+                variant="h4" 
+                gutterBottom 
+                sx={{ 
+                  mb: 3, 
+                  opacity: 0.9,
+                  animation: 'slideUp 0.8s ease-out 0.2s both',
+                  color: theme.palette.secondary.light,
+                }}
+              >
+                Senior Frontend Software Engineer
               </Typography>
-              <Typography variant="h6" paragraph sx={{ mb: 4, opacity: 0.8 }}>
-                Results-driven Frontend Software Engineer with 6 years of experience building high-performance web applications using ReactJS and the modern Javascript ecosystem. Skilled in delivering scalable solutions in FinTech and Health Informatics.
+              <Typography 
+                variant="h6" 
+                paragraph 
+                sx={{ 
+                  mb: 4, 
+                  opacity: 0.8,
+                  animation: 'slideUp 0.8s ease-out 0.4s both',
+                  lineHeight: 1.6,
+                }}
+              >
+                Results-driven Senior Frontend Software Engineer with 6+ years of experience building high-performance web applications using ReactJS and the modern JavaScript ecosystem. Skilled in delivering scalable solutions in FinTech and Health Informatics with expertise in micro-frontends and modern architecture patterns.
               </Typography>
-              <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap' }}>
+              <Box 
+                sx={{ 
+                  display: 'flex', 
+                  gap: 2, 
+                  flexWrap: 'wrap',
+                  animation: 'slideUp 0.8s ease-out 0.6s both',
+                }}
+              >
                 <Button
                   variant="contained"
                   size="large"
                   onClick={() => scrollToSection('contact')}
                   sx={{ 
-                    bgcolor: 'white', 
-                    color: 'primary.main',
-                    '&:hover': { bgcolor: 'grey.100' }
+                    bgcolor: theme.palette.secondary.main,
+                    color: 'white',
+                    fontWeight: 600,
+                    px: 4,
+                    py: 1.5,
+                    borderRadius: 3,
+                    transition: 'all 0.3s ease',
+                    '&:hover': { 
+                      bgcolor: theme.palette.secondary.dark,
+                      transform: 'translateY(-2px)',
+                      boxShadow: '0 8px 25px rgba(234, 88, 12, 0.4)',
+                    }
                   }}
                 >
                   Get In Touch
@@ -290,7 +414,16 @@ function Home() {
                   sx={{
                     borderColor: 'white',
                     color: 'white',
-                    '&:hover': { borderColor: 'grey.300', bgcolor: 'rgba(255,255,255,0.1)' }
+                    fontWeight: 600,
+                    px: 4,
+                    py: 1.5,
+                    borderRadius: 3,
+                    transition: 'all 0.3s ease',
+                    '&:hover': { 
+                      borderColor: theme.palette.secondary.light,
+                      bgcolor: 'rgba(255,255,255,0.1)',
+                      transform: 'translateY(-2px)',
+                    }
                   }}
                 >
                   View My Work
@@ -304,7 +437,13 @@ function Home() {
                   width: 300,
                   height: 300,
                   border: '4px solid white',
-                  boxShadow: '0 8px 32px rgba(0,0,0,0.3)'
+                  boxShadow: '0 8px 32px rgba(0,0,0,0.3)',
+                  animation: 'scaleIn 0.8s ease-out 0.8s both',
+                  transition: 'all 0.3s ease',
+                  '&:hover': {
+                    transform: 'scale(1.05)',
+                    boxShadow: '0 12px 40px rgba(0,0,0,0.4)',
+                  }
                 }}
               />
             </Grid>
@@ -315,15 +454,51 @@ function Home() {
       {/* About Section */}
       <Box id="about" sx={{ py: 8, bgcolor: 'background.paper' }}>
         <Container maxWidth="lg">
-          <Typography variant="h3" component="h2" gutterBottom textAlign="center" sx={{ mb: 6 }}>
+          <Typography 
+            variant="h3" 
+            component="h2" 
+            gutterBottom 
+            textAlign="center" 
+            sx={{ 
+              mb: 6,
+              position: 'relative',
+              '&::after': {
+                content: '""',
+                position: 'absolute',
+                bottom: -10,
+                left: '50%',
+                transform: 'translateX(-50%)',
+                width: 60,
+                height: 4,
+                background: `linear-gradient(90deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
+                borderRadius: 2,
+              }
+            }}
+          >
             About Me
           </Typography>
           <Grid container spacing={4} justifyContent="center">
             <Grid item xs={12} md={8}>
-              <Typography variant="h6" align="center" paragraph>
-                I'm a Frontend Software Engineer known for writing clean, modular code with a strong attention to detail and best practices. My experience lies in modernizing legacy systems, developing micro frontends, and collaborating effectively in Agile teams. I am skilled in delivering scalable solutions for both the FinTech and Health Informatics sectors.
+              <Typography 
+                variant="h6" 
+                align="center" 
+                paragraph
+                sx={{
+                  lineHeight: 1.8,
+                  color: theme.palette.text.secondary,
+                }}
+              >
+                I'm a Senior Frontend Software Engineer known for writing clean, modular code with a strong attention to detail and best practices. My experience lies in modernizing legacy systems, developing micro frontends, and collaborating effectively in Agile teams. I am skilled in delivering scalable solutions for both the FinTech and Health Informatics sectors.
               </Typography>
-              <Typography variant="h6" align="center" paragraph>
+              <Typography 
+                variant="h6" 
+                align="center" 
+                paragraph
+                sx={{
+                  lineHeight: 1.8,
+                  color: theme.palette.text.secondary,
+                }}
+              >
                 Beyond coding, I'm passionate about empowering women in tech and have been involved in tech mentorship for over 6 years. I believe in the power of community and knowledge sharing to drive innovation.
               </Typography>
             </Grid>
@@ -334,14 +509,53 @@ function Home() {
       {/* Skills Section */}
       <Box id="skills" sx={{ py: 8 }}>
         <Container maxWidth="lg">
-          <Typography variant="h3" component="h2" gutterBottom textAlign="center" sx={{ mb: 6 }}>
+          <Typography 
+            variant="h3" 
+            component="h2" 
+            gutterBottom 
+            textAlign="center" 
+            sx={{ 
+              mb: 6,
+              position: 'relative',
+              '&::after': {
+                content: '""',
+                position: 'absolute',
+                bottom: -10,
+                left: '50%',
+                transform: 'translateX(-50%)',
+                width: 60,
+                height: 4,
+                background: `linear-gradient(90deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
+                borderRadius: 2,
+              }
+            }}
+          >
             Skills & Technologies
           </Typography>
           <Grid container spacing={3}>
-            {Object.entries(skills).map(([category, skillList]) => (
+            {Object.entries(skills).map(([category, skillList], index) => (
               <Grid item xs={12} sm={6} md={4} key={category}>
-                <Card sx={{ height: '100%', p: 2 }}>
-                  <Typography variant="h6" gutterBottom color="primary">
+                <Card 
+                  sx={{ 
+                    height: '100%', 
+                    p: 3,
+                    transition: 'all 0.3s ease',
+                    '&:hover': {
+                      transform: 'translateY(-8px)',
+                      boxShadow: '0 12px 40px rgba(30, 58, 138, 0.15)',
+                    },
+                    animation: `slideUp 0.6s ease-out ${index * 0.1}s both`,
+                  }}
+                >
+                  <Typography 
+                    variant="h6" 
+                    gutterBottom 
+                    sx={{
+                      color: theme.palette.primary.main,
+                      fontWeight: 600,
+                      mb: 2,
+                    }}
+                  >
                     {category}
                   </Typography>
                   <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
@@ -351,7 +565,14 @@ function Home() {
                         label={skill}
                         size="small"
                         variant="outlined"
-                        color="primary"
+                        sx={{
+                          borderColor: theme.palette.secondary.main,
+                          color: theme.palette.secondary.main,
+                          '&:hover': {
+                            backgroundColor: theme.palette.secondary.main,
+                            color: 'white',
+                          }
+                        }}
                       />
                     ))}
                   </Box>
@@ -365,26 +586,94 @@ function Home() {
       {/* Experience Section */}
       <Box id="experience" sx={{ py: 8, bgcolor: 'background.paper' }}>
         <Container maxWidth="lg">
-          <Typography variant="h3" component="h2" gutterBottom textAlign="center" sx={{ mb: 6 }}>
+          <Typography 
+            variant="h3" 
+            component="h2" 
+            gutterBottom 
+            textAlign="center" 
+            sx={{ 
+              mb: 6,
+              position: 'relative',
+              '&::after': {
+                content: '""',
+                position: 'absolute',
+                bottom: -10,
+                left: '50%',
+                transform: 'translateX(-50%)',
+                width: 60,
+                height: 4,
+                background: `linear-gradient(90deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
+                borderRadius: 2,
+              }
+            }}
+          >
             Work Experience
           </Typography>
           <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
             {experiences.map((exp, index) => (
-              <Card key={index} sx={{ p: 3 }}>
+              <Card 
+                key={index} 
+                sx={{ 
+                  p: 3,
+                  transition: 'all 0.3s ease',
+                  '&:hover': {
+                    transform: 'translateY(-4px)',
+                    boxShadow: '0 12px 40px rgba(30, 58, 138, 0.15)',
+                  },
+                  animation: `slideUp 0.6s ease-out ${index * 0.2}s both`,
+                  position: 'relative',
+                  overflow: 'hidden',
+                  '&::before': {
+                    content: '""',
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    width: 4,
+                    height: '100%',
+                    background: `linear-gradient(180deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
+                  }
+                }}
+              >
                 <Grid container spacing={2}>
                   <Grid item xs={12} md={4}>
-                    <Typography variant="h6" color="primary">
+                    <Typography 
+                      variant="h6" 
+                      sx={{
+                        color: theme.palette.primary.main,
+                        fontWeight: 600,
+                        mb: 1,
+                      }}
+                    >
                       {exp.title}
                     </Typography>
-                    <Typography variant="subtitle1" color="text.secondary">
+                    <Typography 
+                      variant="subtitle1" 
+                      sx={{
+                        color: theme.palette.text.secondary,
+                        fontWeight: 500,
+                        mb: 1,
+                      }}
+                    >
                       {exp.company}
                     </Typography>
-                    <Typography variant="body2" color="text.secondary">
+                    <Typography 
+                      variant="body2" 
+                      sx={{
+                        color: theme.palette.secondary.main,
+                        fontWeight: 500,
+                      }}
+                    >
                       {exp.duration}
                     </Typography>
                   </Grid>
                   <Grid item xs={12} md={8}>
-                    <Typography paragraph>
+                    <Typography 
+                      paragraph
+                      sx={{
+                        lineHeight: 1.7,
+                        color: theme.palette.text.primary,
+                      }}
+                    >
                       {exp.description}
                     </Typography>
                     <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
@@ -394,6 +683,14 @@ function Home() {
                           label={tech}
                           size="small"
                           variant="outlined"
+                          sx={{
+                            borderColor: theme.palette.secondary.main,
+                            color: theme.palette.secondary.main,
+                            '&:hover': {
+                              backgroundColor: theme.palette.secondary.main,
+                              color: 'white',
+                            }
+                          }}
                         />
                       ))}
                     </Box>
@@ -408,13 +705,39 @@ function Home() {
       {/* Projects Section */}
       <Box id="projects" sx={{ py: 8 }}>
         <Container maxWidth="lg">
-          <Typography variant="h3" component="h2" gutterBottom textAlign="center" sx={{ mb: 6 }}>
+          <Typography 
+            variant="h3" 
+            component="h2" 
+            gutterBottom 
+            textAlign="center" 
+            sx={{ 
+              mb: 6,
+              position: 'relative',
+              '&::after': {
+                content: '""',
+                position: 'absolute',
+                bottom: -10,
+                left: '50%',
+                transform: 'translateX(-50%)',
+                width: 60,
+                height: 4,
+                background: `linear-gradient(90deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
+                borderRadius: 2,
+              }
+            }}
+          >
             Featured Projects
           </Typography>
           <Grid container spacing={4} justifyContent="center">
             {projects.map((project, index) => (
               <Grid item xs={12} key={index}>
-                <ProjectCard project={project} />
+                <Box
+                  sx={{
+                    animation: `slideUp 0.6s ease-out ${index * 0.2}s both`,
+                  }}
+                >
+                  <ProjectCard project={project} />
+                </Box>
               </Grid>
             ))}
           </Grid>
@@ -424,7 +747,27 @@ function Home() {
       {/* Education Section */}
       <Box id="education" sx={{ py: 8, bgcolor: 'background.paper' }}>
         <Container maxWidth="lg" sx={{ width: '100%' }}>
-          <Typography variant="h3" component="h2" gutterBottom textAlign="center" sx={{ mb: 6 }}>
+          <Typography 
+            variant="h3" 
+            component="h2" 
+            gutterBottom 
+            textAlign="center" 
+            sx={{ 
+              mb: 6,
+              position: 'relative',
+              '&::after': {
+                content: '""',
+                position: 'absolute',
+                bottom: -10,
+                left: '50%',
+                transform: 'translateX(-50%)',
+                width: 60,
+                height: 4,
+                background: `linear-gradient(90deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
+                borderRadius: 2,
+              }
+            }}
+          >
             Education
           </Typography>
           <Grid 
@@ -442,21 +785,70 @@ function Home() {
                 key={index}
                 sx={{ width: '100%' }}
               >
-                <Card sx={{ 
-                  p: 2, 
-                  height: '100%',
-                  width: '100%',
-                  maxWidth: '100%',
-                  boxSizing: 'border-box'
-                }}>
-                  <Typography variant="h6">{edu.degree}</Typography>
-                  <Typography variant="subtitle1" color="text.secondary">
+                <Card 
+                  sx={{ 
+                    p: 3, 
+                    height: '100%',
+                    width: '100%',
+                    maxWidth: '100%',
+                    boxSizing: 'border-box',
+                    transition: 'all 0.3s ease',
+                    '&:hover': {
+                      transform: 'translateY(-4px)',
+                      boxShadow: '0 12px 40px rgba(30, 58, 138, 0.15)',
+                    },
+                    animation: `slideUp 0.6s ease-out ${index * 0.2}s both`,
+                    position: 'relative',
+                    overflow: 'hidden',
+                    '&::before': {
+                      content: '""',
+                      position: 'absolute',
+                      top: 0,
+                      left: 0,
+                      width: 4,
+                      height: '100%',
+                      background: `linear-gradient(180deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
+                    }
+                  }}
+                >
+                  <Typography 
+                    variant="h6"
+                    sx={{
+                      color: theme.palette.primary.main,
+                      fontWeight: 600,
+                      mb: 1,
+                    }}
+                  >
+                    {edu.degree}
+                  </Typography>
+                  <Typography 
+                    variant="subtitle1" 
+                    sx={{
+                      color: theme.palette.text.secondary,
+                      fontWeight: 500,
+                      mb: 1,
+                    }}
+                  >
                     {edu.school}
                   </Typography>
-                  <Typography variant="body2" color="text.secondary">
+                  <Typography 
+                    variant="body2" 
+                    sx={{
+                      color: theme.palette.secondary.main,
+                      fontWeight: 500,
+                      mb: 2,
+                    }}
+                  >
                     {edu.year}
                   </Typography>
-                  <Typography variant="body2" sx={{ mt: 1 }}>
+                  <Typography 
+                    variant="body2" 
+                    sx={{ 
+                      mt: 1,
+                      lineHeight: 1.6,
+                      color: theme.palette.text.primary,
+                    }}
+                  >
                     {edu.description}
                   </Typography>
                 </Card>
@@ -604,43 +996,97 @@ function Home() {
       {/* Contact Section */}
       <Box id="contact" sx={{ py: 8 }}>
         <Container maxWidth="lg">
-          <Typography variant="h3" component="h2" gutterBottom textAlign="center" sx={{ mb: 6 }}>
+          <Typography 
+            variant="h3" 
+            component="h2" 
+            gutterBottom 
+            textAlign="center" 
+            sx={{ 
+              mb: 6,
+              position: 'relative',
+              '&::after': {
+                content: '""',
+                position: 'absolute',
+                bottom: -10,
+                left: '50%',
+                transform: 'translateX(-50%)',
+                width: 60,
+                height: 4,
+                background: `linear-gradient(90deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
+                borderRadius: 2,
+              }
+            }}
+          >
             Get In Touch
           </Typography>
           <Grid container spacing={4}>
-            <Grid item xs={12} md={6}>
-              <Typography variant="h6" gutterBottom>
+            <Grid item xs={12} md={4}>
+              <Typography 
+                variant="h6" 
+                gutterBottom
+                sx={{
+                  color: theme.palette.primary.main,
+                  fontWeight: 600,
+                  mb: 2,
+                }}
+              >
                 Let's Connect
               </Typography>
-              <Typography paragraph>
+              <Typography 
+                paragraph
+                sx={{
+                  lineHeight: 1.7,
+                  color: theme.palette.text.secondary,
+                  mb: 3,
+                }}
+              >
                 I'm always interested in new opportunities and exciting projects.
                 Whether you have a question or just want to say hi, feel free to reach out!
               </Typography>
               <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-                  <EmailIcon color="primary" />
+                  <EmailIcon sx={{ color: theme.palette.secondary.main }} />
                   <Typography>hadijahkyampeire@gmail.com</Typography>
                 </Box>
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-                  <PhoneIcon color="primary" />
+                  <PhoneIcon sx={{ color: theme.palette.secondary.main }} />
                   <Typography>+1 (737) 363-8389</Typography>
                 </Box>
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-                  <LocationIcon color="primary" />
+                  <LocationIcon sx={{ color: theme.palette.secondary.main }} />
                   <Typography>Remote</Typography>
                 </Box>
               </Box>
             </Grid>
-            <Grid item xs={12} md={6}>
-              <Typography variant="h6" gutterBottom>
+            <Grid item xs={12} md={4}>
+              <Typography 
+                variant="h6" 
+                gutterBottom
+                sx={{
+                  color: theme.palette.primary.main,
+                  fontWeight: 600,
+                  mb: 2,
+                }}
+              >
                 Connect With Me
               </Typography>
-              <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap' }}>
+              <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
                 <Button
                   variant="contained"
                   startIcon={<LinkedInIcon />}
                   href="https://www.linkedin.com/in/hadijah-kyampeire-418900141/"
                   target="_blank"
+                  sx={{
+                    bgcolor: theme.palette.secondary.main,
+                    color: 'white',
+                    fontWeight: 600,
+                    transition: 'all 0.3s ease',
+                    '&:hover': {
+                      bgcolor: theme.palette.secondary.dark,
+                      transform: 'translateY(-2px)',
+                      boxShadow: '0 8px 25px rgba(234, 88, 12, 0.4)',
+                    }
+                  }}
                 >
                   LinkedIn
                 </Button>
@@ -649,6 +1095,17 @@ function Home() {
                   startIcon={<GitHubIcon />}
                   href="https://github.com/hadijahkyampeire"
                   target="_blank"
+                  sx={{
+                    bgcolor: theme.palette.primary.main,
+                    color: 'white',
+                    fontWeight: 600,
+                    transition: 'all 0.3s ease',
+                    '&:hover': {
+                      bgcolor: theme.palette.primary.dark,
+                      transform: 'translateY(-2px)',
+                      boxShadow: '0 8px 25px rgba(30, 58, 138, 0.4)',
+                    }
+                  }}
                 >
                   GitHub
                 </Button>
@@ -656,13 +1113,32 @@ function Home() {
                   variant="contained"
                   startIcon={<EmailIcon />}
                   href="mailto:hadijahkyampeire@gmail.com"
+                  sx={{
+                    bgcolor: theme.palette.secondary.main,
+                    color: 'white',
+                    fontWeight: 600,
+                    transition: 'all 0.3s ease',
+                    '&:hover': {
+                      bgcolor: theme.palette.secondary.dark,
+                      transform: 'translateY(-2px)',
+                      boxShadow: '0 8px 25px rgba(234, 88, 12, 0.4)',
+                    }
+                  }}
                 >
                   Email
                 </Button>
               </Box>
             </Grid>
-            <Grid item xs={12} md={6}>
-              <Typography variant="h6" gutterBottom>
+            <Grid item xs={12} md={4}>
+              <Typography 
+                variant="h6" 
+                gutterBottom
+                sx={{
+                  color: theme.palette.primary.main,
+                  fontWeight: 600,
+                  mb: 2,
+                }}
+              >
                 Send Me a Message
               </Typography>
               <ContactForm />

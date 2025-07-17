@@ -14,6 +14,7 @@ import {
   Button,
   CircularProgress,
   Alert,
+  Chip,
 } from '@mui/material';
 import {
   Send as SendIcon,
@@ -22,7 +23,7 @@ import {
   SmartToy as BotIcon,
   Person as PersonIcon,
 } from '@mui/icons-material';
-import { generateAIResponse } from '../services/aiService';
+import { generateAIResponse, SUGGESTED_QUESTIONS } from '../services/aiService';
 
 const AIChatbot = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -59,10 +60,11 @@ const AIChatbot = () => {
     }
   }, [isOpen]);
 
-  const handleSendMessage = async () => {
-    if (!inputValue.trim() || isLoading) return;
+  const handleSendMessage = async (message = null) => {
+    const textToSend = message || inputValue.trim();
+    if (!textToSend || isLoading) return;
 
-    const userMessage = inputValue.trim();
+    const userMessage = textToSend;
     const newMessage = {
       id: Date.now(),
       text: userMessage,
@@ -112,6 +114,7 @@ const AIChatbot = () => {
         color="primary"
         aria-label="chat"
         onClick={() => setIsOpen(true)}
+        className="chatbot-fab"
         sx={{
           position: 'fixed',
           bottom: 16,
@@ -227,6 +230,36 @@ const AIChatbot = () => {
                 {error}
               </Alert>
             )}
+
+            {/* Suggested Questions */}
+            {messages.length === 1 && !isLoading && (
+              <Box sx={{ mt: 2 }}>
+                <Typography variant="body2" sx={{ mb: 1, color: 'text.secondary' }}>
+                  Try asking about:
+                </Typography>
+                <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
+                  {SUGGESTED_QUESTIONS.slice(0, 6).map((question, index) => (
+                    <Chip
+                      key={index}
+                      label={question}
+                      size="small"
+                      variant="outlined"
+                      onClick={() => handleSendMessage(question)}
+                      sx={{
+                        cursor: 'pointer',
+                        borderColor: 'secondary.main',
+                        color: 'secondary.main',
+                        transition: 'all 0.3s ease',
+                        '&:hover': {
+                          transform: 'translateY(-2px)',
+                          boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
+                        }
+                      }}
+                    />
+                  ))}
+                </Box>
+              </Box>
+            )}
             
             <div ref={messagesEndRef} />
           </Box>
@@ -254,7 +287,7 @@ const AIChatbot = () => {
               size="small"
             />
             <IconButton
-              onClick={handleSendMessage}
+              onClick={() => handleSendMessage()}
               disabled={!inputValue.trim() || isLoading}
               color="primary"
               sx={{ alignSelf: 'flex-end' }}
