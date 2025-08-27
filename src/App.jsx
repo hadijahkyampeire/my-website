@@ -8,7 +8,6 @@ import Contact from './pages/Contact'
 import theme from './theme'
 import Navbar from './components/Navbar'
 import AIChatbot from './components/AIChatbot'
-import CustomCursor from './components/CustomCursor'
 
 function App() {
   const [currentTheme, setCurrentTheme] = useState('light');
@@ -20,7 +19,6 @@ function App() {
   return (
     <ThemeProvider theme={theme[currentTheme]}>
       <CssBaseline />
-      <CustomCursor />
       <Router>
         <Navbar toggleTheme={toggleTheme} isDark={currentTheme === 'dark'} />
         <Routes>

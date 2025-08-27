@@ -90,6 +90,7 @@ const theme = {
               transform: 'translateY(-2px)',
               boxShadow: '0 8px 25px rgba(30, 58, 138, 0.3)',
             },
+            cursor: 'pointer',
           },
           containedPrimary: {
             backgroundColor: '#1e3a8a',

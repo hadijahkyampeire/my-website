@@ -12,6 +12,7 @@ import {
   Avatar,
   IconButton,
   useTheme,
+  Stack
 } from '@mui/material';
 import {
   LinkedIn as LinkedInIcon,
@@ -62,41 +63,123 @@ import sigmaImg1 from '../assets/sigma-app/dashboard.png';
 import sigmaImg2 from '../assets/sigma-app/networkGraph.png';
 import sigmaImg3 from '../assets/sigma-app/searchResults.png';
 import sigmaImg4 from '../assets/sigma-app/dashboardReport.png';
+import ExperienceItem from "../components/ExperienceItem";
+import CVButton from "../components/CVButton";
 
 function Home() {
   const theme = useTheme();
   const skills = {
-    "Core Strengths": ["Frontend Development", "UI/UX", "Micro-frontend Architecture", "State Management", "Object-Oriented Programming", "Testing & Debugging", "Agile", "Team Leadership & Mentorship", "Cross-functional Collaboration", "Version Control (Git)", "API Integration", "AWS cloud computing"],
-    "Languages & Web Tech": ["JavaScript", "TypeScript", "ReactJS", "HTML", "CSS", "Sass", "TailwindCSS", "NodeJS", "REST"],
-    "Frameworks & Libraries": ["NextJS", "Material UI", "Ant Design", "Formik", "SWR", "Redux", "TanStack Query", "Chart.js"],
-    "Tools & Platforms": ["Webpack", "Create React App", "Redux DevTools", "Eslint", "Visual Studio", "IntelliJ", "JIRA", "Trello", "Heroku", "Firebase", "AWS"],
-    "Databases & SDLC": ["Postgres", "MongoDB", "Agile", "Scrum"],
-    "Design Patterns": ["Higher Order Components (HOC)", "Component Pattern", "Micro Frontends"]
-  };
+  "Core Strengths": [
+    "Frontend & Full-Stack Development",
+    "Microservices & Micro-frontend Architecture",
+    "State Management (Redux, Zustand, RTK Query)",
+    "API Integration (REST, Swagger)",
+    "Performance Optimization",
+    "Internationalization (react-i18next)",
+    "Testing (Jest, React Testing Library, Cypress, Playwright)",
+    "CI/CD (GitHub Actions)",
+    "Agile / Scrum",
+    "Team Leadership & Mentorship",
+    "Version Control (Git)"
+  ],
+  "Languages & Web Tech": [
+    "JavaScript", "TypeScript", "Java", "Python",
+    "HTML", "CSS", "Sass", "TailwindCSS",
+    "NodeJS", "WebSockets"
+  ],
+  "Frameworks & Libraries": [
+    "ReactJS", "NextJS", "Angular", "Express", "Spring Boot", "Flask",
+    "Material UI", "Ant Design", "Redux Toolkit", "Zustand", "TanStack Query", "SWR",
+    "React Hook Form", "Zod", "Formik", "React-i18next", "Storybook",
+    "Chart.js", "Cytoscape", "React PDF"
+  ],
+  "Tools & Platforms": [
+    "Vite", "Webpack", "Create React App", "ESLint",
+    "Visual Studio", "IntelliJ IDEA", "VS Code",
+    "JIRA", "Trello", "Heroku", "Firebase",
+    "AWS (S3, CloudFront, Lambda, API Gateway, Cognito, DynamoDB, CloudFormation, CloudWatch, CodePipeline)",
+    "GitHub Actions"
+  ],
+  "Databases & SDLC": ["PostgreSQL", "MongoDB", "Firebase", "Neo4j", "Agile", "Scrum"],
+  "Design Patterns": [
+    "Component Pattern", "Context + Provider", "Higher-Order Components (HOC)",
+    "JSON Schema-driven UIs", "Micro Frontends"
+  ]
+};
 
   const experiences = [
-    {
-      title: "Senior Software Developer",
-      company: "Monitoring and Evaluation Technical Support (METS) Program, Kampala, Uganda",
-      duration: "May 2024 – September 2024",
-      description: "Architected a reusable JSON schema-based UI workflow framework for OpenMRS, reducing code duplication by 90%. Designed a drag-and-drop UI for a clinical form builder, reducing form creation time by 40%. Developed micro-frontend modules, accelerating feature deployment by 40%.",
-      technologies: ["ReactJs", "Typescript", "Formik", "Micro-Frontends", "Carbon design", "SWR"]
-    },
-    {
-      title: "Mid-level Frontend Software Engineer",
-      company: "Sigma360, New York, US (Remote)",
-      duration: "June 2020 – April 2024",
-      description: "Led frontend development through 3 iterations for clients like Stripe and Barclays. Spearheaded a PoC for a graph-driven risk network, boosting product competitiveness by 40%. Engineered an Analytics Dashboard, reducing data analysis time by 35%. Designed a SigmaSearch feature, significantly increasing client acquisition.",
-      technologies: ["ReactJS", "TypeScript", "AntDesign", "ReactPDF", "ChartJS", "Cytoscape", "Neo4j"]
-    },
-    {
-      title: "Junior Front-end Software Engineer",
-      company: "Sigma360, New York, US (Remote)",
-      duration: "October 2018 – May 2020",
-      description: "Developed a standalone front-end app for entity risk rating, improving productivity by 70%. Mentored a new developer, enabling them to contribute to production code 60% faster. Integrated Google Analytics for data-driven feature prioritization. Designed reusable UI components, reducing UI development time by 20%.",
-      technologies: ["JavaScript", "React", "Ant Design", "ChartJs", "React PDF", "SASS", "TanStack Query", "Redux"]
-    }
-  ];
+  // Skye
+  {
+    title: "Senior Software Developer",
+    company: "Skye, New York, USA (Remote)",
+    duration: "May 2024 – September 2024",
+    bullets: [
+      "Implemented session scheduling and interactive charts with React, Node.js, MUI Data Grid, and Recharts for dynamic coaching review insights.",
+      "Raised automated test coverage to ~90% with React Testing Library, reducing regressions and improving release confidence.",
+      "Established CI/CD with GitHub Actions to run build, unit, integration, and E2E pipelines before deployment.",
+      "Optimized service-layer performance and lowered latency across Firestore/SQL/BigQuery data paths.",
+      "Collaborated in agile ceremonies (backlog grooming, prioritization, peer reviews) to ensure clean, efficient delivery."
+    ],
+    technologies: ["React", "TypeScript", "Node.js", "Material UI", "MUI Data Grid", "Recharts", "React Testing Library", "Firestore", "BigQuery", "GitHub Actions"]
+  },
+
+  // METS (as you had it—kept)
+  {
+    title: "Senior Software Developer",
+    company: "Monitoring and Evaluation Technical Support (METS) Program, Kampala, Uganda",
+    duration: "May 2024 – September 2024",
+    bullets: [
+      "Architected a reusable JSON-schema-driven UI workflow framework for OpenMRS, cutting code duplication by ~90%.",
+      "Designed a drag-and-drop clinical form builder that reduced form creation time by ~40%.",
+      "Developed micro-frontend modules, accelerating feature deployment by ~40%."
+    ],
+    technologies: ["React", "TypeScript", "Formik", "Micro-Frontends", "Carbon Design System", "SWR"]
+  },
+
+  // Andela – Client - Sigma360 (Senior)
+  {
+    title: "Senior Software Engineer",
+    company: "Andela – Client - Sigma360, New York City, USA (Remote)",
+    duration: "June 2020 – April 2024",
+    bullets: [
+      "Built a risk analytics dashboard (React, Ant Design, React PDF, Chart.js) that reduced analysis time by ~35%.",
+      "Led PoC for large-scale graph-driven risk networks using Cytoscape + Neo4j, boosting product competitiveness.",
+      "Modernized testing (Enzyme → React Testing Library) and introduced Storybook for isolated component docs.",
+      "Migrated Redux → Zustand and integrated TanStack Query for intelligent caching and background refresh, improving code quality and dev velocity.",
+      "Mentored engineers via code reviews and pair programming to uphold consistent standards."
+    ],
+    technologies: ["React", "TypeScript", "Ant Design", "React PDF", "Chart.js", "Cytoscape", "Neo4j", "Zustand", "TanStack Query", "Jest", "React Testing Library", "Storybook"]
+  },
+
+  // Andela – Client - Sigma360 (Software Engineer)
+  {
+    title: "Software Engineer",
+    company: "Andela – Client - Sigma360, New York City, USA (Remote)",
+    duration: "October 2018 – May 2020",
+    bullets: [
+      "Developed a standalone entity risk-rating app with React, Redux, and SASS, boosting analyst productivity by ~70%.",
+      "Integrated Google Analytics to drive data-informed feature prioritization and improve adoption.",
+      "Created reusable UI components for consistency and faster delivery, cutting UI build time by ~20%.",
+      "Built Jest + Enzyme test suites to safeguard critical flows and reduce regressions."
+    ],
+    technologies: ["React", "Redux", "SASS", "Jest", "Enzyme", "Google Analytics"]
+  },
+
+  // Andela Uganda Limited
+  {
+    title: "Software Engineer",
+    company: "Andela Uganda Limited, Kampala, Uganda",
+    duration: "December 2017 – September 2018",
+    bullets: [
+      "Led the Open Concept Lab: a standalone React + Material UI app for managing medical concepts within OpenMRS.",
+      "Practiced TDD with Jest/Enzyme, achieving up to 100% coverage and reducing regressions.",
+      "Delivered end-to-end solutions with React, Axios, Bootstrap, Node.js, Java Spring, and Python Flask; automated CI/CD via GitHub Workflows.",
+      "Mentored and onboarded developers through interviews, bootcamps, code reviews, and pair programming."
+    ],
+    technologies: ["React", "TypeScript", "Material UI", "Bootstrap", "Java", "Python", "Flask", "Django Templates", "Jest", "Enzyme", "GitHub Workflows"]
+  }
+];
+
 
   const projects = [
     {
@@ -128,7 +211,7 @@ function Home() {
       description: "Developed a fully serverless, web-based game using ReactJS with user authentication via Amazon Cognito. Player scores are stored in DynamoDB and managed through a Node.js backend with AWS Lambda and API Gateway. Implemented full infrastructure provisioning and CI/CD pipelines using AWS CloudFormation, CodePipeline, and CodeBuild.",
       technologies: ["ReactJS", "AWS Cognito", "DynamoDB", "AWS Lambda", "API Gateway", "CloudFormation", "CodePipeline"],
       github: "https://github.com/hadijahkyampeire/tic-tac-toe-full-stack-aws",
-      live: "https://main.d357es8u6sf7j.amplifyapp.com/",
+      live: "https://d2w7p8nid3o5t5.cloudfront.net/",
       images: [tictactoeImg1, tictactoeImg2, tictactoeImg3, tictactoeImg4]
     },
     {
@@ -366,7 +449,7 @@ function Home() {
                   color: theme.palette.secondary.light,
                 }}
               >
-                Senior Frontend Software Engineer (ReactJS & TypeScript)
+                Senior Software Engineer (ReactJS, Node.js, TypeScript)
               </Typography>
               <Typography 
                 variant="h6" 
@@ -378,7 +461,7 @@ function Home() {
                   lineHeight: 1.6,
                 }}
               >
-                Results-driven Senior Frontend Software Engineer with 6+ years of experience building high-performance web applications using ReactJS and the modern JavaScript ecosystem. Skilled in delivering scalable solutions in FinTech and Health Informatics with expertise in micro-frontends and modern architecture patterns.
+                Results-driven Senior Frontend Software Engineer with 6+ years of experience building high-performance web applications using ReactJS, Node.js and the modern JavaScript ecosystem. Skilled in delivering scalable solutions in FinTech and Health Informatics with expertise in micro-frontends and modern architecture patterns.
               </Typography>
               <Box 
                 sx={{ 
@@ -430,6 +513,7 @@ function Home() {
                 >
                   View My Work
                 </Button>
+                <CVButton />
               </Box>
             </Grid>
             <Grid item xs={12} md={6} sx={{ display: 'flex', justifyContent: 'center' }}>
@@ -586,7 +670,7 @@ function Home() {
       </Box>
 
       {/* Experience Section */}
-      <Box id="experience" sx={{ py: 8, bgcolor: 'background.paper' }}>
+      {/* <Box id="experience" sx={{ py: 8, bgcolor: 'background.paper' }}>
         <Container maxWidth="lg">
           <Typography 
             variant="h3" 
@@ -701,6 +785,40 @@ function Home() {
               </Card>
             ))}
           </Box>
+        </Container>
+      </Box> */}
+      <Box id="experience" sx={{ py: 8, bgcolor: 'background.paper' }}>
+        <Container maxWidth="lg">
+        <Typography
+        variant="h3"
+        component="h2"
+        gutterBottom
+        textAlign="center"
+        sx={{
+        mb: 6,
+        position: 'relative',
+        '&::after': {
+        content: '""',
+        position: 'absolute',
+        bottom: -10,
+        left: '50%',
+        transform: 'translateX(-50%)',
+        width: 60,
+        height: 4,
+        background: `linear-gradient(90deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
+        borderRadius: 2,
+        },
+        }}
+        >
+        Work Experience
+        </Typography>
+
+
+        <Stack spacing={3}>
+        {experiences.map((exp, index) => (
+        <ExperienceItem key={`${exp.title}-${index}`} exp={exp} index={index} />
+        ))}
+        </Stack>
         </Container>
       </Box>
 
