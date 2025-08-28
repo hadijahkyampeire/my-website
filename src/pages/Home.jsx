@@ -461,7 +461,7 @@ function Home() {
                   lineHeight: 1.6,
                 }}
               >
-                Results-driven Senior Frontend Software Engineer with 6+ years of experience building high-performance web applications using ReactJS, Node.js and the modern JavaScript ecosystem. Skilled in delivering scalable solutions in FinTech and Health Informatics with expertise in micro-frontends and modern architecture patterns.
+                Results-driven Senior Software Engineer (Frontend leaning) with 6+ years of experience building high-performance web applications using ReactJS, Node.js and the modern JavaScript ecosystem. Skilled in delivering scalable solutions in FinTech and Health Informatics with expertise in micro-frontends and modern architecture patterns.
               </Typography>
               <Box 
                 sx={{ 
@@ -574,7 +574,7 @@ function Home() {
                   color: theme.palette.text.secondary,
                 }}
               >
-                I'm a Senior Frontend Software Engineer known for writing clean, modular code with a strong attention to detail and best practices. My experience lies in modernizing legacy systems, developing micro frontends, and collaborating effectively in Agile teams. I am skilled in delivering scalable solutions for both the FinTech and Health Informatics sectors.
+                I'm a Senior Software Engineer (Frontend leaning) known for writing clean, modular code with a strong attention to detail and best practices. My experience lies in modernizing legacy systems, developing micro frontends, and collaborating effectively in Agile teams. I am skilled in delivering scalable solutions for both the FinTech and Health Informatics sectors.
               </Typography>
               <Typography 
                 variant="h6" 

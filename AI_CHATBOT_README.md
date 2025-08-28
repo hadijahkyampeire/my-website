@@ -179,7 +179,7 @@ const response = await fetch(
 
 **Experience Question:**
 
-> "I have 6 years of experience in software development. I've worked as a Senior Software Developer at METS Program and as a Mid-level Frontend Software Engineer at Sigma360. I specialize in building high-performance web applications using ReactJS and modern JavaScript ecosystem."
+> "I have 6 years of experience in software development. I've worked as a Senior Software Developer at METS Program and as a Senior Frontend Software Engineer at Sigma360. I specialize in building high-performance web applications using ReactJS and modern JavaScript ecosystem."
 
 ## Troubleshooting
 
