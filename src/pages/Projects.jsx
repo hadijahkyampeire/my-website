@@ -145,12 +145,23 @@ function Projects() {
             width: { xs: '100%', md: '40%' }, // Fixed width percentage
             height: { xs: 300, md: '100%' }, // Fixed height
             backgroundImage: `url(${projectImage})`,
-            backgroundSize: 'contain',
+            backgroundSize: 'cover',
             backgroundPosition: 'center',
             backgroundRepeat: 'no-repeat',
             transition: 'background-image 0.5s ease-in-out',
             backgroundColor: 'rgba(0, 0, 0, 0.04)',
             flexShrink: 0, // Prevent image from shrinking
+            position: 'relative',
+            '&::before': {
+              content: '""',
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              backgroundColor: 'rgba(0, 0, 0, 0.02)',
+              backdropFilter: 'blur(1px)',
+            },
           }}
         />
         <Box sx={{ 
