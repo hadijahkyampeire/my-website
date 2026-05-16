@@ -11,10 +11,10 @@ const theme = {
         contrastText: '#ffffff',
       },
       secondary: {
-        main: '#fbbf24', // Sharp Yellow with Orange Undertone
-        light: '#fde68a',
-        dark: '#d9770c',
-        contrastText: '#1e293b',
+        main: '#ea580c', // Single warm orange accent
+        light: '#fb923c',
+        dark: '#c2410c',
+        contrastText: '#ffffff',
       },
       background: {
         default: '#ffffff',
@@ -85,36 +85,31 @@ const theme = {
             textTransform: 'none',
             fontWeight: 600,
             borderRadius: 8,
-            transition: 'all 0.3s ease',
-            '&:hover': {
-              transform: 'translateY(-2px)',
-              boxShadow: '0 8px 25px rgba(30, 58, 138, 0.3)',
-            },
+            transition: 'background-color 0.15s ease, border-color 0.15s ease',
             cursor: 'pointer',
+            boxShadow: 'none',
+            '&:hover': { boxShadow: 'none' },
           },
           containedPrimary: {
             backgroundColor: '#1e3a8a',
-            '&:hover': {
-              backgroundColor: '#0f172a',
-            },
+            '&:hover': { backgroundColor: '#0f172a' },
           },
           containedSecondary: {
             backgroundColor: '#ea580c',
-            '&:hover': {
-              backgroundColor: '#c2410c',
-            },
+            '&:hover': { backgroundColor: '#c2410c' },
           },
         },
       },
       MuiCard: {
         styleOverrides: {
           root: {
-            borderRadius: 16,
-            boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
-            transition: 'all 0.3s ease',
+            borderRadius: 12,
+            border: '1px solid #e2e8f0',
+            boxShadow: 'none',
+            transition: 'border-color 0.15s ease, box-shadow 0.15s ease',
             '&:hover': {
-              transform: 'translateY(-4px)',
-              boxShadow: '0 12px 40px rgba(30, 58, 138, 0.15)',
+              borderColor: '#cbd5e1',
+              boxShadow: '0 1px 2px rgba(15, 23, 42, 0.04), 0 4px 12px rgba(15, 23, 42, 0.06)',
             },
           },
         },
@@ -122,9 +117,10 @@ const theme = {
       MuiAppBar: {
         styleOverrides: {
           root: {
-            backgroundColor: 'rgba(255, 255, 255, 0.95)',
-            backdropFilter: 'blur(10px)',
-            boxShadow: '0 1px 3px rgba(0, 0, 0, 0.1)',
+            backgroundColor: 'rgba(255, 255, 255, 0.85)',
+            backdropFilter: 'blur(12px)',
+            boxShadow: 'none',
+            borderBottom: '1px solid #e2e8f0',
           },
         },
       },
@@ -135,26 +131,26 @@ const theme = {
     palette: {
       mode: 'dark',
       primary: {
-        main: '#000000', // Black
-        light: '#1a1a1a',
-        dark: '#000000',
+        main: '#0b0d10', // Softened near-black (not pure black)
+        light: '#1a1d24',
+        dark: '#050608',
         contrastText: '#ffffff',
       },
       secondary: {
-        main: '#fbbf24', // Sharp Yellow with Orange Undertone accent
-        light: '#fde68a',
-        dark: '#d9770c',
-        contrastText: '#1e293b',
+        main: '#fb923c', // Same orange family, slightly lighter for dark mode contrast
+        light: '#fdba74',
+        dark: '#ea580c',
+        contrastText: '#0b0d10',
       },
       background: {
-        default: '#000000',
-        paper: '#0a0a0a',
+        default: '#0b0d10',
+        paper: '#111418',
       },
       text: {
-        primary: '#ffffff',
-        secondary: '#a1a1aa',
+        primary: '#e8e8ea',
+        secondary: '#8b8b94',
       },
-      divider: '#27272a',
+      divider: 'rgba(255,255,255,0.08)',
     },
     typography: {
       fontFamily: '"Inter", "Roboto", "Helvetica", "Arial", sans-serif',
@@ -215,36 +211,31 @@ const theme = {
             textTransform: 'none',
             fontWeight: 600,
             borderRadius: 8,
-            transition: 'all 0.3s ease',
-            '&:hover': {
-              transform: 'translateY(-2px)',
-              boxShadow: '0 8px 25px rgba(234, 88, 12, 0.4)',
-            },
+            transition: 'background-color 0.15s ease, border-color 0.15s ease',
+            boxShadow: 'none',
+            '&:hover': { boxShadow: 'none' },
           },
           containedPrimary: {
-            backgroundColor: '#000000',
-            '&:hover': {
-              backgroundColor: '#1a1a1a',
-            },
+            backgroundColor: '#1a1d24',
+            '&:hover': { backgroundColor: '#262a32' },
           },
           containedSecondary: {
-            backgroundColor: '#ea580c',
-            '&:hover': {
-              backgroundColor: '#c2410c',
-            },
+            backgroundColor: '#fb923c',
+            color: '#0b0d10',
+            '&:hover': { backgroundColor: '#fdba74' },
           },
         },
       },
       MuiCard: {
         styleOverrides: {
           root: {
-            borderRadius: 16,
-            backgroundColor: '#0a0a0a',
-            boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2)',
-            transition: 'all 0.3s ease',
+            borderRadius: 12,
+            backgroundColor: '#111418',
+            border: '1px solid rgba(255,255,255,0.06)',
+            boxShadow: 'none',
+            transition: 'border-color 0.15s ease',
             '&:hover': {
-              transform: 'translateY(-4px)',
-              boxShadow: '0 12px 40px rgba(234, 88, 12, 0.2)',
+              borderColor: 'rgba(255,255,255,0.14)',
             },
           },
         },
@@ -252,9 +243,10 @@ const theme = {
       MuiAppBar: {
         styleOverrides: {
           root: {
-            backgroundColor: 'rgba(0, 0, 0, 0.95)',
-            backdropFilter: 'blur(10px)',
-            boxShadow: '0 1px 3px rgba(0, 0, 0, 0.3)',
+            backgroundColor: 'rgba(11, 13, 16, 0.85)',
+            backdropFilter: 'blur(12px)',
+            boxShadow: 'none',
+            borderBottom: '1px solid rgba(255,255,255,0.06)',
           },
         },
       },

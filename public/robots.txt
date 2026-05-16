@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+# Disallow nothing — this is a portfolio site, everything should be indexable
+
+Sitemap: https://www.hadijahk.com/sitemap.xml

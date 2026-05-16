@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { 
-  Box, 
-  Container, 
-  Typography, 
-  Button, 
-  Grid, 
-  Card, 
-  CardContent, 
+import {
+  Box,
+  Container,
+  Typography,
+  Button,
+  Grid,
+  Card,
+  CardContent,
   CardActions,
   Chip,
-  Avatar,
   IconButton,
   useTheme,
   Stack
@@ -18,19 +17,10 @@ import {
   LinkedIn as LinkedInIcon,
   GitHub as GitHubIcon,
   Email as EmailIcon,
-  Phone as PhoneIcon,
   LocationOn as LocationIcon,
-  Work as WorkIcon,
-  School as SchoolIcon,
-  Code as CodeIcon,
   Launch as LaunchIcon,
-  Download as DownloadIcon,
-  Visibility as VisibilityIcon,
-  EmojiEvents as EmojiEventsIcon,
 } from '@mui/icons-material';
 import myPhoto from '../assets/omega.jpg';
-import hackerRankCertificate from '../assets/hackerrank-certificate.png';
-import basicReactCertificate from '../assets/basic-react-hackerrank.png';
 import ContactForm from '../components/ContactForm';
 
 // E-Learning Platform Images
@@ -42,16 +32,6 @@ import elearningImg5 from '../assets/e-learning-platform/e-learning-signin.png';
 import elearningImg6 from '../assets/e-learning-platform/orgadmin-dsahboard.png';
 import elearningImg7 from '../assets/e-learning-platform/upload-resources.png';
 import elearningImg8 from '../assets/e-learning-platform/e-learning-users.png';
-
-// Tic-Tac-Toe Game Images
-import tictactoeImg1 from '../assets/tictactoe-game/tictactoe-login.png';
-import tictactoeImg2 from '../assets/tictactoe-game/join-game.png';
-import tictactoeImg3 from '../assets/tictactoe-game/tictactoe-single-player.png';
-import tictactoeImg4 from '../assets/tictactoe-game/tictactoe-won-game.png';
-
-// Property Management App Images
-import propertyImg1 from '../assets/property-app/property-mgt-list.png';
-import propertyImg2 from '../assets/property-app/property-form.png';
 
 // METS App Images
 import metsImg1 from '../assets/mets-app/clinical-views.png';
@@ -68,115 +48,116 @@ import CVButton from "../components/CVButton";
 
 function Home() {
   const theme = useTheme();
-  const skills = {
-  "Core Strengths": [
-    "Frontend & Full-Stack Development",
-    "Microservices & Micro-frontend Architecture",
-    "State Management (Redux, Zustand, RTK Query)",
-    "API Integration (REST, Swagger)",
-    "Performance Optimization",
-    "Internationalization (react-i18next)",
-    "Testing (Jest, React Testing Library, Cypress, Playwright)",
-    "CI/CD (GitHub Actions)",
-    "Agile / Scrum",
-    "Team Leadership & Mentorship",
-    "Version Control (Git)"
+  const stack = {
+  "Frontend": [
+    "React", "TypeScript", "Next.js", "React Native (Expo)",
+    "Tailwind CSS", "Sass", "Material UI", "Ant Design", "Carbon Design",
+    "Storybook"
   ],
-  "Languages & Web Tech": [
-    "JavaScript", "TypeScript", "Java", "Python",
-    "HTML", "CSS", "Sass", "TailwindCSS",
-    "NodeJS", "WebSockets"
+  "State & Forms": [
+    "Zustand", "Redux Toolkit", "TanStack Query", "RTK Query", "SWR",
+    "React Hook Form", "Formik", "Zod", "react-i18next"
   ],
-  "Frameworks & Libraries": [
-    "ReactJS", "NextJS", "Angular", "Express", "Spring Boot", "Flask",
-    "Material UI", "Ant Design", "Redux Toolkit", "Zustand", "TanStack Query", "SWR",
-    "React Hook Form", "Zod", "Formik", "React-i18next", "Storybook",
-    "Chart.js", "Cytoscape", "React PDF"
+  "Backend & APIs": [
+    "Node.js", "Express", "GraphQL", "Apollo Server",
+    "REST APIs", "Swagger", "Java", "Spring Boot",
+    "Python", "Flask", "SQL", "PostgreSQL", "MongoDB", "Neo4j"
   ],
-  "Tools & Platforms": [
-    "Vite", "Webpack", "Create React App", "ESLint",
-    "Visual Studio", "IntelliJ IDEA", "VS Code",
-    "JIRA", "Trello", "Heroku", "Firebase",
-    "AWS (S3, CloudFront, Lambda, API Gateway, Cognito, DynamoDB, CloudFormation, CloudWatch, CodePipeline)",
-    "GitHub Actions"
-  ],
-  "Databases & SDLC": ["PostgreSQL", "MongoDB", "Firebase", "Neo4j", "Agile", "Scrum"],
-  "Design Patterns": [
-    "Component Pattern", "Context + Provider", "Higher-Order Components (HOC)",
-    "JSON Schema-driven UIs", "Micro Frontends"
+  "Cloud, Infra & Practice": [
+    "AWS (Lambda, API Gateway, S3, CloudFront, Cognito, DynamoDB, CloudFormation)",
+    "Vercel", "Firebase", "GitHub Actions (CI/CD)",
+    "Jest", "React Testing Library", "Cypress", "Playwright",
+    "Micro-Frontends", "BFF Pattern", "TDD / BDD", "Accessibility (WCAG)",
+    "Agile / Scrum"
   ]
 };
 
   const experiences = [
+  // PayPal — Buy Now, Pay Later (Contract via Insight Global)
+  {
+    company: "PayPal",
+    companyContext: "Consumer fintech · NASDAQ: PYPL · ~430M+ active accounts globally. The Pay Later product family (Pay in 4, Pay Monthly) is embedded in millions of merchant checkouts.",
+    role: "Full Stack Software Engineer · Buy Now, Pay Later · Contract via Insight Global",
+    location: "Austin, TX (Hybrid)",
+    duration: "October 2025 – Present",
+    bullets: [
+      "Full-stack engineering on PayPal's Pay Later product family — Pay in 4 (interest-free 4-payment splits up to $1,500) and Pay Monthly (3 / 6 / 12 / 24-month installments via WebBank) — across the US, UK, EU, AU, and CA markets.",
+      "Co-led the 'New To PayPal' (NTPP) onboarding launch for the US market: redesigned the orchestration between checkout and credit-application services, replacing chains of client-side REST calls with consolidated backend endpoints. Shipped publicly and improved the responsiveness of the onboarding funnel.",
+      "Built GraphQL schemas and resolvers on the BNPL experience layer (Apollo Server + Express, Backend-for-Frontend pattern), aggregating credit-application, risk-evaluation, offer, and user-profile services behind a unified endpoint — used to support the Australian Pay Later market migration.",
+      "Standardized Postman workspaces and environment-driven API collections for REST and GraphQL endpoints, organized by country and product — used daily by engineers across the BNPL stack to validate complex multi-step flows.",
+      "Established centralized Confluence documentation and Slack-channel patterns for cross-team knowledge sharing, lifting onboarding speed for engineers new to the BNPL platform."
+    ],
+    technologies: ["React", "TypeScript", "Node.js", "GraphQL", "Apollo Server", "Express", "Microservices", "BFF Pattern", "REST APIs", "CI/CD"]
+  },
+
   // Skye
   {
-    title: "Senior Software Developer",
-    company: "Skye, New York, USA (Remote)",
-    duration: "May 2024 – September 2024",
+    company: "Skye",
+    companyContext: "Tech-enabled executive coaching platform serving leaders from Google, Condé Nast, and Lyft. Acquired by Sounding Board in Nov 2024.",
+    role: "Senior Software Engineer (Contract)",
+    location: "New York, NY (Remote)",
+    duration: "June 2024 – October 2024",
     bullets: [
-      "Implemented session scheduling and interactive charts with React, Node.js, MUI Data Grid, and Recharts for dynamic coaching review insights.",
+      "Built session scheduling and interactive coaching-review analytics (React, Node.js, MUI Data Grid, Recharts) used by coaches and their leadership clients.",
       "Raised automated test coverage to ~90% with React Testing Library, reducing regressions and improving release confidence.",
-      "Established CI/CD with GitHub Actions to run build, unit, integration, and E2E pipelines before deployment.",
-      "Optimized service-layer performance and lowered latency across Firestore/SQL/BigQuery data paths.",
+      "Established CI/CD with GitHub Actions running build, unit, integration, and E2E pipelines before deployment.",
+      "Optimized service-layer performance across Firestore / SQL / BigQuery data paths.",
       "Collaborated in agile ceremonies (backlog grooming, prioritization, peer reviews) to ensure clean, efficient delivery."
     ],
     technologies: ["React", "TypeScript", "Node.js", "Material UI", "MUI Data Grid", "Recharts", "React Testing Library", "Firestore", "BigQuery", "GitHub Actions"]
   },
 
-  // METS (as you had it—kept)
+  // OpenMRS — Open Source (multi-year, concurrent with paid roles; absorbs the METS / OHRI work)
   {
-    title: "Senior Software Developer",
-    company: "Monitoring and Evaluation Technical Support (METS) Program, Kampala, Uganda",
-    duration: "May 2024 – September 2024",
+    company: "OpenMRS",
+    companyContext: "Community-developed open-source enterprise EMR platform powering national health systems across 50+ countries. Foundation of UgandaEMR / UgandaEMR+ (1,700+ health facilities) and a backbone of PEPFAR-supported HIV programs across Africa.",
+    role: "Frontend Software Engineer · Open Source Contributor · OpenMRS HIV Reference Implementation (OHRI)",
+    location: "Carmel, Indiana, USA (Remote · Concurrent with paid roles)",
+    duration: "November 2020 – October 2024 · ~4 yrs",
     bullets: [
-      "Architected a reusable JSON-schema-driven UI workflow framework for OpenMRS, cutting code duplication by ~90%.",
-      "Designed a drag-and-drop clinical form builder that reduced form creation time by ~40%.",
-      "Developed micro-frontend modules, accelerating feature deployment by ~40%."
+      "Multi-year contributor to OHRI — the OpenMRS HIV Reference Implementation, a specialized OpenMRS 3 (O3) package supporting HIV, TB, and related clinical workflows in national HIV programs.",
+      "Architected a reusable JSON-schema-driven UI workflow framework on the O3 micro-frontends platform, cutting clinical-module code duplication by ~90%.",
+      "Designed a drag-and-drop clinical form builder used by clinicians and public-health analysts; reduced form creation time by ~40%.",
+      "Shipped healthcare modules and reusable UI components (React, TypeScript, Java Spring Boot) supporting clinical workflows across OpenMRS 3 implementations.",
+      "Implemented multilingual support and automated end-to-end tests (Cypress) to improve international accessibility and reduce manual QA effort.",
+      "Continued contributions during a 2024 engagement with Uganda's METS Program (Makerere University SPH), Uganda's lead PEPFAR strategic-information mechanism."
     ],
-    technologies: ["React", "TypeScript", "Formik", "Micro-Frontends", "Carbon Design System", "SWR"]
+    technologies: ["React", "TypeScript", "OpenMRS 3 (O3)", "OHRI", "Java", "Spring Boot", "Formik", "Micro-Frontends", "Carbon Design System", "SWR", "Cypress"]
   },
 
-  // Andela – Client - Sigma360 (Senior)
+  // Andela – Client - Sigma360 (combined: Software Engineer → Senior, 5y 7m)
   {
-    title: "Senior Software Engineer",
-    company: "Andela – Client - Sigma360, New York City, USA (Remote)",
-    duration: "June 2020 – April 2024",
+    company: "Sigma360",
+    companyContext: "AI-powered financial crime prevention and risk-intelligence platform — customers include Stripe and other major banks, payments firms, and fintechs. Now protects $2T+ in customer assets. Founded by former US Treasury / National Counterterrorism Center leadership. Raised $17.3M Series B in March 2026; profitable since 2025.",
+    role: "Senior Software Engineer (promoted from Software Engineer, 2020) · Andela placement",
+    location: "New York, NY (Remote)",
+    duration: "October 2018 – April 2024 · 5 yrs 7 mos",
     bullets: [
-      "Built a risk analytics dashboard (React, Ant Design, React PDF, Chart.js) that reduced analysis time by ~35%.",
-      "Led PoC for large-scale graph-driven risk networks using Cytoscape + Neo4j, boosting product competitiveness.",
-      "Modernized testing (Enzyme → React Testing Library) and introduced Storybook for isolated component docs.",
-      "Migrated Redux → Zustand and integrated TanStack Query for intelligent caching and background refresh, improving code quality and dev velocity.",
-      "Mentored engineers via code reviews and pair programming to uphold consistent standards."
+      "Built intelligent risk-decisioning software used by Stripe and other large financial institutions — supporting AML / watchlist screening, perpetual KYC, adverse-media monitoring, counterparty risk, and entity due diligence.",
+      "Migrated a large Redux store to Zustand + TanStack Query, removing significant boilerplate, eliminating a recurring class of stale-data bugs, and enabling background refresh without manual cache invalidation.",
+      "Designed and prototyped a Cytoscape.js + Neo4j risk-network visualization that became a key competitive differentiator in sales demos for the financial-crime use case.",
+      "Modernized testing infrastructure: Enzyme → React Testing Library across the codebase, introduced Storybook, and stabilized the CI suite; lifted coverage on critical flows from ~50% to ~85%.",
+      "Built the analytics dashboard (Chart.js + React PDF export) used by compliance analysts for client deliverables — reduced report-prep time by ~35%.",
+      "Shipped reusable UI primitives adopted across product surfaces, cutting UI build time by ~20%.",
+      "Established the team's PR review conventions and mentored engineers through code review and pairing."
     ],
-    technologies: ["React", "TypeScript", "Ant Design", "React PDF", "Chart.js", "Cytoscape", "Neo4j", "Zustand", "TanStack Query", "Jest", "React Testing Library", "Storybook"]
-  },
-
-  // Andela – Client - Sigma360 (Software Engineer)
-  {
-    title: "Software Engineer",
-    company: "Andela – Client - Sigma360, New York City, USA (Remote)",
-    duration: "October 2018 – May 2020",
-    bullets: [
-      "Developed a standalone entity risk-rating app with React, Redux, and SASS, boosting analyst productivity by ~70%.",
-      "Integrated Google Analytics to drive data-informed feature prioritization and improve adoption.",
-      "Created reusable UI components for consistency and faster delivery, cutting UI build time by ~20%.",
-      "Built Jest + Enzyme test suites to safeguard critical flows and reduce regressions."
-    ],
-    technologies: ["React", "Redux", "SASS", "Jest", "Enzyme", "Google Analytics"]
+    technologies: ["React", "TypeScript", "Ant Design", "Zustand", "Redux", "TanStack Query", "Cytoscape.js", "Neo4j", "Chart.js", "React PDF", "Jest", "React Testing Library", "Storybook", "SASS"]
   },
 
   // Andela Uganda Limited
   {
-    title: "Software Engineer",
-    company: "Andela Uganda Limited, Kampala, Uganda",
+    company: "Andela",
+    companyContext: "Global talent network placing engineers from emerging markets into senior roles at international tech companies. Kampala campus 2017–2018 was Andela's most selective intake.",
+    role: "Software Engineer · Open Concept Lab (OpenMRS)",
+    location: "Kampala, Uganda",
     duration: "December 2017 – September 2018",
     bullets: [
-      "Led the Open Concept Lab: a standalone React + Material UI app for managing medical concepts within OpenMRS.",
-      "Practiced TDD with Jest/Enzyme, achieving up to 100% coverage and reducing regressions.",
-      "Delivered end-to-end solutions with React, Axios, Bootstrap, Node.js, Java Spring, and Python Flask; automated CI/CD via GitHub Workflows.",
-      "Mentored and onboarded developers through interviews, bootcamps, code reviews, and pair programming."
+      "Led the Open Concept Lab project: a standalone React + Material UI app for managing the medical-concept dictionary shared across OpenMRS implementations.",
+      "Practiced TDD with Jest / Enzyme, achieving up to 100% coverage on critical flows and reducing regressions.",
+      "Delivered end-to-end features across React, Node.js, Java Spring, and Python Flask; automated CI/CD via GitHub Workflows.",
+      "Mentored and onboarded incoming engineers through interviews, bootcamps, code reviews, and pair programming."
     ],
-    technologies: ["React", "TypeScript", "Material UI", "Bootstrap", "Java", "Python", "Flask", "Django Templates", "Jest", "Enzyme", "GitHub Workflows"]
+    technologies: ["React", "Material UI", "Bootstrap", "Java", "Spring", "Python", "Flask", "Jest", "Enzyme", "GitHub Workflows"]
   }
 ];
 
@@ -206,22 +187,6 @@ function Home() {
       live: "",
       images: [elearningImg1, elearningImg2, elearningImg3, elearningImg4, elearningImg5, elearningImg6, elearningImg7, elearningImg8]
     },
-    {
-      title: "Serverless Web Game (Tic Tac Toe)",
-      description: "Developed a fully serverless, web-based game using ReactJS with user authentication via Amazon Cognito. Player scores are stored in DynamoDB and managed through a Node.js backend with AWS Lambda and API Gateway. Implemented full infrastructure provisioning and CI/CD pipelines using AWS CloudFormation, CodePipeline, and CodeBuild.",
-      technologies: ["ReactJS", "AWS Cognito", "DynamoDB", "AWS Lambda", "API Gateway", "CloudFormation", "CodePipeline"],
-      github: "https://github.com/hadijahkyampeire/tic-tac-toe-full-stack-aws",
-      live: "https://d2w7p8nid3o5t5.cloudfront.net/",
-      images: [tictactoeImg1, tictactoeImg2, tictactoeImg3, tictactoeImg4]
-    },
-    {
-      title: "Property Management System",
-      description: "A system for property owners to list properties for sale or rent, and for customers to find properties to rent or buy. Built with a Spring Boot backend, MySQL database, RESTful APIs, and JWT authentication. The frontend is built with React and Material UI.",
-      technologies: ["React", "Material UI", "Spring Boot", "MySQL", "JWT"],
-      github: "https://github.com/hadijahkyampeire/WAA-Group-One-Realtor-Frontend",
-      live: "",
-      images: [propertyImg1, propertyImg2]
-    }
   ];
 
   const education = [
@@ -236,23 +201,6 @@ function Home() {
       school: "Busitema University, Busia, Uganda",
       year: "2013 - 2017",
       description: "Key Courses: Algorithms and Data structures, Database systems, Digital Signal Process, Data Communication and Networks, Engineering Mathematics"
-    }
-  ];
-
-  const certifications = [
-    {
-      name: "Frontend Developer (React)",
-      issuer: "HackerRank",
-      year: "2025",
-      link: "https://www.hackerrank.com/certificates/9c2149175e41",
-      image: hackerRankCertificate
-    },
-    {
-      name: "React (Basic)",
-      issuer: "HackerRank",
-      year: "2025",
-      link: "https://www.hackerrank.com/certificates/eb8d169fcfb7",
-      image: basicReactCertificate
     }
   ];
 
@@ -285,11 +233,6 @@ function Home() {
         sx={{ 
           display: 'flex', 
           flexDirection: { xs: 'column', md: 'row' },
-          transition: 'all 0.3s ease',
-          '&:hover': {
-            transform: 'translateY(-8px)',
-            boxShadow: '0 12px 40px rgba(30, 58, 138, 0.15)',
-          },
           position: 'relative',
           overflow: 'hidden',
           '&::before': {
@@ -299,7 +242,7 @@ function Home() {
             left: 0,
             right: 0,
             height: 4,
-            background: `linear-gradient(90deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
+            background: theme.palette.secondary.main,
             transform: 'scaleX(0)',
             transition: 'transform 0.3s ease',
           },
@@ -327,7 +270,7 @@ function Home() {
               variant="h6" 
               gutterBottom
               sx={{
-                color: theme.palette.primary.main,
+                color: theme.palette.text.primary,
                 fontWeight: 600,
                 mb: 2,
               }}
@@ -370,7 +313,7 @@ function Home() {
               target="_blank" 
               size="small" 
               sx={{
-                color: theme.palette.primary.main,
+                color: theme.palette.text.primary,
                 transition: 'all 0.3s ease',
                 '&:hover': {
                   color: theme.palette.secondary.main,
@@ -386,7 +329,7 @@ function Home() {
                 target="_blank" 
                 size="small"
                 sx={{
-                  color: theme.palette.primary.main,
+                  color: theme.palette.text.primary,
                   transition: 'all 0.3s ease',
                   '&:hover': {
                     color: theme.palette.secondary.main,
@@ -412,133 +355,182 @@ function Home() {
           minHeight: '100vh',
           display: 'flex',
           alignItems: 'center',
-          background: theme.palette.primary.main,
+          background: theme.palette.mode === 'dark'
+            ? 'radial-gradient(ellipse at top, #1a1d24 0%, #0a0b0d 60%)'
+            : 'radial-gradient(ellipse at top, #1a2960 0%, #0f172a 70%)',
           color: 'white',
           position: 'relative',
           overflow: 'hidden',
-          marginTop: '-64px', // Compensate for the Toolbar spacer
-          paddingTop: '64px', // Add padding to account for fixed navbar
+          marginTop: '-64px',
+          paddingTop: '64px',
         }}
       >
-        <Container maxWidth="lg">
-          <Grid container spacing={4} alignItems="center">
-            <Grid item xs={12} md={6}>
-              <Typography 
-                variant="h2" 
-                component="h1" 
-                gutterBottom 
-                sx={{ 
-                  fontWeight: 'bold',
-                  animation: 'slideUp 0.8s ease-out',
-                  textShadow: '0 2px 4px rgba(0,0,0,0.3)',
-                  background: 'linear-gradient(135deg, #ffffff, #f0f0f0)',
-                  backgroundClip: 'text',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                }}
-              >
-                Hi, I'm Hadijah Kyampeire
-              </Typography>
-              <Typography 
-                variant="h4" 
-                gutterBottom 
-                sx={{ 
-                  mb: 3, 
-                  opacity: 0.9,
-                  animation: 'slideUp 0.8s ease-out 0.2s both',
-                  color: theme.palette.secondary.light,
-                }}
-              >
-                Senior Software Engineer (ReactJS, Node.js, TypeScript)
-              </Typography>
-              <Typography 
-                variant="h6" 
-                paragraph 
-                sx={{ 
-                  mb: 4, 
-                  opacity: 0.8,
-                  animation: 'slideUp 0.8s ease-out 0.4s both',
-                  lineHeight: 1.6,
-                }}
-              >
-                Results-driven Senior Software Engineer (Frontend leaning) with 6+ years of experience building high-performance web applications using ReactJS, Node.js and the modern JavaScript ecosystem. Skilled in delivering scalable solutions in FinTech and Health Informatics with expertise in micro-frontends and modern architecture patterns.
-              </Typography>
-              <Box 
-                sx={{ 
-                  display: 'flex', 
-                  gap: 2, 
-                  flexWrap: 'wrap',
-                  animation: 'slideUp 0.8s ease-out 0.6s both',
-                }}
-              >
-                <Button
-                  variant="contained"
-                  size="large"
-                  onClick={() => scrollToSection('contact')}
-                  sx={{ 
-                    bgcolor: theme.palette.secondary.main,
-                    color: 'white',
-                    fontWeight: 600,
-                    px: 4,
-                    py: 1.5,
-                    borderRadius: 3,
-                    transition: 'all 0.3s ease',
-                    '&:hover': { 
-                      bgcolor: theme.palette.secondary.dark,
-                      transform: 'translateY(-2px)',
-                      boxShadow: '0 8px 25px rgba(234, 88, 12, 0.4)',
-                    }
-                  }}
-                >
-                  Get In Touch
-                </Button>
-                <Button
-                  variant="outlined"
-                  size="large"
-                  onClick={() => scrollToSection('projects')}
-                  sx={{
-                    borderColor: 'white',
-                    color: 'white',
-                    fontWeight: 600,
-                    px: 4,
-                    py: 1.5,
-                    borderRadius: 3,
-                    transition: 'all 0.3s ease',
-                    '&:hover': { 
-                      borderColor: theme.palette.secondary.light,
-                      bgcolor: 'rgba(255,255,255,0.1)',
-                      transform: 'translateY(-2px)',
-                    }
-                  }}
-                >
-                  View My Work
-                </Button>
-                <CVButton />
-              </Box>
-            </Grid>
-            <Grid item xs={12} md={6} sx={{ display: 'flex', justifyContent: 'center' }}>
-              <Avatar
-                src={myPhoto}
+        <Container maxWidth="md">
+          <Box sx={{ py: { xs: 8, md: 12 } }}>
+            {/* Visible H1 contains the name — critical for "Hadijah Kyampeire" search ranking. */}
+            <Typography
+              variant="h1"
+              component="h1"
+              sx={{
+                fontWeight: 700,
+                fontSize: { xs: '1rem', md: '1.05rem' },
+                letterSpacing: 3,
+                textTransform: 'uppercase',
+                color: theme.palette.secondary.main,
+                mb: 2,
+                animation: 'slideUp 0.6s ease-out',
+              }}
+            >
+              Hadijah Kyampeire — Senior Full-Stack Engineer
+            </Typography>
+            <Typography
+              variant="h2"
+              component="h2"
+              sx={{
+                fontWeight: 700,
+                fontSize: { xs: '2.5rem', md: '3.75rem' },
+                lineHeight: 1.05,
+                letterSpacing: '-0.02em',
+                color: '#ffffff',
+                mb: 4,
+                animation: 'slideUp 0.7s ease-out 0.05s both',
+              }}
+            >
+              Building production-scale web applications for regulated industries.
+            </Typography>
+
+            <Typography
+              variant="h6"
+              component="p"
+              sx={{
+                mb: 3,
+                color: 'rgba(255, 255, 255, 0.85)',
+                fontWeight: 400,
+                lineHeight: 1.6,
+                maxWidth: 680,
+                animation: 'slideUp 0.7s ease-out 0.15s both',
+              }}
+            >
+              I'm <Box component="strong" sx={{ color: '#fff', fontWeight: 700 }}>Hadijah Kyampeire</Box>, a senior full-stack engineer currently building on <Box component="strong" sx={{ color: '#fff', fontWeight: 700 }}>PayPal's Buy Now, Pay Later</Box> platform. Seven years across consumer fintech, B2B risk analytics, and clinical informatics — with deep work in React architecture, GraphQL, design systems, and CI/CD on AWS.
+            </Typography>
+
+            <Typography
+              variant="body2"
+              sx={{
+                mb: 5,
+                color: 'rgba(255, 255, 255, 0.65)',
+                lineHeight: 1.6,
+                maxWidth: 680,
+                animation: 'slideUp 0.7s ease-out 0.25s both',
+              }}
+            >
+              Based in Austin, Texas · Open to senior roles in Germany, Canada, the EU, and remote-first teams · Eligible for EU Blue Card and Canada Express Entry.
+            </Typography>
+
+            <Box
+              sx={{
+                display: 'flex',
+                gap: 1.5,
+                flexWrap: 'wrap',
+                animation: 'slideUp 0.7s ease-out 0.35s both',
+                mb: 8,
+              }}
+            >
+              <Button
+                variant="contained"
+                size="large"
+                onClick={() => scrollToSection('projects')}
                 sx={{
-                  width: 300,
-                  height: 300,
-                  border: '4px solid white',
-                  boxShadow: '0 8px 32px rgba(0,0,0,0.3)',
-                  animation: 'scaleIn 0.8s ease-out 0.8s both',
-                  transition: 'all 0.3s ease',
+                  bgcolor: theme.palette.secondary.main,
+                  color: '#fff',
+                  fontWeight: 600,
+                  px: 3.5,
+                  py: 1.25,
+                  borderRadius: 1,
+                  textTransform: 'none',
                   '&:hover': {
-                    transform: 'scale(1.05)',
-                    boxShadow: '0 12px 40px rgba(0,0,0,0.4)',
+                    bgcolor: theme.palette.secondary.dark,
+                    boxShadow: 'none',
+                    transform: 'none',
                   }
                 }}
-              />
-            </Grid>
-          </Grid>
+              >
+                View selected work →
+              </Button>
+              <Button
+                variant="outlined"
+                size="large"
+                onClick={() => scrollToSection('contact')}
+                sx={{
+                  borderColor: 'rgba(255,255,255,0.3)',
+                  color: '#fff',
+                  fontWeight: 600,
+                  px: 3.5,
+                  py: 1.25,
+                  borderRadius: 1,
+                  textTransform: 'none',
+                  '&:hover': {
+                    borderColor: '#fff',
+                    bgcolor: 'rgba(255,255,255,0.05)',
+                    transform: 'none',
+                  }
+                }}
+              >
+                Email me
+              </Button>
+              <CVButton />
+            </Box>
+
+            {/* Trusted-by credibility row */}
+            <Box
+              sx={{
+                pt: 4,
+                borderTop: '1px solid rgba(255,255,255,0.08)',
+                animation: 'slideUp 0.7s ease-out 0.45s both',
+              }}
+            >
+              <Typography
+                variant="caption"
+                sx={{
+                  display: 'block',
+                  textTransform: 'uppercase',
+                  letterSpacing: 2,
+                  opacity: 0.5,
+                  mb: 1.5,
+                  fontSize: '0.7rem',
+                  fontWeight: 600,
+                }}
+              >
+                Engineering teams I've worked with
+              </Typography>
+              <Box
+                sx={{
+                  display: 'flex',
+                  flexWrap: 'wrap',
+                  gap: { xs: 2, md: 4 },
+                  opacity: 0.85,
+                  fontWeight: 600,
+                  fontSize: { xs: '1rem', md: '1.1rem' },
+                  letterSpacing: '-0.01em',
+                }}
+              >
+                <Box component="span">PayPal</Box>
+                <Box component="span" sx={{ opacity: 0.3 }}>·</Box>
+                <Box component="span">Sigma360</Box>
+                <Box component="span" sx={{ opacity: 0.3 }}>·</Box>
+                <Box component="span">OpenMRS</Box>
+                <Box component="span" sx={{ opacity: 0.3 }}>·</Box>
+                <Box component="span">Andela</Box>
+                <Box component="span" sx={{ opacity: 0.3 }}>·</Box>
+                <Box component="span">Skye</Box>
+              </Box>
+            </Box>
+          </Box>
         </Container>
       </Box>
 
       {/* About Section */}
-      <Box id="about" sx={{ py: 8, bgcolor: 'background.paper' }}>
+      <Box id="about" sx={{ py: { xs: 6, md: 9 }, bgcolor: 'background.paper' }}>
         <Container maxWidth="lg">
           <Typography 
             variant="h3" 
@@ -556,113 +548,210 @@ function Home() {
                 transform: 'translateX(-50%)',
                 width: 60,
                 height: 4,
-                background: `linear-gradient(90deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
+                background: theme.palette.secondary.main,
                 borderRadius: 2,
               }
             }}
           >
             About Me
           </Typography>
-          <Grid container spacing={4} justifyContent="center">
-            <Grid item xs={12} md={8}>
-              <Typography 
-                variant="h6" 
-                align="center" 
+          <Grid container spacing={{ xs: 4, md: 8 }} justifyContent="center" alignItems="flex-start">
+            <Grid item xs={12} md={4} sx={{ display: 'flex', justifyContent: { xs: 'center', md: 'flex-end' } }}>
+              <Box
+                component="img"
+                src={myPhoto}
+                alt="Hadijah Kyampeire"
+                sx={{
+                  width: { xs: 160, md: 220 },
+                  height: { xs: 160, md: 220 },
+                  objectFit: 'cover',
+                  borderRadius: 2,
+                  border: `1px solid ${theme.palette.divider}`,
+                  display: 'block',
+                }}
+              />
+            </Grid>
+            <Grid item xs={12} md={7}>
+              <Typography
+                variant="h6"
                 paragraph
                 sx={{
                   lineHeight: 1.8,
                   color: theme.palette.text.secondary,
                 }}
               >
-                I'm a Senior Software Engineer (Frontend leaning) known for writing clean, modular code with a strong attention to detail and best practices. My experience lies in modernizing legacy systems, developing micro frontends, and collaborating effectively in Agile teams. I am skilled in delivering scalable solutions for both the FinTech and Health Informatics sectors.
+                I'm a senior full-stack engineer with seven years across regulated software — consumer fintech, B2B risk analytics, and clinical informatics. I currently work on PayPal's Buy Now, Pay Later platform.
               </Typography>
-              <Typography 
-                variant="h6" 
-                align="center" 
+              <Typography
+                variant="h6"
                 paragraph
                 sx={{
                   lineHeight: 1.8,
                   color: theme.palette.text.secondary,
                 }}
               >
-                Beyond coding, I'm passionate about empowering women in tech and have been involved in tech mentorship for over 6 years. I believe in the power of community and knowledge sharing to drive innovation.
+                My strongest work happens at the intersection of frontend architecture and product judgment — designing the abstractions that let small teams move fast inside large codebases, and pushing back when "fast" would mean "fragile." I care about performance budgets, accessibility, and the kind of testing that catches real bugs.
+              </Typography>
+              <Typography
+                variant="h6"
+                paragraph
+                sx={{
+                  lineHeight: 1.8,
+                  color: theme.palette.text.secondary,
+                }}
+              >
+                Outside paid work, I've contributed to OpenMRS for ~4 years (recognized as a Development Fellow / <code style={{ fontFamily: 'inherit' }}>/dev/3</code> contributor), mentored a Google Summer of Code student in 2023, and facilitate frontend modules at Witu (Women in Tech Uganda) Code Academy. I'm pursuing an MSc in Computer Science at Maharishi International University while working full-time.
               </Typography>
             </Grid>
           </Grid>
         </Container>
       </Box>
 
-      {/* Skills Section */}
-      <Box id="skills" sx={{ py: 8 }}>
+      {/* Engineering Approach Section */}
+      <Box id="approach" sx={{ py: { xs: 6, md: 9 } }}>
         <Container maxWidth="lg">
-          <Typography 
-            variant="h3" 
-            component="h2" 
-            gutterBottom 
-            textAlign="center" 
-            sx={{ 
-              mb: 6,
-              position: 'relative',
-              '&::after': {
-                content: '""',
-                position: 'absolute',
-                bottom: -10,
-                left: '50%',
-                transform: 'translateX(-50%)',
-                width: 60,
-                height: 4,
-                background: `linear-gradient(90deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
-                borderRadius: 2,
-              }
+          <Typography
+            variant="overline"
+            sx={{
+              display: 'block',
+              textAlign: 'center',
+              letterSpacing: 3,
+              color: theme.palette.secondary.main,
+              fontWeight: 600,
+              mb: 1,
             }}
           >
-            Skills & Technologies
+            How I work
           </Typography>
-          <Grid container spacing={3}>
-            {Object.entries(skills).map(([category, skillList], index) => (
-              <Grid item xs={12} sm={6} md={4} key={category}>
-                <Card 
-                  sx={{ 
-                    height: '100%', 
-                    p: 3,
-                    transition: 'all 0.3s ease',
-                    '&:hover': {
-                      transform: 'translateY(-8px)',
-                      boxShadow: '0 12px 40px rgba(30, 58, 138, 0.15)',
-                    },
-                    animation: `slideUp 0.6s ease-out ${index * 0.1}s both`,
-                  }}
-                >
-                  <Typography 
-                    variant="h6" 
-                    gutterBottom 
+          <Typography
+            variant="h3"
+            component="h2"
+            textAlign="center"
+            sx={{ mb: 5, fontWeight: 700, letterSpacing: '-0.02em' }}
+          >
+            Engineering Approach
+          </Typography>
+
+          <Grid container spacing={{ xs: 4, md: 6 }}>
+            {[
+              {
+                title: "Architecture before abstraction",
+                body: "Three repeated lines is fine; the second time a pattern recurs, I document it. The third time, I refactor. Premature abstraction has cost me more than duplication ever has."
+              },
+              {
+                title: "Tests as design tools, not coverage targets",
+                body: "I write tests where they reduce ambiguity — at module boundaries, around regression-prone flows, and at the integration seam. Coverage is the side effect, not the goal."
+              },
+              {
+                title: "Performance is product",
+                body: "On consumer-facing surfaces, latency and bundle size are features. I instrument what I ship, set budgets up front, and treat regressions like bugs — not stylistic preferences."
+              },
+              {
+                title: "The boring path on purpose",
+                body: "TypeScript over runtime cleverness. Server-driven where it removes deploy coupling. Design systems over bespoke components. The boring path scales further than the interesting one."
+              }
+            ].map((principle, idx) => (
+              <Grid item xs={12} md={6} key={principle.title}>
+                <Box sx={{ display: 'flex', gap: 2.5 }}>
+                  <Typography
+                    variant="h4"
                     sx={{
-                      color: theme.palette.primary.main,
-                      fontWeight: 600,
-                      mb: 2,
+                      color: theme.palette.secondary.main,
+                      fontWeight: 700,
+                      fontVariantNumeric: 'tabular-nums',
+                      minWidth: 40,
+                      lineHeight: 1.1,
                     }}
                   >
-                    {category}
+                    {String(idx + 1).padStart(2, '0')}
                   </Typography>
-                  <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
-                    {skillList.map((skill) => (
-                      <Chip
-                        key={skill}
-                        label={skill}
-                        size="small"
-                        variant="outlined"
-                        sx={{
-                          borderColor: theme.palette.secondary.main,
-                          color: theme.palette.secondary.main,
-                          '&:hover': {
-                            backgroundColor: theme.palette.secondary.main,
-                            color: 'white',
-                          }
-                        }}
-                      />
-                    ))}
+                  <Box>
+                    <Typography
+                      variant="h6"
+                      sx={{
+                        fontWeight: 700,
+                        mb: 1,
+                        color: theme.palette.text.primary,
+                        letterSpacing: '-0.01em',
+                      }}
+                    >
+                      {principle.title}
+                    </Typography>
+                    <Typography
+                      variant="body1"
+                      sx={{
+                        color: theme.palette.text.secondary,
+                        lineHeight: 1.7,
+                      }}
+                    >
+                      {principle.body}
+                    </Typography>
                   </Box>
-                </Card>
+                </Box>
+              </Grid>
+            ))}
+          </Grid>
+        </Container>
+      </Box>
+
+      {/* Stack Section */}
+      <Box id="skills" sx={{ py: { xs: 6, md: 9 }, bgcolor: 'background.paper' }}>
+        <Container maxWidth="lg">
+          <Typography
+            variant="overline"
+            sx={{
+              display: 'block',
+              textAlign: 'center',
+              letterSpacing: 3,
+              color: theme.palette.secondary.main,
+              fontWeight: 600,
+              mb: 1,
+            }}
+          >
+            Technical stack
+          </Typography>
+          <Typography
+            variant="h3"
+            component="h2"
+            textAlign="center"
+            sx={{ mb: 5, fontWeight: 700, letterSpacing: '-0.02em' }}
+          >
+            What I work with
+          </Typography>
+
+          <Grid container spacing={{ xs: 4, md: 6 }}>
+            {Object.entries(stack).map(([category, items]) => (
+              <Grid item xs={12} sm={6} md={3} key={category}>
+                <Typography
+                  variant="overline"
+                  sx={{
+                    display: 'block',
+                    color: theme.palette.secondary.main,
+                    fontWeight: 700,
+                    letterSpacing: 2,
+                    fontSize: '0.7rem',
+                    mb: 2,
+                    pb: 1.5,
+                    borderBottom: `1px solid ${theme.palette.divider}`,
+                  }}
+                >
+                  {category}
+                </Typography>
+                <Stack spacing={1}>
+                  {items.map((item) => (
+                    <Typography
+                      key={item}
+                      variant="body2"
+                      sx={{
+                        color: theme.palette.text.primary,
+                        lineHeight: 1.5,
+                        fontWeight: 500,
+                      }}
+                    >
+                      {item}
+                    </Typography>
+                  ))}
+                </Stack>
               </Grid>
             ))}
           </Grid>
@@ -670,7 +759,7 @@ function Home() {
       </Box>
 
       {/* Experience Section */}
-      {/* <Box id="experience" sx={{ py: 8, bgcolor: 'background.paper' }}>
+      {/* <Box id="experience" sx={{ py: { xs: 6, md: 9 }, bgcolor: 'background.paper' }}>
         <Container maxWidth="lg">
           <Typography 
             variant="h3" 
@@ -688,7 +777,7 @@ function Home() {
                 transform: 'translateX(-50%)',
                 width: 60,
                 height: 4,
-                background: `linear-gradient(90deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
+                background: theme.palette.secondary.main,
                 borderRadius: 2,
               }
             }}
@@ -701,11 +790,6 @@ function Home() {
                 key={index} 
                 sx={{ 
                   p: 3,
-                  transition: 'all 0.3s ease',
-                  '&:hover': {
-                    transform: 'translateY(-4px)',
-                    boxShadow: '0 12px 40px rgba(30, 58, 138, 0.15)',
-                  },
                   animation: `slideUp 0.6s ease-out ${index * 0.2}s both`,
                   position: 'relative',
                   overflow: 'hidden',
@@ -716,7 +800,7 @@ function Home() {
                     left: 0,
                     width: 4,
                     height: '100%',
-                    background: `linear-gradient(180deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
+                    background: theme.palette.secondary.main,
                   }
                 }}
               >
@@ -725,7 +809,7 @@ function Home() {
                     <Typography 
                       variant="h6" 
                       sx={{
-                        color: theme.palette.primary.main,
+                        color: theme.palette.text.primary,
                         fontWeight: 600,
                         mb: 1,
                       }}
@@ -787,7 +871,7 @@ function Home() {
           </Box>
         </Container>
       </Box> */}
-      <Box id="experience" sx={{ py: 8, bgcolor: 'background.paper' }}>
+      <Box id="experience" sx={{ py: { xs: 6, md: 9 }, bgcolor: 'background.paper' }}>
         <Container maxWidth="lg">
         <Typography
         variant="h3"
@@ -805,7 +889,7 @@ function Home() {
         transform: 'translateX(-50%)',
         width: 60,
         height: 4,
-        background: `linear-gradient(90deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
+        background: theme.palette.secondary.main,
         borderRadius: 2,
         },
         }}
@@ -822,8 +906,137 @@ function Home() {
         </Container>
       </Box>
 
+      {/* Community & Open Source Section */}
+      <Box id="community" sx={{ py: { xs: 6, md: 9 } }}>
+        <Container maxWidth="lg">
+          <Typography
+            variant="overline"
+            sx={{
+              display: 'block',
+              textAlign: 'center',
+              letterSpacing: 3,
+              color: theme.palette.secondary.main,
+              fontWeight: 600,
+              mb: 1,
+            }}
+          >
+            Open Source & Community
+          </Typography>
+          <Typography
+            variant="h3"
+            component="h2"
+            textAlign="center"
+            sx={{ mb: 5, fontWeight: 700, letterSpacing: '-0.02em' }}
+          >
+            Beyond the day job
+          </Typography>
+
+          <Grid container spacing={{ xs: 3, md: 4 }}>
+            {[
+              {
+                title: "OpenMRS · /dev/3 Contributor & Development Fellow",
+                body: "Multi-year contributor to OpenMRS — recognized as /dev/3 (senior community contributor) and named a Development Fellow with a presentation at the OpenMRS symposium. Work spans the OpenMRS 3 micro-frontends platform, OHRI (HIV Reference Implementation), and Open Concept Lab.",
+                link: "https://talk.openmrs.org/t/my-fellowship-journey-hadijah-kyampeire/33275",
+                linkLabel: "OpenMRS Fellowship Journey →"
+              },
+              {
+                title: "Google Summer of Code (GSoC) · Primary Mentor 2023",
+                body: "Primary mentor for the 2023 GSoC project 'Migrating Vanilla React forms to React Hook Form' under OpenMRS. Backup mentor in 2022 for the OCL Subscription Module for OpenMRS 3.",
+                link: "https://talk.openmrs.org/t/gsoc-2023-migrating-vanilla-react-forms-to-reacthookform-final-evaluation/40365",
+                linkLabel: "GSoC 2023 final evaluation →"
+              },
+              {
+                title: "International Committee of the Red Cross (ICRC)",
+                body: "Contributed clinical tools and form-engine work through OpenMRS implementations used in ICRC field deployments — humanitarian healthcare software running in some of the hardest operating environments in the world.",
+                link: null,
+                linkLabel: null
+              },
+              {
+                title: "Witu (Women in Tech Uganda) Code Academy · Instructor",
+                body: "Facilitating frontend (JavaScript / React), data communications, and networking modules at Witu's Code Academy — supporting women entering software engineering in East Africa.",
+                link: null,
+                linkLabel: null
+              },
+              {
+                title: "Writing · Medium",
+                body: "Published on Medium about web accessibility (going beyond the WCAG checklist), engineering learning curves, and the realities of joining an engineering bootcamp.",
+                link: "https://medium.com/@hadijah315",
+                linkLabel: "Read on Medium →"
+              },
+              {
+                title: "GitHub · 100+ repositories",
+                body: "Open-source code, learning projects, contributions to OpenMRS modules, and the source of this portfolio.",
+                link: "https://github.com/hadijahkyampeire",
+                linkLabel: "github.com/hadijahkyampeire →"
+              }
+            ].map((item) => (
+              <Grid item xs={12} md={6} key={item.title}>
+                <Box
+                  sx={{
+                    p: 3,
+                    height: '100%',
+                    border: `1px solid ${theme.palette.divider}`,
+                    borderRadius: 2,
+                    transition: 'border-color 0.15s ease',
+                    '&:hover': {
+                      borderColor: theme.palette.mode === 'dark'
+                        ? 'rgba(255,255,255,0.18)'
+                        : 'rgba(15,23,42,0.18)',
+                    },
+                  }}
+                >
+                  <Typography
+                    variant="subtitle1"
+                    sx={{
+                      fontWeight: 700,
+                      mb: 1.5,
+                      color: theme.palette.text.primary,
+                      letterSpacing: '-0.005em',
+                      lineHeight: 1.3,
+                    }}
+                  >
+                    {item.title}
+                  </Typography>
+                  <Typography
+                    variant="body2"
+                    sx={{
+                      color: theme.palette.text.secondary,
+                      lineHeight: 1.7,
+                      mb: item.link ? 1.5 : 0,
+                    }}
+                  >
+                    {item.body}
+                  </Typography>
+                  {item.link && (
+                    <Button
+                      href={item.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      size="small"
+                      sx={{
+                        p: 0,
+                        minWidth: 0,
+                        color: theme.palette.secondary.main,
+                        fontWeight: 600,
+                        textTransform: 'none',
+                        '&:hover': {
+                          backgroundColor: 'transparent',
+                          textDecoration: 'underline',
+                        }
+                      }}
+                    >
+                      {item.linkLabel}
+                    </Button>
+                  )}
+                </Box>
+              </Grid>
+            ))}
+          </Grid>
+        </Container>
+      </Box>
+
       {/* Projects Section */}
-      <Box id="projects" sx={{ py: 8 }}>
+      <Box id="projects" sx={{ py: { xs: 6, md: 9 } }}>
         <Container maxWidth="lg">
           <Typography 
             variant="h3" 
@@ -841,7 +1054,7 @@ function Home() {
                 transform: 'translateX(-50%)',
                 width: 60,
                 height: 4,
-                background: `linear-gradient(90deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
+                background: theme.palette.secondary.main,
                 borderRadius: 2,
               }
             }}
@@ -865,7 +1078,7 @@ function Home() {
       </Box>
 
       {/* Education Section */}
-      <Box id="education" sx={{ py: 8, bgcolor: 'background.paper' }}>
+      <Box id="education" sx={{ py: { xs: 6, md: 9 }, bgcolor: 'background.paper' }}>
         <Container maxWidth="lg" sx={{ width: '100%' }}>
           <Typography 
             variant="h3" 
@@ -883,7 +1096,7 @@ function Home() {
                 transform: 'translateX(-50%)',
                 width: 60,
                 height: 4,
-                background: `linear-gradient(90deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
+                background: theme.palette.secondary.main,
                 borderRadius: 2,
               }
             }}
@@ -912,11 +1125,6 @@ function Home() {
                     width: '100%',
                     maxWidth: '100%',
                     boxSizing: 'border-box',
-                    transition: 'all 0.3s ease',
-                    '&:hover': {
-                      transform: 'translateY(-4px)',
-                      boxShadow: '0 12px 40px rgba(30, 58, 138, 0.15)',
-                    },
                     animation: `slideUp 0.6s ease-out ${index * 0.2}s both`,
                     position: 'relative',
                     overflow: 'hidden',
@@ -927,14 +1135,14 @@ function Home() {
                       left: 0,
                       width: 4,
                       height: '100%',
-                      background: `linear-gradient(180deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
+                      background: theme.palette.secondary.main,
                     }
                   }}
                 >
                   <Typography 
                     variant="h6"
                     sx={{
-                      color: theme.palette.primary.main,
+                      color: theme.palette.text.primary,
                       fontWeight: 600,
                       mb: 1,
                     }}
@@ -978,143 +1186,8 @@ function Home() {
         </Container>
       </Box>
 
-      {/* Certifications & HackerRank Section */}
-      <Box id="certifications" sx={{ py: 8 }}>
-        <Container maxWidth="lg" sx={{ width: '100%' }}>
-          <Typography variant="h3" component="h2" gutterBottom textAlign="center" sx={{ mb: 6 }}>
-            Certifications & Achievements
-          </Typography>
-          <Box 
-            sx={{ 
-              display: 'flex', 
-              flexDirection: { xs: 'column', lg: 'row' },
-              gap: 4,
-              justifyContent: 'center',
-              alignItems: 'stretch',
-              width: '100%'
-            }}
-          >
-            {/* Certificates */}
-            <Box 
-              sx={{ 
-                display: 'flex', 
-                flexDirection: { xs: 'column', md: 'row' },
-                gap: 3,
-                flex: 1,
-                maxWidth: { lg: '60%' }
-              }}
-            >
-              {certifications.map((cert, index) => (
-                <Card 
-                  key={index}
-                  sx={{ 
-                    p: 2, 
-                    height: '100%',
-                    width: { xs: '100%', md: '50%' },
-                    maxWidth: { xs: '100%', md: '300px' },
-                    boxSizing: 'border-box'
-                  }}
-                >
-                  {cert.image && (
-                    <Box
-                      component="img"
-                      src={cert.image}
-                      alt={`${cert.name} Certificate`}
-                      sx={{
-                        maxWidth: '100%',
-                        maxHeight: '200px',
-                        objectFit: 'contain',
-                        display: 'block',
-                        mx: 'auto',
-                        borderRadius: 1,
-                        mb: 2,
-                        border: '1px solid',
-                        borderColor: 'divider'
-                      }}
-                    />
-                  )}
-                  <Typography variant="h6" sx={{ fontSize: '1rem' }}>{cert.name}</Typography>
-                  <Typography variant="subtitle2" color="text.secondary">
-                    {cert.issuer}
-                  </Typography>
-                  {cert.year && (
-                    <Typography variant="body2" color="text.secondary">
-                      {cert.year}
-                    </Typography>
-                  )}
-                  {cert.link && (
-                    <Button
-                      component="a"
-                      href={cert.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      endIcon={<LaunchIcon />}
-                      size="small"
-                      sx={{mt: 1}}
-                    >
-                      View Certificate
-                    </Button>
-                  )}
-                </Card>
-              ))}
-            </Box>
-
-            {/* HackerRank Achievements */}
-            <Card 
-              sx={{ 
-                p: 3, 
-                flex: 1,
-                maxWidth: { lg: '40%' },
-                height: '100%',
-                display: 'flex',
-                flexDirection: 'column'
-              }}
-            >
-              <Typography variant="h5" gutterBottom textAlign="center">
-                HackerRank Achievements
-              </Typography>
-              <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3, flexGrow: 1, justifyContent: 'space-between' }}>
-                <Box>
-                  <Typography variant="h6" gutterBottom>
-                    <EmojiEventsIcon sx={{ verticalAlign: 'middle', mr: 1 }} />
-                    Badges
-                  </Typography>
-                  <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
-                    {["Problem Solving", "30 Days of Code", "10 Days of JS", "React"].map(badge => 
-                      <Chip key={badge} label={badge} color="primary" size="small" />
-                    )}
-                  </Box>
-                </Box>
-                <Box>
-                  <Typography variant="h6" gutterBottom>
-                    <CodeIcon sx={{ verticalAlign: 'middle', mr: 1 }} />
-                    Top Skills
-                  </Typography>
-                  <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
-                    {["React", "Javascript (Intermediate)", "CSS", "TypeScript", "Java"].map(skill => 
-                      <Chip key={skill} label={skill} variant="outlined" size="small" />
-                    )}
-                  </Box>
-                </Box>
-                <Box sx={{ textAlign: 'center', mt: 'auto' }}>
-                  <Button
-                    variant="contained"
-                    href="https://www.hackerrank.com/profile/hadijah315"
-                    target="_blank"
-                    endIcon={<LaunchIcon />}
-                    size="small"
-                  >
-                    View Full Profile
-                  </Button>
-                </Box>
-              </Box>
-            </Card>
-          </Box>
-        </Container>
-      </Box>
-
       {/* Contact Section */}
-      <Box id="contact" sx={{ py: 8 }}>
+      <Box id="contact" sx={{ py: { xs: 6, md: 9 } }}>
         <Container maxWidth="lg">
           <Typography 
             variant="h3" 
@@ -1132,7 +1205,7 @@ function Home() {
                 transform: 'translateX(-50%)',
                 width: 60,
                 height: 4,
-                background: `linear-gradient(90deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
+                background: theme.palette.secondary.main,
                 borderRadius: 2,
               }
             }}
@@ -1145,7 +1218,7 @@ function Home() {
                 variant="h6" 
                 gutterBottom
                 sx={{
-                  color: theme.palette.primary.main,
+                  color: theme.palette.text.primary,
                   fontWeight: 600,
                   mb: 2,
                 }}
@@ -1169,12 +1242,8 @@ function Home() {
                   <Typography>hadijahkyampeire@gmail.com</Typography>
                 </Box>
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-                  <PhoneIcon sx={{ color: theme.palette.secondary.main }} />
-                  <Typography>+1 (737) 363-8389</Typography>
-                </Box>
-                <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
                   <LocationIcon sx={{ color: theme.palette.secondary.main }} />
-                  <Typography>Fairfield, Iowa</Typography>
+                  <Typography>Austin, TX (CST) · Open to Germany / Canada relocation</Typography>
                 </Box>
               </Box>
             </Grid>
@@ -1183,7 +1252,7 @@ function Home() {
                 variant="h6" 
                 gutterBottom
                 sx={{
-                  color: theme.palette.primary.main,
+                  color: theme.palette.text.primary,
                   fontWeight: 600,
                   mb: 2,
                 }}
@@ -1216,7 +1285,7 @@ function Home() {
                   href="https://github.com/hadijahkyampeire"
                   target="_blank"
                   sx={{
-                    bgcolor: theme.palette.primary.main,
+                    bgcolor: theme.palette.text.primary,
                     color: 'white',
                     fontWeight: 600,
                     transition: 'all 0.3s ease',
@@ -1254,7 +1323,7 @@ function Home() {
                 variant="h6" 
                 gutterBottom
                 sx={{
-                  color: theme.palette.primary.main,
+                  color: theme.palette.text.primary,
                   fontWeight: 600,
                   mb: 2,
                 }}

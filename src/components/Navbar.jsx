@@ -34,14 +34,30 @@ const Navbar = ({ toggleTheme, isDark }) => {
   const location = useLocation();
 
   const navItems = [
-    { label: 'About', path: '/about', icon: <PersonIcon /> },
-    { label: 'Projects', path: '/projects', icon: <CodeIcon /> },
-    { label: 'Contact', path: '/contact', icon: <ContactIcon /> }
+    { label: 'About', sectionId: 'about', icon: <PersonIcon /> },
+    { label: 'Experience', sectionId: 'experience', icon: <CodeIcon /> },
+    { label: 'Community', sectionId: 'community', icon: <CodeIcon /> },
+    { label: 'Projects', sectionId: 'projects', icon: <CodeIcon /> },
+    { label: 'Contact', sectionId: 'contact', icon: <ContactIcon /> }
   ];
 
-  const handleNavigation = (path) => {
-    navigate(path);
+  const handleNavigation = (target) => {
     setMobileOpen(false);
+    if (target === '/') {
+      if (location.pathname !== '/') navigate('/');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
+    const scrollToId = () => {
+      const el = document.getElementById(target);
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    };
+    if (location.pathname !== '/') {
+      navigate('/');
+      setTimeout(scrollToId, 80);
+    } else {
+      scrollToId();
+    }
   };
 
   const handleDrawerToggle = () => {
@@ -92,14 +108,13 @@ const Navbar = ({ toggleTheme, isDark }) => {
           <ListItemText primary="Home" />
         </ListItem>
         {navItems.map((item) => (
-          <ListItem 
-            key={item.path} 
-            onClick={() => handleNavigation(item.path)}
+          <ListItem
+            key={item.sectionId}
+            onClick={() => handleNavigation(item.sectionId)}
             sx={{
               borderRadius: 1,
               mx: 1,
               mb: 1,
-              backgroundColor: location.pathname === item.path ? 'rgba(255, 255, 255, 0.1)' : 'transparent',
               '&:hover': {
                 backgroundColor: 'rgba(255, 255, 255, 0.05)',
                 transform: 'translateX(8px)',
@@ -119,31 +134,28 @@ const Navbar = ({ toggleTheme, isDark }) => {
 
   return (
     <>
-      <AppBar 
-        position="fixed" 
-        sx={{ 
+      <AppBar
+        position="fixed"
+        sx={{
           zIndex: theme.zIndex.drawer + 1,
-          background: `linear-gradient(135deg, ${theme.palette.primary.main}dd, ${theme.palette.primary.dark}dd)`,
-          backdropFilter: 'blur(10px)',
-          boxShadow: '0 4px 20px rgba(0, 0, 0, 0.1)',
-          borderBottom: `1px solid ${theme.palette.divider}`,
+          background: theme.palette.mode === 'dark'
+            ? 'rgba(11, 13, 16, 0.85)'
+            : 'rgba(15, 23, 42, 0.85)',
+          backdropFilter: 'blur(12px)',
+          boxShadow: 'none',
+          borderBottom: `1px solid ${theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.06)' : 'rgba(255,255,255,0.08)'}`,
         }}
       >
         <Toolbar sx={{ justifyContent: 'space-between' }}>
-          <Typography 
-            variant="h6" 
-            sx={{ 
+          <Typography
+            variant="h6"
+            sx={{
               cursor: 'pointer',
-              fontWeight: 'bold',
-              background: `linear-gradient(135deg, ${theme.palette.common.white}, ${theme.palette.secondary.light})`,
-              backgroundClip: 'text',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              transition: 'all 0.3s ease',
-              '&:hover': { 
-                opacity: 0.8,
-                transform: 'scale(1.05)',
-              }
+              fontWeight: 700,
+              color: '#fff',
+              letterSpacing: '-0.01em',
+              transition: 'opacity 0.15s ease',
+              '&:hover': { opacity: 0.8 }
             }}
             onClick={() => handleNavigation('/')}
           >
@@ -157,12 +169,11 @@ const Navbar = ({ toggleTheme, isDark }) => {
                 aria-label="open drawer"
                 edge="start"
                 onClick={handleDrawerToggle}
-                sx={{ 
+                sx={{
                   mr: 1,
-                  transition: 'all 0.3s ease',
+                  transition: 'background-color 0.15s ease',
                   '&:hover': {
                     backgroundColor: 'rgba(255, 255, 255, 0.1)',
-                    transform: 'rotate(90deg)',
                   }
                 }}
               >
@@ -172,10 +183,9 @@ const Navbar = ({ toggleTheme, isDark }) => {
                 color="inherit" 
                 onClick={toggleTheme}
                 sx={{
-                  transition: 'all 0.3s ease',
+                  transition: 'background-color 0.15s ease',
                   '&:hover': {
                     backgroundColor: 'rgba(255, 255, 255, 0.1)',
-                    transform: 'rotate(180deg)',
                   }
                 }}
               >
@@ -187,13 +197,11 @@ const Navbar = ({ toggleTheme, isDark }) => {
               <Button
                 color="inherit"
                 onClick={() => handleNavigation('/')}
-                sx={{ 
-                  transition: 'all 0.3s ease',
-                  '&:hover': { 
+                sx={{
+                  transition: 'background-color 0.15s ease',
+                  '&:hover': {
                     backgroundColor: 'rgba(255, 255, 255, 0.1)',
-                    transform: 'translateY(-2px)',
                   },
-                  backgroundColor: location.pathname === '/' ? 'rgba(255, 255, 255, 0.1)' : 'transparent',
                   borderRadius: 2,
                 }}
               >
@@ -201,16 +209,15 @@ const Navbar = ({ toggleTheme, isDark }) => {
               </Button>
               {navItems.map((item) => (
                 <Button
-                  key={item.path}
+                  key={item.sectionId}
                   color="inherit"
-                  onClick={() => handleNavigation(item.path)}
-                  sx={{ 
+                  onClick={() => handleNavigation(item.sectionId)}
+                  sx={{
                     transition: 'all 0.3s ease',
-                    '&:hover': { 
+                    '&:hover': {
                       backgroundColor: 'rgba(255, 255, 255, 0.1)',
                       transform: 'translateY(-2px)',
                     },
-                    backgroundColor: location.pathname === item.path ? 'rgba(255, 255, 255, 0.1)' : 'transparent',
                     borderRadius: 2,
                     position: 'relative',
                     '&::after': {
@@ -237,10 +244,9 @@ const Navbar = ({ toggleTheme, isDark }) => {
                 onClick={toggleTheme}
                 sx={{ 
                   ml: 1,
-                  transition: 'all 0.3s ease',
+                  transition: 'background-color 0.15s ease',
                   '&:hover': {
                     backgroundColor: 'rgba(255, 255, 255, 0.1)',
-                    transform: 'rotate(180deg)',
                   }
                 }}
               >
