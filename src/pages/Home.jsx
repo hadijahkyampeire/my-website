@@ -19,6 +19,8 @@ import {
   Email as EmailIcon,
   LocationOn as LocationIcon,
   Launch as LaunchIcon,
+  WhatsApp as WhatsAppIcon,
+  Sms as SmsIcon,
 } from '@mui/icons-material';
 import myPhoto from '../assets/omega.jpg';
 import ContactForm from '../components/ContactForm';
@@ -424,7 +426,7 @@ function Home() {
                 animation: 'slideUp 0.7s ease-out 0.25s both',
               }}
             >
-              Based in Austin, Texas · Open to senior roles in Germany, Canada, the EU, and remote-first teams · Eligible for EU Blue Card and Canada Express Entry.
+              Based in Austin, Texas · Work-authorized in the US (on-site, hybrid, or remote) · Open to Canada with sponsorship.
             </Typography>
 
             <Box
@@ -1233,8 +1235,7 @@ function Home() {
                   mb: 3,
                 }}
               >
-                I'm always interested in new opportunities and exciting projects.
-                Whether you have a question or just want to say hi, feel free to reach out!
+                Currently open to senior full-stack roles. I'm work-authorized in the US — on-site, hybrid, or remote all welcome. For Canada, I'm open to teams that can sponsor relocation. The fastest way to reach me is WhatsApp or text; email also works well.
               </Typography>
               <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
@@ -1243,7 +1244,7 @@ function Home() {
                 </Box>
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
                   <LocationIcon sx={{ color: theme.palette.secondary.main }} />
-                  <Typography>Austin, TX (CST) · Open to Germany / Canada relocation</Typography>
+                  <Typography>Austin, TX (CST) · US-authorized · Canada with sponsorship</Typography>
                 </Box>
               </Box>
             </Grid>
@@ -1259,44 +1260,45 @@ function Home() {
               >
                 Connect With Me
               </Typography>
-              <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+              <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.5 }}>
                 <Button
                   variant="contained"
-                  startIcon={<LinkedInIcon />}
-                  href="https://www.linkedin.com/in/hadijah-kyampeire-418900141/"
+                  startIcon={<WhatsAppIcon />}
+                  href="https://wa.me/17373638389?text=Hi%20Hadijah%2C%20I%20saw%20your%20portfolio%20and%20wanted%20to%20connect."
                   target="_blank"
+                  rel="noopener noreferrer"
                   sx={{
-                    bgcolor: theme.palette.secondary.main,
-                    color: 'white',
+                    bgcolor: '#25D366',
+                    color: '#fff',
                     fontWeight: 600,
-                    transition: 'all 0.3s ease',
-                    '&:hover': {
-                      bgcolor: theme.palette.secondary.dark,
-                      transform: 'translateY(-2px)',
-                      boxShadow: '0 8px 25px rgba(234, 88, 12, 0.4)',
-                    }
+                    justifyContent: 'flex-start',
+                    px: 2.5,
+                    py: 1.25,
+                    '&:hover': { bgcolor: '#1ebe57' }
                   }}
                 >
-                  LinkedIn
+                  WhatsApp me
                 </Button>
                 <Button
-                  variant="contained"
-                  startIcon={<GitHubIcon />}
-                  href="https://github.com/hadijahkyampeire"
-                  target="_blank"
+                  variant="outlined"
+                  startIcon={<SmsIcon />}
+                  href="sms:+17373638389?body=Hi%20Hadijah%2C%20I%20saw%20your%20portfolio."
                   sx={{
-                    bgcolor: theme.palette.text.primary,
-                    color: 'white',
+                    borderColor: theme.palette.divider,
+                    color: theme.palette.text.primary,
                     fontWeight: 600,
-                    transition: 'all 0.3s ease',
+                    justifyContent: 'flex-start',
+                    px: 2.5,
+                    py: 1.25,
                     '&:hover': {
-                      bgcolor: theme.palette.primary.dark,
-                      transform: 'translateY(-2px)',
-                      boxShadow: '0 8px 25px rgba(30, 58, 138, 0.4)',
+                      borderColor: theme.palette.text.primary,
+                      bgcolor: theme.palette.mode === 'dark'
+                        ? 'rgba(255,255,255,0.04)'
+                        : 'rgba(15,23,42,0.04)',
                     }
                   }}
                 >
-                  GitHub
+                  Text me (SMS)
                 </Button>
                 <Button
                   variant="contained"
@@ -1304,17 +1306,61 @@ function Home() {
                   href="mailto:hadijahkyampeire@gmail.com"
                   sx={{
                     bgcolor: theme.palette.secondary.main,
-                    color: 'white',
+                    color: '#fff',
                     fontWeight: 600,
-                    transition: 'all 0.3s ease',
-                    '&:hover': {
-                      bgcolor: theme.palette.secondary.dark,
-                      transform: 'translateY(-2px)',
-                      boxShadow: '0 8px 25px rgba(234, 88, 12, 0.4)',
-                    }
+                    justifyContent: 'flex-start',
+                    px: 2.5,
+                    py: 1.25,
+                    '&:hover': { bgcolor: theme.palette.secondary.dark }
                   }}
                 >
                   Email
+                </Button>
+                <Button
+                  variant="outlined"
+                  startIcon={<LinkedInIcon />}
+                  href="https://www.linkedin.com/in/hadijahkyampeire/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  sx={{
+                    borderColor: theme.palette.divider,
+                    color: theme.palette.text.primary,
+                    fontWeight: 600,
+                    justifyContent: 'flex-start',
+                    px: 2.5,
+                    py: 1.25,
+                    '&:hover': {
+                      borderColor: theme.palette.text.primary,
+                      bgcolor: theme.palette.mode === 'dark'
+                        ? 'rgba(255,255,255,0.04)'
+                        : 'rgba(15,23,42,0.04)',
+                    }
+                  }}
+                >
+                  LinkedIn
+                </Button>
+                <Button
+                  variant="outlined"
+                  startIcon={<GitHubIcon />}
+                  href="https://github.com/hadijahkyampeire"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  sx={{
+                    borderColor: theme.palette.divider,
+                    color: theme.palette.text.primary,
+                    fontWeight: 600,
+                    justifyContent: 'flex-start',
+                    px: 2.5,
+                    py: 1.25,
+                    '&:hover': {
+                      borderColor: theme.palette.text.primary,
+                      bgcolor: theme.palette.mode === 'dark'
+                        ? 'rgba(255,255,255,0.04)'
+                        : 'rgba(15,23,42,0.04)',
+                    }
+                  }}
+                >
+                  GitHub
                 </Button>
               </Box>
             </Grid>
