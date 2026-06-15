@@ -189,7 +189,7 @@ const Navbar = ({ toggleTheme, isDark }) => {
                   }
                 }}
               >
-                {isDark ? <Brightness7 /> : <Brightness4 />}
+                {isDark ? <Brightness7 sx={{ fontSize: 26 }} /> : <Brightness4 sx={{ fontSize: 26 }} />}
               </IconButton>
             </Box>
           ) : (
@@ -250,7 +250,7 @@ const Navbar = ({ toggleTheme, isDark }) => {
                   }
                 }}
               >
-                {isDark ? <Brightness7 /> : <Brightness4 />}
+                {isDark ? <Brightness7 sx={{ fontSize: 26 }} /> : <Brightness4 sx={{ fontSize: 26 }} />}
               </IconButton>
             </Box>
           )}

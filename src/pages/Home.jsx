@@ -48,6 +48,18 @@ import sigmaImg4 from '../assets/sigma-app/dashboardReport.png';
 import ExperienceItem from "../components/ExperienceItem";
 import CVButton from "../components/CVButton";
 
+// Zifah Voyages (live travel platform) screenshots
+import zifahHero from '../assets/zifah-voyages/zifah-3.jpg';
+import zifahPackages from '../assets/zifah-voyages/zifah-2.jpg';
+import zifahFixtures from '../assets/zifah-voyages/zifah-1.jpg';
+import zifahPartners from '../assets/zifah-voyages/zifah-4.jpg';
+
+// MixedTrips (live safari/wildlife travel platform) screenshots
+import mixedHero from '../assets/mixedtrips/mixedtrips-hero.jpg';
+import mixedItineraries from '../assets/mixedtrips/mixedtrips-itineraries.jpg';
+import mixedDestinations from '../assets/mixedtrips/mixedtrips-destinations.jpg';
+import mixedMap from '../assets/mixedtrips/mixedtrips-map.jpg';
+
 function Home() {
   const theme = useTheme();
   const stack = {
@@ -79,17 +91,18 @@ function Home() {
   {
     company: "PayPal",
     companyContext: "Consumer fintech · NASDAQ: PYPL · ~430M+ active accounts globally. The Pay Later product family (Pay in 4, Pay Monthly) is embedded in millions of merchant checkouts.",
-    role: "Full Stack Software Engineer · Buy Now, Pay Later · Contract via Insight Global",
+    role: "Full Stack Software Engineer · Buy Now, Pay Later · via Insight Global",
     location: "Austin, TX (Hybrid)",
     duration: "October 2025 – Present",
     bullets: [
-      "Full-stack engineering on PayPal's Pay Later product family — Pay in 4 (interest-free 4-payment splits up to $1,500) and Pay Monthly (3 / 6 / 12 / 24-month installments via WebBank) — across the US, UK, EU, AU, and CA markets.",
-      "Co-led the 'New To PayPal' (NTPP) onboarding launch for the US market: redesigned the orchestration between checkout and credit-application services, replacing chains of client-side REST calls with consolidated backend endpoints. Shipped publicly and improved the responsiveness of the onboarding funnel.",
-      "Built GraphQL schemas and resolvers on the BNPL experience layer (Apollo Server + Express, Backend-for-Frontend pattern), aggregating credit-application, risk-evaluation, offer, and user-profile services behind a unified endpoint — used to support the Australian Pay Later market migration.",
-      "Standardized Postman workspaces and environment-driven API collections for REST and GraphQL endpoints, organized by country and product — used daily by engineers across the BNPL stack to validate complex multi-step flows.",
-      "Established centralized Confluence documentation and Slack-channel patterns for cross-team knowledge sharing, lifting onboarding speed for engineers new to the BNPL platform."
+      "Sole engineering owner of the US 'New To PayPal' (NTPP) Spinwheel prefill onboarding experience after launch — leading production support, issue triage, stakeholder communication, and incident resolution for a customer-facing flow.",
+      "Delivered frontend and backend for Nova Credit Open Banking initiatives across Pay in 4 and Pay Monthly, enabling secure bank-account linking and a smoother credit-onboarding experience.",
+      "Owned production releases end-to-end — QA validation, monitoring, rollback decisions, and post-release verification — for customer-facing credit-decisioning services.",
+      "Used Datadog and Real User Monitoring (RUM) to proactively detect, investigate, and resolve production issues, measurably improving platform stability.",
+      "Built GraphQL schemas and resolvers on the BNPL experience layer (Apollo Server + Express, Backend-for-Frontend pattern), aggregating credit-application, risk, offer, and user-profile services behind one endpoint — supporting the Australian Pay Later market migration.",
+      "Authored shared Postman collections and environment-driven API workspaces (organized by country and product) used daily by engineers across the BNPL stack to validate multi-step REST and GraphQL flows."
     ],
-    technologies: ["React", "TypeScript", "Node.js", "GraphQL", "Apollo Server", "Express", "Microservices", "BFF Pattern", "REST APIs", "CI/CD"]
+    technologies: ["React", "TypeScript", "Node.js", "GraphQL", "Apollo Server", "Express", "Datadog", "RUM", "Microservices", "BFF Pattern", "CI/CD"]
   },
 
   // Skye
@@ -130,7 +143,7 @@ function Home() {
   // Andela – Client - Sigma360 (combined: Software Engineer → Senior, 5y 7m)
   {
     company: "Sigma360",
-    companyContext: "AI-powered financial crime prevention and risk-intelligence platform — customers include Stripe and other major banks, payments firms, and fintechs. Now protects $2T+ in customer assets. Founded by former US Treasury / National Counterterrorism Center leadership. Raised $17.3M Series B in March 2026; profitable since 2025.",
+    companyContext: "AI-powered financial-crime prevention and risk-intelligence platform used by Stripe and other major banks, payments firms, and fintechs — covering AML / watchlist screening, perpetual KYC, adverse-media monitoring, counterparty risk, and entity due diligence. Founded by former US national-security leadership.",
     role: "Senior Software Engineer (promoted from Software Engineer, 2020) · Andela placement",
     location: "New York, NY (Remote)",
     duration: "October 2018 – April 2024 · 5 yrs 7 mos",
@@ -165,6 +178,22 @@ function Home() {
 
 
   const projects = [
+    {
+      title: "Zifah Voyages — Global Sports & Event Travel Platform",
+      description: "Founder and principal engineer of a live travel-booking platform for major sporting events (FIFA World Cup 2026, Commonwealth Games). Built as a Next.js App Router storefront over a shared TypeScript monorepo, with live fixtures and group standings, tiered city packages, a build-your-trip flow, and Stripe/PayPal checkout. The same platform powers a second brand (MixedTrips) via per-domain payment routing — deploy once, serve two fully-branded sites. Backed by a Java/Spring Boot + PostgreSQL API, Duffel hotel supplier integration, AWS S3 media, and Playwright E2E across all apps.",
+      technologies: ["Next.js", "React 19", "TypeScript", "Java / Spring Boot", "PostgreSQL", "Stripe", "PayPal", "AWS S3", "Duffel", "GA4"],
+      github: "",
+      live: "https://zifahvoyages.com",
+      images: [zifahHero, zifahPackages, zifahFixtures, zifahPartners]
+    },
+    {
+      title: "MixedTrips — Tailor-Made African Safari Platform",
+      description: "A live, tailor-made safari and wildlife travel platform (Uganda gorilla treks, the Great Migration, Victoria Falls) built on the same multi-brand monorepo as Zifah Voyages. Features hand-built itineraries with luxury pricing tiers, an interactive Africa destinations map, a build-your-safari flow, multi-currency and multi-language support, and Stripe/PayPal checkout over a Java/Spring Boot + PostgreSQL API. Demonstrates true multi-tenancy: one shared atomic-design component library serves both brands, with payments, analytics, and branding selected by domain at request time — adding another brand is mostly configuration, not a new codebase.",
+      technologies: ["Next.js", "React 19", "TypeScript", "TanStack Query", "Java / Spring Boot", "PostgreSQL", "Stripe", "PayPal", "AWS S3", "i18n"],
+      github: "",
+      live: "https://mixedtrips.com",
+      images: [mixedHero, mixedItineraries, mixedDestinations, mixedMap]
+    },
     {
       title: "OpenMRS Clinical Views & Form Builder (METS Program)",
       description: "Architected a reusable JSON schema-based UI workflow framework for OpenMRS HIV Reference Implementation. This included creating dynamic clinical views and a drag-and-drop form builder to empower clinicians, significantly reducing code duplication and form creation time.",
@@ -226,9 +255,8 @@ function Home() {
       return () => clearInterval(timer);
     }, [project.images]);
 
-    const projectImage = project.images && project.images.length > 0
-      ? project.images[currentImageIndex]
-      : 'https://via.placeholder.com/400x240';
+    const hasImages = project.images && project.images.length > 0;
+    const projectImage = hasImages ? project.images[currentImageIndex] : null;
 
     return (
       <Card 
@@ -253,19 +281,45 @@ function Home() {
           }
         }}
       >
-        <Box
-          sx={{
-            width: { xs: '100%', md: '45%' },
-            minHeight: { xs: 300, md: 'auto' },
-            backgroundImage: `url(${projectImage})`,
-            backgroundSize: 'contain',
-            backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat',
-            transition: 'background-image 0.5s ease-in-out',
-            backgroundColor: 'rgba(0, 0, 0, 0.04)',
-            borderRight: { md: `1px solid ${theme.palette.divider}` },
-          }}
-        />
+        {hasImages ? (
+          <Box
+            sx={{
+              width: { xs: '100%', md: '45%' },
+              minHeight: { xs: 300, md: 'auto' },
+              backgroundImage: `url(${projectImage})`,
+              backgroundSize: 'contain',
+              backgroundPosition: 'center',
+              backgroundRepeat: 'no-repeat',
+              transition: 'background-image 0.5s ease-in-out',
+              backgroundColor: 'rgba(0, 0, 0, 0.04)',
+              borderRight: { md: `1px solid ${theme.palette.divider}` },
+            }}
+          />
+        ) : (
+          <Box
+            sx={{
+              width: { xs: '100%', md: '45%' },
+              minHeight: { xs: 220, md: 'auto' },
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: 1,
+              p: 4,
+              textAlign: 'center',
+              color: '#fff',
+              background: 'linear-gradient(135deg, #1a2960 0%, #0f172a 100%)',
+              borderRight: { md: `1px solid ${theme.palette.divider}` },
+            }}
+          >
+            <Typography sx={{ fontWeight: 800, fontSize: '1.75rem', letterSpacing: '-0.02em', lineHeight: 1.1 }}>
+              {project.title.split('—')[0].trim()}
+            </Typography>
+            <Typography variant="caption" sx={{ color: theme.palette.secondary.main, fontWeight: 700, letterSpacing: 2, textTransform: 'uppercase' }}>
+              Live · Same platform, second brand
+            </Typography>
+          </Box>
+        )}
         <Box sx={{ flex: 1, p: 3, display: 'flex', flexDirection: 'column' }}>
           <CardContent sx={{ flexGrow: 1, p: 0, pb: 2 }}>
             <Typography 
@@ -309,38 +363,55 @@ function Home() {
               ))}
             </Box>
           </CardContent>
-          <CardActions sx={{ p: 0 }}>
-            <IconButton 
-              href={project.github} 
-              target="_blank" 
-              size="small" 
-              sx={{
-                color: theme.palette.text.primary,
-                transition: 'all 0.3s ease',
-                '&:hover': {
-                  color: theme.palette.secondary.main,
-                  transform: 'scale(1.1)',
-                }
-              }}
-            >
-              <GitHubIcon />
-            </IconButton>
+          <CardActions sx={{ p: 0, gap: 1.5 }}>
             {project.live && (
-              <IconButton 
-                href={project.live} 
-                target="_blank" 
-                size="small"
+              <Button
+                href={project.live}
+                target="_blank"
+                rel="noopener noreferrer"
+                variant="contained"
+                endIcon={<LaunchIcon />}
                 sx={{
-                  color: theme.palette.text.primary,
-                  transition: 'all 0.3s ease',
-                  '&:hover': {
-                    color: theme.palette.secondary.main,
-                    transform: 'scale(1.1)',
-                  }
+                  bgcolor: theme.palette.secondary.main,
+                  color: '#fff',
+                  fontWeight: 600,
+                  fontSize: '0.95rem',
+                  textTransform: 'none',
+                  px: 2.5,
+                  py: 1,
+                  '& .MuiSvgIcon-root': { fontSize: 20 },
+                  '&:hover': { bgcolor: theme.palette.secondary.dark },
                 }}
               >
-                <LaunchIcon />
-              </IconButton>
+                Visit site
+              </Button>
+            )}
+            {project.github && (
+              <Button
+                href={project.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                variant="outlined"
+                startIcon={<GitHubIcon />}
+                aria-label={`${project.title} GitHub repository`}
+                sx={{
+                  color: theme.palette.text.primary,
+                  borderColor: theme.palette.divider,
+                  fontWeight: 600,
+                  fontSize: '0.95rem',
+                  textTransform: 'none',
+                  px: 2.5,
+                  py: 1,
+                  '& .MuiSvgIcon-root': { fontSize: 22 },
+                  '&:hover': {
+                    borderColor: theme.palette.secondary.main,
+                    color: theme.palette.secondary.main,
+                    bgcolor: 'transparent',
+                  },
+                }}
+              >
+                Code
+              </Button>
             )}
           </CardActions>
         </Box>
@@ -413,7 +484,7 @@ function Home() {
                 animation: 'slideUp 0.7s ease-out 0.15s both',
               }}
             >
-              I'm <Box component="strong" sx={{ color: '#fff', fontWeight: 700 }}>Hadijah Kyampeire</Box>, a senior full-stack engineer currently building on <Box component="strong" sx={{ color: '#fff', fontWeight: 700 }}>PayPal's Buy Now, Pay Later</Box> platform. Seven years across consumer fintech, B2B risk analytics, and clinical informatics — with deep work in React architecture, GraphQL, design systems, and CI/CD on AWS.
+              I'm <Box component="strong" sx={{ color: '#fff', fontWeight: 700 }}>Hadijah Kyampeire</Box>, a senior full-stack engineer building onboarding and credit-decisioning on <Box component="strong" sx={{ color: '#fff', fontWeight: 700 }}>PayPal's Buy Now, Pay Later</Box> platform — where I own a customer-facing onboarding flow end-to-end. Eight years across consumer fintech, B2B risk analytics, and clinical informatics, and the <Box component="strong" sx={{ color: '#fff', fontWeight: 700 }}>founder-engineer behind two live travel-booking platforms</Box> (Java, Next.js, Stripe/PayPal, AWS).
             </Typography>
 
             <Typography
@@ -582,7 +653,7 @@ function Home() {
                   color: theme.palette.text.secondary,
                 }}
               >
-                I'm a senior full-stack engineer with seven years across regulated software — consumer fintech, B2B risk analytics, and clinical informatics. I currently work on PayPal's Buy Now, Pay Later platform.
+                I'm a senior full-stack engineer with eight years across regulated software — consumer fintech, B2B risk analytics, and clinical informatics. I currently build on PayPal's Buy Now, Pay Later platform, where I own a customer-facing onboarding experience end-to-end. On the side, I founded and operate two production travel-booking platforms (Zifah Voyages and MixedTrips) on Java, Next.js, and AWS — payments, admin, and infrastructure included.
               </Typography>
               <Typography
                 variant="h6"
