@@ -79,7 +79,7 @@ const ExperienceItem = ({ exp, index }) => {
           variant="body2"
           sx={{
             fontWeight: 600,
-            color: theme.palette.secondary.main,
+            color: theme.palette.accent.text,
             whiteSpace: "nowrap",
             mt: { xs: 0.5, md: 0 },
           }}
@@ -139,7 +139,7 @@ const ExperienceItem = ({ exp, index }) => {
           {visibleBullets.map((b, i) => (
             <ListItem key={i} disableGutters alignItems="flex-start" sx={{ mb: 1.25 }}>
               <ListItemIcon sx={{ minWidth: 28, mt: "3px" }}>
-                <CheckCircleOutlineIcon fontSize="small" sx={{ color: theme.palette.secondary.main }} />
+                <CheckCircleOutlineIcon fontSize="small" sx={{ color: theme.palette.accent.text }} />
               </ListItemIcon>
               <ListItemText
                 primary={b}
@@ -168,7 +168,7 @@ const ExperienceItem = ({ exp, index }) => {
             fontWeight: 600,
             px: 1.25,
             borderRadius: 1,
-            color: theme.palette.secondary.main,
+            color: theme.palette.accent.text,
             "&:hover": {
               bgcolor:
                 theme.palette.mode === "dark"

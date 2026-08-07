@@ -1,5 +1,5 @@
 import React from "react";
-import { Button } from "@mui/material";
+import { Button, useTheme } from "@mui/material";
 import PictureAsPdfIcon from "@mui/icons-material/PictureAsPdf";
 
 const CV_URL =
@@ -16,6 +16,12 @@ const openCV = (e) => {
 };
 
 export default function CVButton() {
+  const theme = useTheme();
+  const isDark = theme.palette.mode === "dark";
+  // The hero is light in light mode, so the outline can't be white-on-white.
+  const outline = isDark ? "rgba(255,255,255,0.3)" : theme.palette.primary.main;
+  const label = isDark ? "#fff" : theme.palette.primary.main;
+
   return (
     <Button
       variant="contained"
@@ -32,19 +38,19 @@ export default function CVButton() {
         borderRadius: 1,
         fontWeight: 600,
         textTransform: "none",
-        color: "#fff",
+        color: label,
         backgroundColor: "transparent",
-        border: "1px solid rgba(255,255,255,0.3)",
+        border: `1px solid ${outline}`,
         boxShadow: "none",
         transition: "background-color 0.15s ease, border-color 0.15s ease",
         "&:hover": {
-          backgroundColor: "rgba(255,255,255,0.05)",
-          borderColor: "#fff",
+          backgroundColor: isDark ? "rgba(255,255,255,0.05)" : "rgba(30,58,138,0.06)",
+          borderColor: isDark ? "#fff" : theme.palette.primary.dark,
           boxShadow: "none",
         },
         "&:focus-visible": {
           outline: "2px solid",
-          outlineColor: "rgba(255,255,255,0.6)",
+          outlineColor: isDark ? "rgba(255,255,255,0.6)" : theme.palette.primary.main,
           outlineOffset: 2,
         },
       }}

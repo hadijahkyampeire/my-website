@@ -32,6 +32,10 @@ const Navbar = ({ toggleTheme, isDark }) => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
+  const isDarkMode = theme.palette.mode === 'dark';
+  // Nav sits on a light surface in light mode, so hover tints must be dark-on-light.
+  const hoverTint = isDarkMode ? 'rgba(255,255,255,0.08)' : 'rgba(15,23,42,0.06)';
+  const navTextColor = isDarkMode ? '#ffffff' : theme.palette.primary.main;
 
   const navItems = [
     { label: 'About', sectionId: 'about', icon: <PersonIcon /> },
@@ -94,9 +98,9 @@ const Navbar = ({ toggleTheme, isDark }) => {
             borderRadius: 1,
             mx: 1,
             mb: 1,
-            backgroundColor: location.pathname === '/' ? 'rgba(255, 255, 255, 0.1)' : 'transparent',
+            backgroundColor: location.pathname === '/' ? hoverTint : 'transparent',
             '&:hover': {
-              backgroundColor: 'rgba(255, 255, 255, 0.05)',
+              backgroundColor: hoverTint,
               transform: 'translateX(8px)',
               transition: 'all 0.3s ease',
             }
@@ -116,7 +120,7 @@ const Navbar = ({ toggleTheme, isDark }) => {
               mx: 1,
               mb: 1,
               '&:hover': {
-                backgroundColor: 'rgba(255, 255, 255, 0.05)',
+                backgroundColor: hoverTint,
                 transform: 'translateX(8px)',
                 transition: 'all 0.3s ease',
               }
@@ -138,12 +142,13 @@ const Navbar = ({ toggleTheme, isDark }) => {
         position="fixed"
         sx={{
           zIndex: theme.zIndex.drawer + 1,
-          background: theme.palette.mode === 'dark'
+          background: isDarkMode
             ? 'rgba(11, 13, 16, 0.85)'
-            : 'rgba(15, 23, 42, 0.85)',
+            : 'rgba(255, 255, 255, 0.88)',
           backdropFilter: 'blur(12px)',
           boxShadow: 'none',
-          borderBottom: `1px solid ${theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.06)' : 'rgba(255,255,255,0.08)'}`,
+          color: navTextColor,
+          borderBottom: `1px solid ${isDarkMode ? 'rgba(255,255,255,0.06)' : theme.palette.divider}`,
         }}
       >
         <Toolbar sx={{ justifyContent: 'space-between' }}>
@@ -152,7 +157,7 @@ const Navbar = ({ toggleTheme, isDark }) => {
             sx={{
               cursor: 'pointer',
               fontWeight: 700,
-              color: '#fff',
+              color: navTextColor,
               letterSpacing: '-0.01em',
               transition: 'opacity 0.15s ease',
               '&:hover': { opacity: 0.8 }
@@ -173,7 +178,7 @@ const Navbar = ({ toggleTheme, isDark }) => {
                   mr: 1,
                   transition: 'background-color 0.15s ease',
                   '&:hover': {
-                    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                    backgroundColor: hoverTint,
                   }
                 }}
               >
@@ -185,7 +190,7 @@ const Navbar = ({ toggleTheme, isDark }) => {
                 sx={{
                   transition: 'background-color 0.15s ease',
                   '&:hover': {
-                    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                    backgroundColor: hoverTint,
                   }
                 }}
               >
@@ -200,7 +205,7 @@ const Navbar = ({ toggleTheme, isDark }) => {
                 sx={{
                   transition: 'background-color 0.15s ease',
                   '&:hover': {
-                    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                    backgroundColor: hoverTint,
                   },
                   borderRadius: 2,
                 }}
@@ -215,7 +220,7 @@ const Navbar = ({ toggleTheme, isDark }) => {
                   sx={{
                     transition: 'all 0.3s ease',
                     '&:hover': {
-                      backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                      backgroundColor: hoverTint,
                       transform: 'translateY(-2px)',
                     },
                     borderRadius: 2,
@@ -246,7 +251,7 @@ const Navbar = ({ toggleTheme, isDark }) => {
                   ml: 1,
                   transition: 'background-color 0.15s ease',
                   '&:hover': {
-                    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                    backgroundColor: hoverTint,
                   }
                 }}
               >

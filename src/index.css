@@ -6,21 +6,22 @@
   --primary-navy-dark: #0f172a;
   --secondary-orange: #ea580c;
   --secondary-orange-light: #fb923c;
+  /* Accent used for text — AA-contrast variant (5.2:1 on white) */
   --secondary-orange-dark: #c2410c;
   --background-light: #ffffff;
-  --background-paper-light: #f8fafc;
-  --text-primary-light: #1e293b;
-  --text-secondary-light: #64748b;
+  --background-paper-light: #f4f7fc;
+  --text-primary-light: #121417;
+  --text-secondary-light: #3d4148;
   --divider-light: #e2e8f0;
-  
-  /* Dark Mode Colors */
-  --primary-black: #000000;
-  --primary-black-light: #1a1a1a;
-  --background-dark: #000000;
-  --background-paper-dark: #0a0a0a;
-  --text-primary-dark: #ffffff;
+
+  /* Dark Mode Colors — kept in sync with theme.js */
+  --primary-black: #0b0d10;
+  --primary-black-light: #1a1d24;
+  --background-dark: #0b0d10;
+  --background-paper-dark: #111418;
+  --text-primary-dark: #e8e8ea;
   --text-secondary-dark: #a1a1aa;
-  --divider-dark: #27272a;
+  --divider-dark: rgba(255, 255, 255, 0.08);
   
   /* Animation Variables */
   --transition-fast: 0.2s ease;
@@ -50,9 +51,13 @@
 
 /* Dark Mode Override */
 [data-theme="dark"] {
-  --primary-navy: var(--primary-black);
-  --primary-navy-light: var(--primary-black-light);
-  --primary-navy-dark: var(--primary-black);
+  /* Headings/links must stay legible on dark surfaces, so they go light —
+     the near-black brand color moves to the background tokens instead. */
+  --primary-navy: #e8e8ea;
+  --primary-navy-light: #ffffff;
+  --primary-navy-dark: #c7c7cc;
+  --secondary-orange: #fb923c;
+  --secondary-orange-dark: #fdba74;
   --background-light: var(--background-dark);
   --background-paper-light: var(--background-paper-dark);
   --text-primary-light: var(--text-primary-dark);

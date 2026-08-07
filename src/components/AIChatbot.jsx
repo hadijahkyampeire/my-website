@@ -182,13 +182,20 @@ const AIChatbot = () => {
                 )}
                 
                 <Paper
-                  sx={{
+                  elevation={0}
+                  sx={(t) => ({
                     p: 2,
                     maxWidth: '70%',
-                    bgcolor: message.sender === 'user' ? 'primary.main' : 'grey.100',
-                    color: message.sender === 'user' ? 'white' : 'text.primary',
+                    textAlign: 'left',
+                    // grey.100 is near-white in both modes, so bot bubbles used to
+                    // vanish against dark-mode text — key off the mode instead.
+                    bgcolor: message.sender === 'user'
+                      ? (t.palette.mode === 'dark' ? '#262a32' : t.palette.primary.main)
+                      : (t.palette.mode === 'dark' ? 'rgba(255,255,255,0.06)' : '#f1f5f9'),
+                    color: message.sender === 'user' ? '#fff' : 'text.primary',
+                    border: message.sender === 'user' ? 'none' : `1px solid ${t.palette.divider}`,
                     borderRadius: 2,
-                  }}
+                  })}
                 >
                   <Typography variant="body2">{message.text}</Typography>
                   <Typography 
@@ -219,7 +226,15 @@ const AIChatbot = () => {
                 <Avatar sx={{ width: 32, height: 32, bgcolor: 'primary.main' }}>
                   <BotIcon fontSize="small" />
                 </Avatar>
-                <Paper sx={{ p: 2, bgcolor: 'grey.100', borderRadius: 2 }}>
+                <Paper
+                  elevation={0}
+                  sx={(t) => ({
+                    p: 2,
+                    bgcolor: t.palette.mode === 'dark' ? 'rgba(255,255,255,0.06)' : '#f1f5f9',
+                    border: `1px solid ${t.palette.divider}`,
+                    borderRadius: 2,
+                  })}
+                >
                   <CircularProgress size={20} />
                 </Paper>
               </Box>
@@ -245,16 +260,18 @@ const AIChatbot = () => {
                       size="small"
                       variant="outlined"
                       onClick={() => handleSendMessage(question)}
-                      sx={{
+                      sx={(t) => ({
                         cursor: 'pointer',
-                        borderColor: 'secondary.main',
-                        color: 'secondary.main',
-                        transition: 'all 0.3s ease',
+                        borderColor: t.palette.accent.softBorder,
+                        backgroundColor: t.palette.accent.soft,
+                        color: t.palette.accent.text,
+                        fontWeight: 500,
+                        transition: 'background-color 0.15s ease, color 0.15s ease',
                         '&:hover': {
-                          transform: 'translateY(-2px)',
-                          boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
+                          backgroundColor: t.palette.accent.text,
+                          color: t.palette.mode === 'dark' ? '#0b0d10' : '#fff',
                         }
-                      }}
+                      })}
                     />
                   ))}
                 </Box>

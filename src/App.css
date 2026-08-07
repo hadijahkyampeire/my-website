@@ -1,10 +1,9 @@
 #root {
   width: 100%;
   margin: 0 auto;
-  text-align: center;
   min-height: 100vh;
-  background: linear-gradient(135deg, var(--background-light) 0%, var(--background-paper-light) 100%);
-  transition: background var(--transition-normal);
+  background-color: var(--background-light);
+  transition: background-color var(--transition-normal);
 }
 
 /* Logo Styles with Enhanced Animations */
@@ -237,62 +236,13 @@
 
 
 
-
-/* Additional cursor overrides for all possible elements */
+/* Interactive elements get a normal pointer cursor */
 a,
 button,
-input,
-textarea,
-select,
 [role="button"],
 [role="link"],
 [role="menuitem"],
 [role="tab"],
-[role="option"],
-div,
-span,
-p,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-img,
-svg,
-path,
-rect,
-circle,
-polygon {
-  cursor: none !important;
+[role="option"] {
+  cursor: pointer;
 }
-
-a:hover,
-button:hover,
-input:hover,
-textarea:hover,
-select:hover,
-[role="button"]:hover,
-[role="link"]:hover,
-[role="menuitem"]:hover,
-[role="tab"]:hover,
-[role="option"]:hover,
-div:hover,
-span:hover,
-p:hover,
-h1:hover,
-h2:hover,
-h3:hover,
-h4:hover,
-h5:hover,
-h6:hover,
-img:hover,
-svg:hover,
-path:hover,
-rect:hover,
-circle:hover,
-polygon:hover {
-  cursor: none !important;
-}
-
-/* Keep custom cursor on all screen sizes */

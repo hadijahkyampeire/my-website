@@ -55,10 +55,12 @@ export default function ContactForm() {
         borderRadius: 2,
         backgroundColor: theme.palette.background.paper,
         border: `1px solid ${theme.palette.divider}`,
-        transition: 'all 0.3s ease',
+        transition: 'border-color 0.15s ease, box-shadow 0.15s ease',
         '&:hover': {
-          boxShadow: '0 8px 25px rgba(0, 0, 0, 0.1)',
-          transform: 'translateY(-2px)',
+          borderColor: theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.18)' : '#cbd5e1',
+          boxShadow: theme.palette.mode === 'dark'
+            ? 'none'
+            : '0 1px 2px rgba(15,23,42,0.04), 0 12px 32px rgba(15,23,42,0.07)',
         }
       }}
     >
@@ -101,17 +103,17 @@ export default function ContactForm() {
             transition: 'all 0.3s ease',
             '&:hover': {
               '& .MuiOutlinedInput-notchedOutline': {
-                borderColor: theme.palette.secondary.main,
+                borderColor: theme.palette.accent.main,
               }
             },
             '&.Mui-focused': {
               '& .MuiOutlinedInput-notchedOutline': {
-                borderColor: theme.palette.secondary.main,
+                borderColor: theme.palette.accent.main,
               }
             }
           },
           '& .MuiInputLabel-root.Mui-focused': {
-            color: theme.palette.secondary.main,
+            color: theme.palette.accent.main,
           }
         }}
       />
@@ -127,17 +129,17 @@ export default function ContactForm() {
             transition: 'all 0.3s ease',
             '&:hover': {
               '& .MuiOutlinedInput-notchedOutline': {
-                borderColor: theme.palette.secondary.main,
+                borderColor: theme.palette.accent.main,
               }
             },
             '&.Mui-focused': {
               '& .MuiOutlinedInput-notchedOutline': {
-                borderColor: theme.palette.secondary.main,
+                borderColor: theme.palette.accent.main,
               }
             }
           },
           '& .MuiInputLabel-root.Mui-focused': {
-            color: theme.palette.secondary.main,
+            color: theme.palette.accent.main,
           }
         }}
       />
@@ -155,17 +157,17 @@ export default function ContactForm() {
             transition: 'all 0.3s ease',
             '&:hover': {
               '& .MuiOutlinedInput-notchedOutline': {
-                borderColor: theme.palette.secondary.main,
+                borderColor: theme.palette.accent.main,
               }
             },
             '&.Mui-focused': {
               '& .MuiOutlinedInput-notchedOutline': {
-                borderColor: theme.palette.secondary.main,
+                borderColor: theme.palette.accent.main,
               }
             }
           },
           '& .MuiInputLabel-root.Mui-focused': {
-            color: theme.palette.secondary.main,
+            color: theme.palette.accent.main,
           }
         }}
       />
@@ -174,16 +176,15 @@ export default function ContactForm() {
         variant="contained" 
         disabled={loading}
         sx={{
-          bgcolor: theme.palette.secondary.main,
-          color: 'white',
+          bgcolor: theme.palette.accent.main,
+          color: theme.palette.mode === 'dark' ? '#0b0d10' : '#fff',
           fontWeight: 600,
           py: 1.5,
           borderRadius: 2,
-          transition: 'all 0.3s ease',
+          transition: 'background-color 0.15s ease',
           '&:hover': {
-            bgcolor: theme.palette.secondary.dark,
-            transform: 'translateY(-2px)',
-            boxShadow: '0 8px 25px rgba(234, 88, 12, 0.4)',
+            bgcolor: theme.palette.accent.dark,
+            boxShadow: 'none',
           },
           '&:disabled': {
             bgcolor: theme.palette.action.disabled,

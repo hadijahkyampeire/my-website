@@ -1,5 +1,28 @@
 import { createTheme } from '@mui/material/styles';
 
+/**
+ * Accent tokens — ONE orange per mode.
+ * Every accent on the page (text, icons, rules, chips, filled buttons) uses
+ * `main`/`text`; `dark` is only the hover state. Light mode picks #c2410c
+ * because the brighter #ea580c is 3.6:1 on white and fails AA for body text.
+ */
+const accent = {
+  light: {
+    main: '#c2410c',
+    text: '#c2410c',
+    dark: '#9a3412',
+    soft: '#fff4ed',
+    softBorder: '#fdba74',
+  },
+  dark: {
+    main: '#fb923c',
+    text: '#fb923c',
+    dark: '#fdba74',
+    soft: 'rgba(251, 146, 60, 0.12)',
+    softBorder: 'rgba(251, 146, 60, 0.35)',
+  },
+};
+
 const theme = {
   light: createTheme({
     palette: {
@@ -7,22 +30,26 @@ const theme = {
       primary: {
         main: '#1e3a8a', // Navy blue
         light: '#3b5998',
-        dark: '#0f172a',
+        dark: '#152c69',
         contrastText: '#ffffff',
       },
       secondary: {
-        main: '#ea580c', // Single warm orange accent
-        light: '#fb923c',
-        dark: '#c2410c',
+        // Same value as accent.main so decoration and text never disagree
+        main: '#c2410c',
+        light: '#ea580c',
+        dark: '#9a3412',
         contrastText: '#ffffff',
       },
+      accent: accent.light,
       background: {
         default: '#ffffff',
-        paper: '#f8fafc',
+        paper: '#f4f7fc', // Soft blue-tinted surface for alternating sections
       },
       text: {
-        primary: '#1e293b',
-        secondary: '#64748b',
+        // Near-black rather than slate — reads as black without the harshness
+        // of pure #000, and drops the blue cast that made body copy look faded.
+        primary: '#121417',
+        secondary: '#3d4148', // 10.3:1 on white
       },
       divider: '#e2e8f0',
     },
@@ -66,13 +93,13 @@ const theme = {
       },
       body1: {
         fontSize: '1rem',
-        lineHeight: 1.6,
-        color: '#1e293b',
+        lineHeight: 1.7,
+        color: '#121417',
       },
       body2: {
-        fontSize: '0.875rem',
-        lineHeight: 1.6,
-        color: '#64748b',
+        fontSize: '0.9375rem',
+        lineHeight: 1.7,
+        color: '#3d4148',
       },
     },
     shape: {
@@ -92,11 +119,16 @@ const theme = {
           },
           containedPrimary: {
             backgroundColor: '#1e3a8a',
-            '&:hover': { backgroundColor: '#0f172a' },
+            '&:hover': { backgroundColor: '#152c69' },
           },
           containedSecondary: {
-            backgroundColor: '#ea580c',
-            '&:hover': { backgroundColor: '#c2410c' },
+            backgroundColor: '#c2410c',
+            '&:hover': { backgroundColor: '#9a3412' },
+          },
+          outlinedSecondary: {
+            borderColor: '#c2410c',
+            color: '#c2410c',
+            '&:hover': { borderColor: '#9a3412', backgroundColor: '#fff4ed' },
           },
         },
       },
@@ -104,12 +136,13 @@ const theme = {
         styleOverrides: {
           root: {
             borderRadius: 12,
+            backgroundColor: '#ffffff', // Cards stay white so they lift off tinted sections
             border: '1px solid #e2e8f0',
-            boxShadow: 'none',
+            boxShadow: '0 1px 2px rgba(15, 23, 42, 0.04)',
             transition: 'border-color 0.15s ease, box-shadow 0.15s ease',
             '&:hover': {
               borderColor: '#cbd5e1',
-              boxShadow: '0 1px 2px rgba(15, 23, 42, 0.04), 0 4px 12px rgba(15, 23, 42, 0.06)',
+              boxShadow: '0 1px 2px rgba(15, 23, 42, 0.04), 0 8px 24px rgba(15, 23, 42, 0.07)',
             },
           },
         },
@@ -142,13 +175,14 @@ const theme = {
         dark: '#ea580c',
         contrastText: '#0b0d10',
       },
+      accent: accent.dark,
       background: {
         default: '#0b0d10',
         paper: '#111418',
       },
       text: {
         primary: '#e8e8ea',
-        secondary: '#8b8b94',
+        secondary: '#a1a1aa',
       },
       divider: 'rgba(255,255,255,0.08)',
     },
@@ -192,12 +226,12 @@ const theme = {
       },
       body1: {
         fontSize: '1rem',
-        lineHeight: 1.6,
-        color: '#ffffff',
+        lineHeight: 1.7,
+        color: '#e8e8ea',
       },
       body2: {
-        fontSize: '0.875rem',
-        lineHeight: 1.6,
+        fontSize: '0.9375rem',
+        lineHeight: 1.7,
         color: '#a1a1aa',
       },
     },
@@ -212,6 +246,7 @@ const theme = {
             fontWeight: 600,
             borderRadius: 8,
             transition: 'background-color 0.15s ease, border-color 0.15s ease',
+            cursor: 'pointer',
             boxShadow: 'none',
             '&:hover': { boxShadow: 'none' },
           },
