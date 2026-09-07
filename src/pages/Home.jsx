@@ -58,6 +58,12 @@ import mixedItineraries from '../assets/mixedtrips/mixedtrips-itineraries.jpg';
 import mixedDestinations from '../assets/mixedtrips/mixedtrips-destinations.jpg';
 import mixedMap from '../assets/mixedtrips/mixedtrips-map.jpg';
 
+// eClinician screenshots from the project's README
+import eclinicianConsulting from '../assets/eclinician/clinician-dashboard.png';
+import eclinicianReception from '../assets/eclinician/receptionist-dashboard.png';
+import eclinicianLab from '../assets/eclinician/lab-dashboard.png';
+import eclinicianPharmacy from '../assets/eclinician/pharmacy-dashboard.png';
+
 function Home() {
   const theme = useTheme();
   const isDark = theme.palette.mode === 'dark';
@@ -192,7 +198,7 @@ function Home() {
 
   const projects = [
     {
-      // The one product that is hers end to end — leads the list on purpose.
+      // The learning app leads the list.
       title: "Litter Stars — Kids Learning App",
       tagline: "Founded & built solo",
       orientation: "portrait",
@@ -207,6 +213,21 @@ function Home() {
       github: "",
       live: "",
       images: [kidsProfiles, kidsLevels, kidsClasses, kidsSubjects, kidsStories, kidsStoryReader]
+    },
+    {
+      title: "eClinician — Multi-Tenant Clinic Management",
+      tagline: "HealthTech · Full stack",
+      description: "A clinic management system that serves multiple hospitals from one deployment, connecting the outpatient visit from check-in to consultation, lab results, and dispensing.",
+      highlights: [
+        "Role-specific dashboards for receptionists, clinicians, lab technicians, and pharmacists",
+        "JWT-based tenant isolation and server-enforced role permissions",
+        "Finalizing a visit closes the encounter and creates lab and pharmacy queue entries in one transaction",
+        "Versioned database migrations with Flyway; React frontend and Spring Boot API deployed on Render",
+      ],
+      technologies: ["React", "TypeScript", "Java 21", "Spring Boot", "PostgreSQL", "Spring Security", "Flyway", "JUnit 5", "Docker", "Render"],
+      github: "https://github.com/hadijahkyampeire/eClinician",
+      live: "https://eclinician-web.onrender.com/login",
+      images: [eclinicianConsulting, eclinicianReception, eclinicianLab, eclinicianPharmacy]
     },
     {
       title: "Zifah Voyages — Global Sports & Event Travel Platform",
