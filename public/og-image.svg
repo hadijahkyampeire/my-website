@@ -8,13 +8,13 @@
   </defs>
   <rect width="1200" height="630" fill="url(#bg)"/>
   <rect x="0" y="0" width="10" height="630" fill="#ea580c"/>
-  <text x="80" y="150" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="700" letter-spacing="4" fill="#fb923c">SENIOR FULL-STACK ENGINEER</text>
+  <text x="80" y="150" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="700" letter-spacing="3" fill="#fb923c">SENIOR SOFTWARE ENGINEER  |  REACT, TYPESCRIPT, NEXT.JS  |  FRONTEND</text>
   <text x="80" y="250" font-family="Inter, Arial, sans-serif" font-size="84" font-weight="800" fill="#ffffff">Hadijah Kyampeire</text>
   <text x="80" y="330" font-family="Inter, Arial, sans-serif" font-size="36" font-weight="500" fill="#cbd5e1">Building &amp; operating production fintech systems</text>
   <text x="80" y="380" font-family="Inter, Arial, sans-serif" font-size="36" font-weight="500" fill="#cbd5e1">— and the SaaS products behind them.</text>
   <g font-family="Inter, Arial, sans-serif" font-size="26" font-weight="600" fill="#94a3b8">
     <text x="80" y="500">PayPal · Buy Now, Pay Later</text>
-    <text x="80" y="545">React · TypeScript · Node.js · Java · GraphQL · AWS</text>
+    <text x="80" y="545">React · TypeScript · Next.js · Node.js · GraphQL · AWS</text>
   </g>
-  <text x="80" y="600" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="700" fill="#ea580c">hadijahk.com  ·  Austin, TX  ·  Open to Senior Roles (US / Remote)</text>
+  <text x="80" y="600" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="700" fill="#ea580c">hadijahk.com  ·  Acton, MA  ·  Open to Senior Roles (US / Remote)</text>
 </svg>

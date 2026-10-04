@@ -21,6 +21,7 @@ import {
   Launch as LaunchIcon,
   WhatsApp as WhatsAppIcon,
   Sms as SmsIcon,
+  Phone as PhoneIcon,
 } from '@mui/icons-material';
 import myPhoto from '../assets/hadijah-headshot.jpg';
 import ContactForm from '../components/ContactForm';
@@ -128,9 +129,9 @@ function Home() {
   {
     company: "Skye",
     companyContext: "Executive coaching platform serving leaders from Google, Condé Nast, and Lyft. Acquired by Sounding Board, Nov 2024.",
-    role: "Senior Software Engineer (Contract)",
+    role: "Senior Software Developer",
     location: "New York, NY (Remote)",
-    duration: "June 2024 – October 2024",
+    duration: "May 2024 – October 2024",
     bullets: [
       "Built session scheduling and coaching-review analytics (React, Node.js, MUI Data Grid, Recharts) used by coaches and their clients.",
       "Raised automated test coverage to ~90% with React Testing Library, reducing regressions and improving release confidence.",
@@ -164,16 +165,16 @@ function Home() {
   {
     company: "OpenMRS",
     companyContext: "Open-source EMR powering national health systems in 50+ countries, including UgandaEMR (1,700+ facilities) and PEPFAR HIV programs.",
-    role: "Frontend Software Engineer · Open Source Contributor · OpenMRS HIV Reference Implementation (OHRI)",
+    role: "Senior Software Engineer · Open Source Contributor · OpenMRS HIV Reference Implementation (OHRI)",
     location: "Carmel, Indiana, USA (Remote · Concurrent with paid roles)",
-    duration: "November 2020 – October 2024 · ~4 yrs",
+    duration: "November 2020 – August 2023 · ~3 yrs",
     bullets: [
       "Multi-year contributor to OHRI, the OpenMRS 3 package supporting HIV and TB clinical workflows in national health programs.",
       "Architected a JSON-schema-driven UI workflow framework on O3 micro-frontends, cutting module code duplication by ~90%.",
       "Designed a drag-and-drop clinical form builder used by clinicians and public-health analysts; reduced form creation time by ~40%.",
       "Shipped healthcare modules and reusable UI components (React, TypeScript, Spring Boot) across OpenMRS 3 implementations.",
       "Added multilingual support and Cypress E2E coverage, cutting manual QA effort.",
-      "Continued through a 2024 engagement with Uganda's METS Program (Makerere University SPH)."
+      "Enhanced UgandaEMR stock management with Uganda's METS Program (Makerere University SPH), reducing stock-related issues by ~50%."
     ],
     technologies: ["React", "TypeScript", "OpenMRS 3 (O3)", "OHRI", "Java", "Spring Boot", "Formik", "Micro-Frontends", "Carbon Design System", "SWR", "Cypress"]
   },
@@ -293,7 +294,7 @@ function Home() {
     {
       degree: "Master of Science in Computer Science",
       school: "Maharishi International University, Fairfield, Iowa, USA",
-      year: "Completing September 2026",
+      year: "November 2024 – December 2026",
       description: "Key Courses: Algorithms, Web Application Architecture, Enterprise Architecture, Cloud Computing"
     },
     {
@@ -621,13 +622,18 @@ function Home() {
                 fontWeight: 700,
                 fontSize: { xs: '1rem', md: '1.05rem' },
                 letterSpacing: 3,
+                lineHeight: 1.6,
                 textTransform: 'uppercase',
                 color: accentText,
                 mb: 2,
                 animation: 'slideUp 0.6s ease-out',
               }}
             >
-              Hadijah Kyampeire — Senior Full-Stack Engineer
+              Hadijah Kyampeire — Senior Software Engineer
+              {/* Second line of the resume heading; broken here so the pipe never dangles at a wrap */}
+              <Box component="span" sx={{ display: 'block' }}>
+                React, TypeScript, Next.js | Frontend
+              </Box>
             </Typography>
             <Typography
               variant="h2"
@@ -716,6 +722,69 @@ function Home() {
                 Email me
               </Button>
               <CVButton />
+            </Box>
+
+            {/* Phone, LinkedIn, and GitHub up top so nobody has to scroll to the contact section */}
+            <Box
+              sx={{
+                mt: 3,
+                display: 'flex',
+                flexWrap: 'wrap',
+                columnGap: 3,
+                rowGap: 1,
+                animation: 'slideUp 0.7s ease-out 0.4s both',
+              }}
+            >
+              {[
+                {
+                  icon: <PhoneIcon fontSize="small" />,
+                  label: '+1 (737) 363-8389',
+                  href: 'tel:+17373638389',
+                  ariaLabel: 'Call Hadijah at +1 737 363 8389',
+                },
+                {
+                  icon: <LinkedInIcon fontSize="small" />,
+                  label: 'linkedin.com/in/hadijahkyampeire',
+                  href: 'https://www.linkedin.com/in/hadijahkyampeire/',
+                  ariaLabel: 'Hadijah Kyampeire on LinkedIn',
+                  external: true,
+                },
+                {
+                  icon: <GitHubIcon fontSize="small" />,
+                  label: 'github.com/hadijahkyampeire',
+                  href: 'https://github.com/hadijahkyampeire',
+                  ariaLabel: 'Hadijah Kyampeire on GitHub',
+                  external: true,
+                },
+              ].map((item) => (
+                <Box
+                  key={item.href}
+                  component="a"
+                  href={item.href}
+                  aria-label={item.ariaLabel}
+                  {...(item.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                  sx={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: 0.75,
+                    fontSize: '0.95rem',
+                    fontWeight: 600,
+                    textDecoration: 'none',
+                    color: isDark ? 'rgba(255,255,255,0.85)' : theme.palette.primary.main,
+                    transition: 'color 0.15s ease',
+                    '&:hover': { color: accentText, textDecoration: 'underline' },
+                    '&:focus-visible': {
+                      outline: '2px solid',
+                      outlineColor: isDark ? 'rgba(255,255,255,0.6)' : theme.palette.primary.main,
+                      outlineOffset: 2,
+                      borderRadius: 0.5,
+                    },
+                  }}
+                >
+                  {item.icon}
+                  {item.label}
+                </Box>
+              ))}
             </Box>
             </Grid>
 
@@ -913,7 +982,7 @@ function Home() {
                 </Typography>
                 <Stack divider={<Box sx={{ height: '1px', bgcolor: theme.palette.divider }} />} spacing={1.5}>
                   {[
-                    { label: 'Experience', value: '8+ years, full stack' },
+                    { label: 'Experience', value: '8+ years · React, TypeScript, Next.js' },
                     { label: 'Domains', value: 'FinTech · HealthTech · TravelTech · EdTech' },
                     { label: 'Most recently', value: 'PayPal — Buy Now, Pay Later, Austin TX' },
                     { label: 'Building', value: 'Kids learning app (my own) · two live travel platforms (client)' },
@@ -1595,7 +1664,7 @@ function Home() {
                   mb: 3,
                 }}
               >
-                Open to senior full-stack roles. Work-authorized in the US (on-site, hybrid, or remote), and open to Canada for teams that can sponsor. WhatsApp or text is fastest.
+                Open to senior software engineering roles. Work-authorized in the US (on-site, hybrid, or remote), and open to Canada for teams that can sponsor. WhatsApp or text is fastest.
               </Typography>
               <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.5, mb: 4 }}>
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
