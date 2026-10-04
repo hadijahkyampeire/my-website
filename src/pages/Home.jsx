@@ -21,6 +21,7 @@ import {
   Launch as LaunchIcon,
   WhatsApp as WhatsAppIcon,
   Sms as SmsIcon,
+  Phone as PhoneIcon,
 } from '@mui/icons-material';
 import myPhoto from '../assets/hadijah-headshot.jpg';
 import ContactForm from '../components/ContactForm';
@@ -716,6 +717,69 @@ function Home() {
                 Email me
               </Button>
               <CVButton />
+            </Box>
+
+            {/* Phone, LinkedIn, and GitHub up top so nobody has to scroll to the contact section */}
+            <Box
+              sx={{
+                mt: 3,
+                display: 'flex',
+                flexWrap: 'wrap',
+                columnGap: 3,
+                rowGap: 1,
+                animation: 'slideUp 0.7s ease-out 0.4s both',
+              }}
+            >
+              {[
+                {
+                  icon: <PhoneIcon fontSize="small" />,
+                  label: '+1 (737) 363-8389',
+                  href: 'tel:+17373638389',
+                  ariaLabel: 'Call Hadijah at +1 737 363 8389',
+                },
+                {
+                  icon: <LinkedInIcon fontSize="small" />,
+                  label: 'linkedin.com/in/hadijahkyampeire',
+                  href: 'https://www.linkedin.com/in/hadijahkyampeire/',
+                  ariaLabel: 'Hadijah Kyampeire on LinkedIn',
+                  external: true,
+                },
+                {
+                  icon: <GitHubIcon fontSize="small" />,
+                  label: 'github.com/hadijahkyampeire',
+                  href: 'https://github.com/hadijahkyampeire',
+                  ariaLabel: 'Hadijah Kyampeire on GitHub',
+                  external: true,
+                },
+              ].map((item) => (
+                <Box
+                  key={item.href}
+                  component="a"
+                  href={item.href}
+                  aria-label={item.ariaLabel}
+                  {...(item.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                  sx={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: 0.75,
+                    fontSize: '0.95rem',
+                    fontWeight: 600,
+                    textDecoration: 'none',
+                    color: isDark ? 'rgba(255,255,255,0.85)' : theme.palette.primary.main,
+                    transition: 'color 0.15s ease',
+                    '&:hover': { color: accentText, textDecoration: 'underline' },
+                    '&:focus-visible': {
+                      outline: '2px solid',
+                      outlineColor: isDark ? 'rgba(255,255,255,0.6)' : theme.palette.primary.main,
+                      outlineOffset: 2,
+                      borderRadius: 0.5,
+                    },
+                  }}
+                >
+                  {item.icon}
+                  {item.label}
+                </Box>
+              ))}
             </Box>
             </Grid>
 
