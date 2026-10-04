@@ -23,6 +23,8 @@ import {
   Code as CodeIcon,
   ContactMail as ContactIcon,
   Home as HomeIcon,
+  LinkedIn as LinkedInIcon,
+  GitHub as GitHubIcon,
 } from '@mui/icons-material';
 import { useNavigate, useLocation } from 'react-router-dom';
 
@@ -63,6 +65,33 @@ const Navbar = ({ toggleTheme, isDark }) => {
       scrollToId();
     }
   };
+
+  const socialLinks = [
+    { label: 'LinkedIn', href: 'https://www.linkedin.com/in/hadijahkyampeire/', icon: <LinkedInIcon /> },
+    { label: 'GitHub', href: 'https://github.com/hadijahkyampeire', icon: <GitHubIcon /> },
+  ];
+
+  // Shown in the toolbar at every width, so both profiles are one click away on mobile too.
+  const socialIcons = socialLinks.map((link) => (
+    <IconButton
+      key={link.label}
+      component="a"
+      href={link.href}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={`Hadijah Kyampeire on ${link.label}`}
+      color="inherit"
+      size={isMobile ? 'small' : 'medium'}
+      sx={{
+        transition: 'background-color 0.15s ease',
+        '&:hover': {
+          backgroundColor: hoverTint,
+        }
+      }}
+    >
+      {link.icon}
+    </IconButton>
+  ));
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -169,13 +198,12 @@ const Navbar = ({ toggleTheme, isDark }) => {
 
           {isMobile ? (
             <Box sx={{ display: 'flex', alignItems: 'center' }}>
+              {socialIcons}
               <IconButton
                 color="inherit"
                 aria-label="open drawer"
-                edge="start"
                 onClick={handleDrawerToggle}
                 sx={{
-                  mr: 1,
                   transition: 'background-color 0.15s ease',
                   '&:hover': {
                     backgroundColor: hoverTint,
@@ -244,11 +272,13 @@ const Navbar = ({ toggleTheme, isDark }) => {
                   {item.label}
                 </Button>
               ))}
+              <Box sx={{ display: 'flex', alignItems: 'center', ml: 1 }}>
+                {socialIcons}
+              </Box>
               <IconButton 
                 color="inherit" 
                 onClick={toggleTheme}
                 sx={{ 
-                  ml: 1,
                   transition: 'background-color 0.15s ease',
                   '&:hover': {
                     backgroundColor: hoverTint,

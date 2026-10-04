@@ -18,7 +18,7 @@ const PORTFOLIO_CONTEXT = `
 You are an AI assistant for Hadijah Kyampeire's portfolio.
 
 - Name: Hadijah Kyampeire
-- Current Status: Open to senior software engineering roles (React, TypeScript, Next.js; frontend-focused). Work-authorized in the US (on-site, hybrid, or remote); open to Canada with sponsorship. Also finishing a Master of Science in Computer Science at Maharishi International University (November 2024 - December 2026).
+- Current Status: Open to senior full-stack engineering roles (React, TypeScript, Next.js). Work-authorized in the US (on-site, hybrid, or remote); open to Canada with sponsorship. Also finishing a Master of Science in Computer Science at Maharishi International University (November 2024 - December 2026).
 - Most Recent Role: Full Stack Software Engineer, Buy Now Pay Later at PayPal, Austin TX (October 2025 - July 2026)
 - Previous Roles: Senior Software Developer at Skye (May 2024 - October 2024), Senior Software Engineer & Open Source Contributor / Development Fellow at OpenMRS (November 2020 - August 2023) (incl. the METS Program engagement), Senior Software Engineer at Sigma360 via Andela, Software Engineer at Andela Uganda
 - Also: Lead engineer on two live travel-booking platforms built for a client, Zifah Voyages and MixedTrips
@@ -112,7 +112,7 @@ const generateFallbackResponse = (userMessage) => {
     lowerMessage.includes('hire') ||
     lowerMessage.includes('opportunity')
   ) {
-    return `She's open to senior software engineering roles right now, with a frontend focus on React, TypeScript, and Next.js. Her most recent role was at PayPal on Buy Now, Pay Later, which wrapped up in July 2026. She's work-authorized in the US (on-site, hybrid, or remote all welcome) and open to Canada for teams that can sponsor relocation. She's also finishing a Master of Science in Computer Science at Maharishi International University (finishing December 2026). Reach out at hadijahkyampeire@gmail.com to discuss opportunities!`;
+    return `She's open to senior full-stack engineering roles right now. Her most recent role was at PayPal on Buy Now, Pay Later, which wrapped up in July 2026. She's work-authorized in the US (on-site, hybrid, or remote all welcome) and open to Canada for teams that can sponsor relocation. She's also finishing a Master of Science in Computer Science at Maharishi International University (finishing December 2026). Reach out at hadijahkyampeire@gmail.com to discuss opportunities!`;
   }
   
   // Skills and technologies
@@ -242,7 +242,7 @@ const generateFallbackResponse = (userMessage) => {
     lowerMessage.includes('compensation') ||
     lowerMessage.includes('cost')
   ) {
-    return `She's open to discussing compensation based on the role and scope. With 8+ years of experience across regulated fintech, healthcare, and risk platforms, she's targeting senior-level compensation. Reach out at hadijahkyampeire@gmail.com to talk specifics.`;
+    return `She's open to discussing compensation based on the role and scope. With 8+ years of full-stack experience across regulated fintech, healthcare, and risk platforms, she's targeting senior-level compensation. Reach out at hadijahkyampeire@gmail.com to talk specifics.`;
   }
   
   // Career goals and aspirations
@@ -253,7 +253,7 @@ const generateFallbackResponse = (userMessage) => {
     lowerMessage.includes('plan') ||
     lowerMessage.includes('next')
   ) {
-    return `She's looking for senior software engineering roles where she can own features end to end, ideally in fintech, healthcare, or another domain where correctness matters. She wants to keep mentoring engineers, keep contributing to open source, and keep building with AI-assisted tooling as part of the workflow rather than as a novelty.`;
+    return `She's looking for senior full-stack roles where she can own features end to end, ideally in fintech, healthcare, or another domain where correctness matters. She wants to keep mentoring engineers, keep contributing to open source, and keep building with AI-assisted tooling as part of the workflow rather than as a novelty.`;
   }
   
   // Greetings
