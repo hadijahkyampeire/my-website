@@ -18,9 +18,9 @@ const PORTFOLIO_CONTEXT = `
 You are an AI assistant for Hadijah Kyampeire's portfolio.
 
 - Name: Hadijah Kyampeire
-- Current Status: Open to senior full-stack engineering roles. Work-authorized in the US (on-site, hybrid, or remote); open to Canada with sponsorship. Also finishing a Master of Science in Computer Science at Maharishi International University (completing September 2026).
+- Current Status: Open to senior software engineering roles (React, TypeScript, Next.js; frontend-focused). Work-authorized in the US (on-site, hybrid, or remote); open to Canada with sponsorship. Also finishing a Master of Science in Computer Science at Maharishi International University (November 2024 - December 2026).
 - Most Recent Role: Full Stack Software Engineer, Buy Now Pay Later at PayPal, Austin TX (October 2025 - July 2026)
-- Previous Roles: Senior Software Engineer at Skye, Frontend Software Engineer / Development Fellow at OpenMRS (incl. the METS Program engagement), Senior Software Engineer at Sigma360 via Andela, Software Engineer at Andela Uganda
+- Previous Roles: Senior Software Developer at Skye (May 2024 - October 2024), Senior Software Engineer & Open Source Contributor / Development Fellow at OpenMRS (November 2020 - August 2023) (incl. the METS Program engagement), Senior Software Engineer at Sigma360 via Andela, Software Engineer at Andela Uganda
 - Also: Lead engineer on two live travel-booking platforms built for a client, Zifah Voyages and MixedTrips
 - Her own product: 'Litter Stars', a kids' learning app for ages 3-12 (React Native/Expo, TypeScript, serverless AWS) that she founded and builds solo — parent accounts with multiple child profiles, age-banded curriculum with subscription tiers, per-lesson progress, illustrated story reader with comprehension questions
 - Experience: 8+ years across FinTech, HealthTech, TravelTech, and EdTech
@@ -112,7 +112,7 @@ const generateFallbackResponse = (userMessage) => {
     lowerMessage.includes('hire') ||
     lowerMessage.includes('opportunity')
   ) {
-    return `She's open to senior full-stack engineering roles right now. Her most recent role was at PayPal on Buy Now, Pay Later, which wrapped up in July 2026. She's work-authorized in the US (on-site, hybrid, or remote all welcome) and open to Canada for teams that can sponsor relocation. She's also finishing a Master of Science in Computer Science at Maharishi International University (completing September 2026). Reach out at hadijahkyampeire@gmail.com to discuss opportunities!`;
+    return `She's open to senior software engineering roles right now, with a frontend focus on React, TypeScript, and Next.js. Her most recent role was at PayPal on Buy Now, Pay Later, which wrapped up in July 2026. She's work-authorized in the US (on-site, hybrid, or remote all welcome) and open to Canada for teams that can sponsor relocation. She's also finishing a Master of Science in Computer Science at Maharishi International University (finishing December 2026). Reach out at hadijahkyampeire@gmail.com to discuss opportunities!`;
   }
   
   // Skills and technologies
@@ -137,7 +137,7 @@ const generateFallbackResponse = (userMessage) => {
     lowerMessage.includes('background') ||
     lowerMessage.includes('role')
   ) {
-    return `She has 8+ years of experience across FinTech, HealthTech, TravelTech, and EdTech. Most recently she was a Full Stack Software Engineer at PayPal in Austin (Oct 2025 - Jul 2026), building onboarding and credit-decisioning for Buy Now, Pay Later across multiple markets. Before that: Senior Software Engineer at Skye, ~4 years contributing to OpenMRS (including Uganda's METS Program), and 5+ years at Sigma360 via Andela building financial-crime and risk-intelligence software used by Stripe and other institutions. She's also the lead engineer on two live travel-booking platforms built for a client, Zifah Voyages and MixedTrips, and the founder of her own kids' learning app.`;
+    return `She has 8+ years of experience across FinTech, HealthTech, TravelTech, and EdTech. Most recently she was a Full Stack Software Engineer at PayPal in Austin (Oct 2025 - Jul 2026), building onboarding and credit-decisioning for Buy Now, Pay Later across multiple markets. Before that: Senior Software Developer at Skye, nearly three years contributing to OpenMRS (including Uganda's METS Program), and 5+ years at Sigma360 via Andela building financial-crime and risk-intelligence software used by Stripe and other institutions. She's also the lead engineer on two live travel-booking platforms built for a client, Zifah Voyages and MixedTrips, and the founder of her own kids' learning app.`;
   }
   
   // Projects
@@ -170,7 +170,7 @@ const generateFallbackResponse = (userMessage) => {
     lowerMessage.includes('university') ||
     lowerMessage.includes('study')
   ) {
-    return `She's pursuing a Master of Science in Computer Science at Maharishi International University (completing September 2026). She also holds a Bachelor of Computer Engineering with First Class Honors from Busitema University in Uganda (2013-2017). Her studies focused on algorithms, web application architecture, enterprise architecture, and cloud computing.`;
+    return `She's pursuing a Master of Science in Computer Science at Maharishi International University (November 2024 - December 2026). She also holds a Bachelor of Computer Engineering with First Class Honors from Busitema University in Uganda (2013-2017). Her studies focused on algorithms, web application architecture, enterprise architecture, and cloud computing.`;
   }
   
   // Location and remote work
@@ -222,7 +222,7 @@ const generateFallbackResponse = (userMessage) => {
     lowerMessage.includes('medical') ||
     lowerMessage.includes('openmrs')
   ) {
-    return `She contributed to OpenMRS for around four years - the open-source EMR platform behind national health systems in 50+ countries, including UgandaEMR (1,700+ facilities) and PEPFAR HIV programs. She architected a JSON-schema-driven UI workflow framework on the OpenMRS 3 micro-frontends platform that cut clinical-module code duplication by ~90%, and built a drag-and-drop clinical form builder that cut form creation time by ~40%. She's recognized as a /dev/3 senior contributor and was named a Development Fellow. The work continued through a 2024 engagement with Uganda's METS Program at Makerere University School of Public Health.`;
+    return `She contributed to OpenMRS for nearly three years (November 2020 - August 2023) - the open-source EMR platform behind national health systems in 50+ countries, including UgandaEMR (1,700+ facilities) and PEPFAR HIV programs. She architected a JSON-schema-driven UI workflow framework on the OpenMRS 3 micro-frontends platform that cut clinical-module code duplication by ~90%, and built a drag-and-drop clinical form builder that cut form creation time by ~40%. She's recognized as a /dev/3 senior contributor and was named a Development Fellow. The work included Uganda's METS Program at Makerere University School of Public Health, where she enhanced UgandaEMR stock management.`;
   }
   
   // Sigma360 specific
@@ -242,7 +242,7 @@ const generateFallbackResponse = (userMessage) => {
     lowerMessage.includes('compensation') ||
     lowerMessage.includes('cost')
   ) {
-    return `She's open to discussing compensation based on the role and scope. With 8+ years of full-stack experience across regulated fintech, healthcare, and risk platforms, she's targeting senior-level compensation. Reach out at hadijahkyampeire@gmail.com to talk specifics.`;
+    return `She's open to discussing compensation based on the role and scope. With 8+ years of experience across regulated fintech, healthcare, and risk platforms, she's targeting senior-level compensation. Reach out at hadijahkyampeire@gmail.com to talk specifics.`;
   }
   
   // Career goals and aspirations
@@ -253,7 +253,7 @@ const generateFallbackResponse = (userMessage) => {
     lowerMessage.includes('plan') ||
     lowerMessage.includes('next')
   ) {
-    return `She's looking for senior full-stack roles where she can own features end to end, ideally in fintech, healthcare, or another domain where correctness matters. She wants to keep mentoring engineers, keep contributing to open source, and keep building with AI-assisted tooling as part of the workflow rather than as a novelty.`;
+    return `She's looking for senior software engineering roles where she can own features end to end, ideally in fintech, healthcare, or another domain where correctness matters. She wants to keep mentoring engineers, keep contributing to open source, and keep building with AI-assisted tooling as part of the workflow rather than as a novelty.`;
   }
   
   // Greetings
